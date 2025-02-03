@@ -1,18 +1,17 @@
 \chapter{Hypothesis and Objectives}
 \label{chapter:hypothesis-objectives}
-Example text:
 
 This chapter presents the hypothesis formulated for the thesis. Also, it displays the established objectives with its corresponding deliverables. Last section gives a summary of the scope and limitations defined for this research.
 
 \section{Hypothesis}
 \label{section:hypothesis}
-A brief context description of the formulation of the hypothesis can go here, followed by.
-The hypothesis for this research effort reads as follows (example):
+
+The hypothesis for this research effort reads as follows:
 
 %``Our proposed method $P$ in the research can improve by $Q$\footnote{If numbers are involved, usually an explanation of why that specific number was used is given in a footnote \cite{examplereference2}.} the relation in metric 1 and metric 2\footnote{The \cite{examplereference} definition of is used.}.''
 
 
-''By systematically exploring and evaluating various modifications to the Multi-Layer Perceptron (MLP) head architecture of a Visual Transformer, specifically tailored for Facial Expression Recognition (FER), is posible to identify novel and effective approaches to enhance the model's performance on the RAF-DB dataset. These investigations will contribute to a deeper understanding of the role of the MLP head in Visual Transformers for FER and provide valuable insights for future research and applications.''
+''By systematically exploring and evaluating various modifications to the Multi-Layer Perceptron (MLP) head architecture of a Visual Transformer for Facial Expression Recognition (FER), it is possible to surpass the current state-of-the-art performance achieved by the POSTER model on the RAF-DB dataset. Specifically, this study aims to improve the accuracy from POSTER's reported 92.05\% to at least 93.00\%.''
 
 
 \section{Objectives}
@@ -30,26 +29,17 @@ To enhance the performance of Visual Transformers in Facial Expression Recogniti
 \label{section:specific-objectives}
 
 \begin{enumerate}
-	\item Analyze how the proposed modifications to the MLP head architecture influence model transparency and interpretability. Evaluate whether the modified architecture provides more insightful attention maps or feature representations that explain the model's decision-making process in FER. \todo{check for these attention maps}
+	\item Evaluate how the proposed modifications to the MLP head architecture provides insightful attention maps or feature representations that explain the model's decision-making process in FER.
 	
-\item valuate the modified Visual Transformer model to adversarial image environments, noise, or data perturbations (e.g., occlusions, lighting variations, or slight facial deformations) or human fairness such as demographic biases (age, gender, ethnicity). 
+\item Investigate the modified Visual Transformer model to adversarial image environments, noise, or data perturbations (e.g., occlusions, lighting variations, or slight facial deformations) or human fairness such as demographic biases (age, gender, ethnicity) using RAF-DB as a in-the-wild challenging dataset. 
 	
-\item Explore how the new MLP head architectures improve the model’s resilience to a in-the-wild dataset by employing standard FER evaluation metrics (e.g., accuracy, F1-score) as well as metrics that specifically address in-the-wild challenges for example head pose-invariant accuracy or occlusion robustness \todo{check more info for metrics}.
+\item Explore how the new MLP head architectures improve the model’s resilience to a in-the-wild dataset by employing standard FER evaluation metrics (e.g., accuracy, F1-score) as well as metrics that specifically address in-the-wild challenges for example head pose-invariant accuracy \cite{guo_occrob_2023} or occlusion robustness metrics like for example  Mean Average Precision (MAP) \cite{marcu_pitfalls_2022} \cite{ranjan_light-weight_2018}.
 	
 \end{enumerate}
 
 \subsection{Deliverables}
-Example text:
+
 This section provides the deliverables assigned for each specific objective defined for the thesis.
-
-\textbf{Specific Objective 1:}
-Deliverable for specific objective 1. 
-
-\textbf{Specific Objective 2:}
-Deliverable for specific objective 2.
-
-\textbf{Specific Objective 3:}
-Deliverable for specific objective 3.
 
 
 % Please add the following required packages to your document preamble:
@@ -84,18 +74,15 @@ PRE-02 & Thesis Defense Presentation &
 
 \section{Scope and Limitations}
 
-Should include the scope and limitations of the developed research.
+This section includes the scope of the investigation:
+
+%Should include the scope and limitations of the developed research.
 
 \begin{itemize}
-\item This research focuses exclusively on predicting 7 discrete class FER emotions, leaving out of the picture other FER class predictions approaches like Action Units or Valence-Arousal \citep{kollias_affect_2021}.
+\item This research focuses exclusively on predicting 7 discrete class FER emotions —happy, sad, surprise, fear, disgust, anger, and neutral. It deliberately excludes other FER prediction approaches such as analyzing Facial Action Units (AUs) or the Valence-Arousal (VA) model, which involve a more nuanced or continuous representation of emotion. \cite{mollahosseini_affectnet_2019}\cite{kollias_affect_2021}.
 
-\item The project will not include research that aims to analyze emotional states from dynamic sequences (video-based)\cite{wang_survey_2024}, only image-based static FER analysis will be conducted. 
+\item The project will not include research that aims to analyze emotional states from dynamic sequences (video-based)\cite{wang_survey_2024}, only image-based static FER analysis will be conducted. While dynamic FER methods may capture temporal emotional transitions more effectively, this project centers on evaluating static images to streamline experimentation and ensure consistency.
 
-\item The materials used in this research are limited to licensed and public resources. This includes datasets, research papers, source code, programming language and libraries. 
+\item The materials used in this research are limited to licensed and public resources. These include FER datasets, academic publications, source code, programming languages, and libraries, ensuring transparency, reproducibility, and ethical compliance in all aspects of the study.
 \end{itemize}
 
-\textbf{Scope and limitation 1:} 
-
-\textbf{Scope and limitation 2:}
- 
-\textbf{Scope and limitation 3:} 

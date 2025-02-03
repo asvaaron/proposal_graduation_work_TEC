@@ -3,49 +3,153 @@
 
 \section{Design/Method/Algorithm/Mechanism Proposal}
 
-Explain the proposed design/method/algorithm/mechanism. A diagram is usually beneficial for understanding how the proposal would work.
+The aim of this research is to investigate the impact of different configurations of the POSTER Visual Transformer on the performance of Facial Expression Recognition (FER). Specifically, the study will focus on the effect of three key factors: pretrained weights, model size, and modifications to the MLP head. The objective is to determine whether these factors, both individually and in combination, have a significant influence on model accuracy and performance metrics. A factorial experimental design will be employed to evaluate the main effects and interaction effects of these factors.
  
+
 \section{Experiment Design}
 \label{section:experiment-design}
-Establish the experiment design that will be used to evaluate the hypothesis.
+The experiment will consist of 8 unique configurations derived from the combination of the three factors and their respective levels $(2^k, \text{with K} = 3 = 8)$. For each configuration, the POSTER Visual Transformer will be trained on a facial expression dataset RAF-DB\ref{sub:raf-db}, and the performance will be evaluated based on a chosen metric, such as classification accuracy \ref{sub:accurracy} and F1-score \ref{sub:f1-score}.
+
+The models will be trained in a controlled environment, where the only variations between runs are the levels of the factors being tested. This will allow for a rigorous comparison of how pretrained weights, model size, learning rate and MLP head modifications influence the transformer’s performance in FER tasks.
+
 \section{Factors and Levels (if needed):}
-Determine and describe the factors and levels that will be used in the experiment.
+These section determines the  factors and levels that will be used in the experiment:
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[H]
+\centering
+\caption{Factors and Levels}
+\label{tab:factors_and_levels}
+\begin{tabular}{clll}
+\hline
+\multicolumn{1}{l}{}             & \multicolumn{3}{c}{\textbf{Factors}}                       \\
+\multicolumn{1}{l}{}             & \textbf{Factor 1}  & \textbf{Factor 2} & \textbf{Factor 3} \\ \hline
+\multirow{3}{*}{\textbf{Levels}} & Pretrained Weights & Model Size        & MLP Head          \\
+                                 & Yes                & Base              & No Changes        \\
+                                 & No                 & Large             & \textbf{Modified MLP}      \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+The \textbf{Table \ref{tab:factors_and_levels}} summarizes the factors and levels used in the experiments, most of the factors correspondes to parameters used in  POSTER \cite{zheng_poster_2022} training.  The first factor, Pretrained Weights, examines the impact of initializing the model with pretrained weights, with two levels: "Yes" (indicating the use of pretrained weights) and "No" (indicating random initialization). The second factor, Model Size, assesses the effect of different model architectures, specifically comparing a "Base" size to a "Large" size. Finally, the third factor, MLP Head, evaluates modifications to the Multilayer Perceptron (MLP) head, contrasting "No Changes" with a "Modified MLP" configuration. 
+
+%\begin{table}[h]
+%	\caption{Example table.}
+%	\label{tab:table}
+%	\begin{center}
+%		\begin{tabular}{|l|l|l|l|l|}
+%			\cline{2-5}
+%			\multicolumn{1}{c|}{}	& \multicolumn{4}{c|}{Factor} \\ 
+%			\cline{2-5}
+%			\multicolumn{1}{c|}{}	& Factor 1 & Factor 2 & Factor 3 & Factor 4 \\ \hline
+%			Levels
+%			& Level 1 & Level 1	& Level 1  & Level 1   \\
+%			& Level 2 & Level 2  & Level 2 & Level 2 \\
+%			& Level 3 & Level 3 & Level 3 & Level 3 \\
+%			& Level 4 &    & Level 4  &   \\ 
+%			&  &    & Level 5  &   \\ 
+%			&  &    & Level 6  &     \\\hline
+%		\end{tabular}
+%	\end{center}
+%\end{table}
+
+
 
 \section{Measures and Combinations of the Experiment (if needed)}
 
-The example \textbf{Table \ref{tab:table}} summarizes the factors and levels used in the experiments.
-\begin{table}[h]
-	\caption{Example table.}
-	\label{tab:table}
-	\begin{center}
-		\begin{tabular}{|l|l|l|l|l|}
-			\cline{2-5}
-			\multicolumn{1}{c|}{}	& \multicolumn{4}{c|}{Factor} \\ 
-			\cline{2-5}
-			\multicolumn{1}{c|}{}	& Factor 1 & Factor 2 & Factor 3 & Factor 4 \\ \hline
-			Levels
-			& Level 1 & Level 1	& Level 1  & Level 1   \\
-			& Level 2 & Level 2  & Level 2 & Level 2 \\
-			& Level 3 & Level 3 & Level 3 & Level 3 \\
-			& Level 4 &    & Level 4  &   \\ 
-			&  &    & Level 5  &   \\ 
-			&  &    & Level 6  &     \\\hline
-		\end{tabular}
-	\end{center}
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\hline
+\textbf{Pretrained   Weights} & \textbf{Model Size} & \textbf{MLP Head} \\ \hline
+Yes                           & Base                & No Changes        \\
+Yes                           & Base                & Modified MLP      \\
+Yes                           & Large               & No Changes        \\
+Yes                           & Large               & Modified MLP      \\
+No                            & Base                & No Changes        \\
+No                            & Base                & Modified MLP      \\
+No                            & Large               & No Changes        \\
+No                            & Large               & Modified MLP      \\ \hline
+\end{tabular}
 \end{table}
-
-Justify the number of runs and repetitions defined for the experiment.
 
 
 \section{Response Variable}
-Description of the response variable used in the research.
+
+For the experiment oriented to FER it  this research, the performance of the Visual Transformer model for Facial Expression Recognition (FER) will be evaluated using two primary response variables: accuracy and F1-score.
+
+\subsection{Accuracy}\label{sub:accurracy}
+
+Accuracy is defined as the proportion of correctly classified samples to the total number of samples:
+
+\begin{equation}
+\text{Accuracy} = \frac{\text{Number of Correct Predictions}}{\text{Total Number of Samples}} = \frac{TP + TN}{TP + TN + FP + FN}
+\end{equation}
+
+Where:
+
+\begin{itemize}
+\item TP: True Positives, TN: True Negatives
+\item FP: False Positives, FN: False Negatives
+\end{itemize}
+
+Accuracy, defined as the proportion of correctly classified samples to the total samples, provides a straightforward metric for assessing the model's overall performance.  
+
+
+\subsection{F1-score}\label{sub:f1-score}
+
+Due to the potential imbalance in FER datasets, such as varying distributions of expressions like "neutral" and "anger", accuracy alone may not fully capture the model's effectiveness. To address this, the F1-score, which is the harmonic mean of precision and recall.
+
+
+\begin{equation}
+\text{Precision} = \frac{TP}{TP + FP}, \quad \text{Recall} = \frac{TP}{TP + FN}
+\end{equation}
+
+\begin{equation}
+\text{F1-Score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
+\end{equation}
+
+Or, substituting precision and recall:
+
+\begin{equation}
+\text{F1-Score} = 2 \cdot \frac{TP}{2 \cdot TP + FP + FN}
+\end{equation}
+
+
+
 
 \section{Experiment set-up}
 
+The experiment aims to investigate how various configurations of the MLP, such as the number of layers, neurons per layer, and activation functions, influence the model’s accuracy and computational efficiency. The primary goal is to perform factor analysis to understand which architectural changes enhance the model’s recognition capabilities.
+
+
+The baseline POSTER model will be used as the reference, and the MLP architecture will be systematically varied in terms of depth, width, and activation functions (ReLU, Tanh, Sigmoid) and drop out class to test a range of possible configurations. To carry out the experiment, the datasets will first be preprocessed, with images normalized and divided into training, validation, and test sets. The POSTER model will then be trained with the baseline MLP configuration, followed by the testing of modified MLP architectures. 
+
+Each configuration will be trained and evaluated based on performance metrics, including  accuracy \ref{sub:accurracy} and F1-score \ref{sub:f1-score}. In addition to performance metrics, the computational efficiency of each model will be assessed by measuring training time.  Through this process, the research will identify optimal MLP configurations that maximize model performance while considering computational trade-offs and how multiple factors interact.
+
 \section{Data Recollection}
 
-Description of the data recollection process. 
+\subsection{RAF-DB} \label{sub:raf-db}
+
+For the experiment the  Real-world Affective Faces Database (RAF-DB) will be used. This is a widely used dataset in the field of facial expression recognition (FER). It contains 30,000 facial images collected from the Internet, annotated for various emotional states. 
+
+The images, collected from the Internet, are representative of diverse real-world conditions, including variations in ethnicity, age, gender, lighting, and occlusions. These features make RAF-DB a challenging dataset, ideal for evaluating FER models under realistic settings.
+
+Images in RAF-DB were labeled by 40 human annotators through crowdsourcing, and a majority voting scheme was used to finalize the annotations. The dataset includes 12,271 images for training and 3,068 for testing, focusing primarily on static image-based FER. Its real-world complexity, such as subtle expressions, extreme head poses, and high intra-class variability, has driven advancements in FER models. RAF-DB has been instrumental in benchmarking state-of-the-art models like ResNet-50, Swin Transformer, and POSTER, which achieved accuracies of 86.34 \%, 90.97 \%, and 92.05 \%, respectively.
 
 \section{Statistical Tool Used Description}
 
 Include a section briefly explaining the statistical tool used to analyze the data from the experiments.
+
+\subsection{ANOVA} 
+
+ANOVA (Analysis of Variance) is a statistical method used to analyze the differences among group means in a sample. It tests the hypothesis that the means of several groups are equal. The ANOVA technique relies on three assumptions about the analyzed samples: independence, normality, and equal variance. Independence can be ensured through randomized runs, while normality and equal variance must be verified.
+
+Normality refers to the assumption that the residuals or errors in each group are normally distributed. To test normality both graphical methods (Q-Q tests and histograms) and formal statistical tests (Shapiro-Wilk Test or Kolmogorov-Smirnov Test) can be used. 
+
+On the other hand, equal variance, also called homoscedasticity, means that the variance within each group should be similar. If the variances are unequal (heteroscedasticity), it can affect the results of the ANOVA. To test for homoscedasticity, several methods can be employed. For example,  Levene’s test, Bartlett’s test, or residual plots. If the assumptions are not met, it's necessary y to consider using data transformations (log, square root, etc.) or non-parametric tests (e.g., Kruskal-Wallis test for unequal variances).
+
+

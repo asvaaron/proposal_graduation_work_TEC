@@ -1,23 +1,45 @@
 \chapter{Introduction}
 \label{chapter:introduction}
+%
+%
+%Introduction section goes here. Here is an example reference
+%\cite{examplereference}. Here is another example reference \cite{examplereference2}.
+
+Facial Expression Recognition (FER) plays a critical role in various fields such as human-computer interaction, affective computing, and security systems, where understanding human emotions through facial cues is essential. The advent of deep learning, particularly transformer-based architectures, has significantly advanced the performance of FER systems. One such promising approach is the Visual Transformer (ViT), which excels in capturing spatial relationships in image data through self-attention mechanisms.
+
+In this context, POSTER \cite{zheng_poster_2022} stands out as an effective model for extracting multi-scale features, combining both local and global representations to improve facial expression classification. However, despite the potential of POSTER, there remains room for improvement in how it integrates learned features for final prediction. By modifying the MLP architecture, it is possible to better utilize the rich features learned by POSTER, leading to improved classification performance, especially for subtle or difficult-to-distinguish facial expressions. 
 
 
-Introduction section goes here. Here is an example reference
-\cite{examplereference}. Here is another example reference \cite{examplereference2}.
+This research proposes to enhance FER models by incorporating changes to the MLP layers, focusing on dropout strategies, layer depth, and activation functions.The aim of this study is to combine the strengths of POSTER’s multi-scale feature extraction with optimizations to the MLP for more effective feature fusion and decision-making. Through this combination, the research seeks to improve the recognition of facial expressions, particularly in challenging or in-the-wild scenarios. 
 
 \newpage
 
 \section{Problem}
 
-Problem context, description and summary goes in this section:
+%Problem context, description and summary goes in this section:
 
-Multiple studies have explored the use of Visual Transformers and attention mechanisms for FER, particularly in challenging real-world conditions (e.g., occlusions, varying poses). For instance, there has been extensive work on hybrid Vision Transformers (ViTs) combined with Convolutional Neural Networks (CNNs), focusing on improving feature extraction and recognition by capturing both local and global features.
+%Multiple studies have explored the use of Visual Transformers and attention mechanisms for FER, particularly in challenging real-world conditions (e.g., occlusions, varying poses). For instance, there has been extensive work on hybrid Vision Transformers (ViTs) combined with Convolutional Neural Networks (CNNs), focusing on improving feature extraction and recognition by capturing both local and global features.
+%
+%However, the specific approach of modifying the MLP head architecture has not been extensively explored, making it a potentially novel contribution. Current work often focuses on the Transformer architecture itself, with enhancements like selective attention fusion. Recent investigations have not delved deeply into modifications at the classification head level.
 
-However, the specific approach of modifying the MLP head architecture has not been extensively explored, making it a potentially novel contribution. Current work often focuses on the Transformer architecture itself, with enhancements like selective attention fusion. Recent investigations have not delved deeply into modifications at the classification head level.
+Facial Expression Recognition (FER) is a critical area of research in computer vision with numerous applications, such as human-computer interaction, mental health monitoring, and affective computing. Despite significant advancements, FER remains a challenging task due to the inherent variability in real-world conditions, such as occlusions, varying lighting, and diverse facial poses. These challenges necessitate robust models capable of accurately capturing and interpreting subtle emotional cues across diverse scenarios.
+
+In recent years, Visual Transformers (ViTs) have emerged as a powerful alternative to traditional Convolutional Neural Networks (CNNs) in FER tasks. Their ability to leverage self-attention mechanisms enables them to capture long-range dependencies and global contextual information, making them well-suited for FER. 
+
+Several hybrid approaches have combined ViTs with CNNs to exploit the strengths of both architectures, aiming to enhance feature extraction by integrating both local and global features. These approaches often achieve state-of-the-art performance, particularly in controlled environments.
+
+However, a critical limitation of existing research lies in its predominant focus on architectural innovations within the Transformer backbone or selective attention mechanisms. For example, efforts have been directed toward enhancing the encoder layers, incorporating pyramid fusion strategies, or developing cross-attention mechanisms to improve feature representation. While these advancements contribute to model performance, the exploration of modifications in the classification head particularly the Multi-Layer Perceptron (MLP) head has been relatively overlooked.
+
+The classification head plays a essential role in transforming learned features into final predictions. Modifying the MLP head architecture offers a promising avenue for innovation, as it directly impacts the model's ability to generalize and interpret high-dimensional embedding effectively. Despite its importance, few studies have explored alternative configurations, activation functions, or dropout strategies in this component. This represents a significant opportunity for meaningful contributions to FER research.
+
+By addressing this gap, the proposed research aims to investigate novel modifications to the MLP head in Visual Transformers for FER. This includes experimenting with advanced architectures, integrating recurrent layers and evaluating the impact of these changes on model performance under real-world conditions. Such an approach has the potential to provide deeper insights into the role of classification heads in FER, ultimately paving the way for more robust and adaptable models.
+
+
 
 \section{Document Structure}
 
-Provide a brief explanation of the intent of this document, as well as what has been described in the current section. Then describe what is included in each one of the sections. 
+The document is structured into several key sections, starting with the Introduction, which presents the research topic, the problem being addressed, and an overview of the document's organization. The Theoretical Framework follows, providing background information on Facial Expression Recognition (FER), including emotional labeling, challenges in real-world scenarios, deep learning approaches, visual transformers, performance evaluation metrics, and related work. Next, the Hypothesis and Objectives section defines the research hypothesis, main and specific objectives, expected deliverables, and the scope and limitations of the study. 
 
+The Research Proposal section outlines the proposed methodology, experiment design, variables, statistical tools, and data collection process, detailing specific elements such as response variables and the dataset used. The Preliminary Results section presents initial findings, followed by Conclusions and Future Work, summarizing the outcomes and suggesting potential future directions. Finally, the document includes Appendixes for supplementary materials and a References section citing relevant sources. This structured approach ensures clarity in the research reading and a logical progression from problem identification to experimentation and evaluation.
 
 
