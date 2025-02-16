@@ -1,4 +1,36 @@
 \chapter{Preliminary Results}
 \label{chapter:preliminary-results}
 
-If available or relevant, present preliminary results in this section.
+Initial experiments were conducted using Google Colab Pro, leveraging its NVIDIA Tesla T4 GPU with 16GB of VRAM. This cloud-based environment provides a balance between computational efficiency and accessibility, enabling large-scale deep learning training. The experiments utilized the POSTER architecture for Facial Expression Recognition (FER). Initially, the model was trained with the default MLP configuration, achieving an accuracy of 92.05\%
+
+Following this baseline, various modifications were introduced to the MLP structure, including changes to the number of layers, hidden unit sizes, and regularization techniques such as dropout. These adjustments led to a measurable improvement in accuracy, suggesting that refining the final classification layers can significantly impact the model's generalization. The training time per epoch on Google Colab Pro’s Tesla T4 GPU averaged between 6.946.94 and 7.107.10 minutes, considering a total of 250 to 300 epochs.
+
+
+The final calculation for the total training time is as follows:
+
+$$
+\text{Total Training Time} = \text{Epoch Time} \times \text{Number of Epochs}
+$$
+
+Substituting the values:
+
+$$
+\text{Total Training Time (min)} = \text{Average Epoch Time} \times \text{Epochs}
+$$
+
+For the lower bound (\( 6.94 \) minutes per epoch for 250 epochs):
+
+$$
+\text{Total Training Time (min)} = 6.94 \times 250 = 1735 \text{ minutes}
+$$
+
+For the upper bound (\( 7.10 \) minutes per epoch for 300 epochs):
+
+$$
+\text{Total Training Time (min)} = 7.10 \times 300 = 2130 \text{ minutes}
+$$
+
+Thus, the total training time for this experiment ranged from approximately \( 1735 \) to \( 2130 \) minutes, or \( 28.9 \) to \( 35.5 \) hours.
+
+
+The POSTER++ model \cite{mao_poster_2023} was also explored as an extension of the original POSTER architecture. However, despite efforts to train the model following similar steps as the first version of POSTER \cite{zheng_poster_2022}. Unfortunately was not possible to achieve the same results as the paper using RAF-DB dataset. 

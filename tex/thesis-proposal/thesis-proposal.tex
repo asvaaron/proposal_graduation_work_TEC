@@ -65,7 +65,7 @@
 % We define some strings that will use along
 \def \thesiskeywords {thesis, master degree, your topics here}
 \def \pdfauthor {Aarón Sibaja Villalobos}
-\def \thesistitle{Thesis Proposal Title Goes Here}
+\def \thesistitle{Enhancing Visual Transformer Performance for Facial Expression Recognition: Investigating MLP Head Modifications for Improved Generalization and Robustness}
 
 % Custom-commands and definitions
 % See this file for defining the keywords that will show up on the PDF file
@@ -77,10 +77,24 @@
 \settoggle{paper}{true}
 
 \usepackage{csvsimple}
+
 % Remove this
 \usepackage{todonotes}
 
+%\makeglossaries 
+
+%\newglossaryentry{latex}
+%{
+%    name=latex,
+%    description={Is a markup language specially suited 
+%    for scientific documents}
+%}
+
+
 \begin{document}
+
+%\input{body/glosarry}
+%\Gls{latex} 
 
 % This is the first part of the document (frontmatter), use Roman numeration
 \frontmatter
@@ -98,7 +112,6 @@
 %\begin{acreditation}
 % The ghesis act goes here.
 %\makebox[\linewidth]{
-    \includegraphics[width=0.75\paperwidth,height=1\paperheight]{../images/certificate.pdf}
 %}
 
 %\end{acreditation}
@@ -112,6 +125,12 @@
 
 % Remove this
 \listoftodos
+\todo{Remove todo}
+\todo{Add images to RAFDB-and Sentiment Analysis,also pyramid and visual transofmers}
+\todo{Add Glossary, if posible}
+\todo{Remove some paragrafh before section}
+\todo{Remove cites in objectives and put is somewhere else}
+
 
 
 %List of figures goes here
@@ -119,6 +138,7 @@
 
 %List of tables is generated here
 \listoftables
+
 
 \mainmatter
 % Use double space
@@ -149,6 +169,7 @@
 \input{body/appendix}
 
 
+\printglossaries
 
 
 % Final pages

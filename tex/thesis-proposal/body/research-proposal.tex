@@ -3,12 +3,12 @@
 
 \section{Design/Method/Algorithm/Mechanism Proposal}
 
-The aim of this research is to investigate the impact of different configurations of the POSTER Visual Transformer on the performance of Facial Expression Recognition (FER). Specifically, the study will focus on the effect of three key factors: pretrained weights, model size, and modifications to the MLP head. The objective is to determine whether these factors, both individually and in combination, have a significant influence on model accuracy and performance metrics. A factorial experimental design will be employed to evaluate the main effects and interaction effects of these factors.
+The aim of this research is to investigate the impact of different configurations of the POSTER Visual Transformer on the performance of Facial Expression Recognition (FER). Specifically, the study will focus on the effect of three key factors: pre-trained weights, model size, and modifications to the MLP head. The objective is to determine whether these factors, both individually and in combination, have a significant influence on model accuracy and performance metrics. A factorial experimental design will be employed to evaluate the main effects and interaction effects of these factors.
  
 
 \section{Experiment Design}
 \label{section:experiment-design}
-The experiment will consist of 8 unique configurations derived from the combination of the three factors and their respective levels $(2^k, \text{with K} = 3 = 8)$. For each configuration, the POSTER Visual Transformer will be trained on a facial expression dataset RAF-DB\ref{sub:raf-db}, and the performance will be evaluated based on a chosen metric, such as classification accuracy \ref{sub:accurracy} and F1-score \ref{sub:f1-score}.
+The experiment will consist of 8 unique configurations derived from the combination of the three factors and their respective levels $(2^k, \text{with K} = 3 = 8)$. For each configuration, the POSTER Visual Transformer will be trained on a facial expression dataset RAF-DB \ref{sub:raf-db}, and the performance will be evaluated based on a chosen metric, such as classification accuracy \ref{sub:accurracy} and F1-score \ref{sub:f1-score}.
 
 The models will be trained in a controlled environment, where the only variations between runs are the levels of the factors being tested. This will allow for a rigorous comparison of how pretrained weights, model size, learning rate and MLP head modifications influence the transformer’s performance in FER tasks.
 
@@ -34,7 +34,7 @@ These section determines the  factors and levels that will be used in the experi
 
 
 
-The \textbf{Table \ref{tab:factors_and_levels}} summarizes the factors and levels used in the experiments, most of the factors correspondes to parameters used in  POSTER \cite{zheng_poster_2022} training.  The first factor, Pretrained Weights, examines the impact of initializing the model with pretrained weights, with two levels: "Yes" (indicating the use of pretrained weights) and "No" (indicating random initialization). The second factor, Model Size, assesses the effect of different model architectures, specifically comparing a "Base" size to a "Large" size. Finally, the third factor, MLP Head, evaluates modifications to the Multilayer Perceptron (MLP) head, contrasting "No Changes" with a "Modified MLP" configuration. 
+The \textbf{Table \ref{tab:factors_and_levels}} summarizes the factors and levels used in the experiments, most of the factors corresponds to parameters used in  POSTER \cite{zheng_poster_2022} training.  The first factor, Pre-trained Weights, examines the impact of initializing the model with pre-trained weights, with two levels: "Yes" (indicating the use of pre-trained weights) and "No" (indicating random initialization). The second factor, Model Size, assesses the effect of different model architectures, specifically comparing a "Base" size to a "Large" size. Finally, the third factor, MLP Head, evaluates modifications to the Multilayer Perceptron (MLP) head, contrasting "No Changes" with a "Modified MLP" configuration. 
 
 %\begin{table}[h]
 %	\caption{Example table.}
@@ -150,6 +150,6 @@ ANOVA (Analysis of Variance) is a statistical method used to analyze the differe
 
 Normality refers to the assumption that the residuals or errors in each group are normally distributed. To test normality both graphical methods (Q-Q tests and histograms) and formal statistical tests (Shapiro-Wilk Test or Kolmogorov-Smirnov Test) can be used. 
 
-On the other hand, equal variance, also called homoscedasticity, means that the variance within each group should be similar. If the variances are unequal (heteroscedasticity), it can affect the results of the ANOVA. To test for homoscedasticity, several methods can be employed. For example,  Levene’s test, Bartlett’s test, or residual plots. If the assumptions are not met, it's necessary y to consider using data transformations (log, square root, etc.) or non-parametric tests (e.g., Kruskal-Wallis test for unequal variances).
+On the other hand, equal variance, also called homoscedasticity, means that the variance within each group should be similar. If the variances are unequal (heteroscedasticity), it can affect the results of the ANOVA. To test for homoscedasticity, several methods can be employed. For example,  Levene’s test, Bartlett’s test, or residual plots. If the assumptions are not met, it's necessary  to consider using data transformations (log, square root, etc.) or non-parametric tests (e.g., Kruskal-Wallis test for unequal variances).
 
 

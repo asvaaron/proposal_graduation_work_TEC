@@ -31,9 +31,9 @@ To enhance the performance of Visual Transformers in Facial Expression Recogniti
 \begin{enumerate}
 	\item Evaluate how the proposed modifications to the MLP head architecture provides insightful attention maps or feature representations that explain the model's decision-making process in FER.
 	
-\item Investigate the modified Visual Transformer model to adversarial image environments, noise, or data perturbations (e.g., occlusions, lighting variations, or slight facial deformations) or human fairness such as demographic biases (age, gender, ethnicity) using RAF-DB as a in-the-wild challenging dataset. 
+\item Investigate the modified Visual Transformer model to adversarial image environments, noise, or data perturbations (e.g., occlusions, lighting variations, or slight facial deformations) or human fairness such as demographic biases (age, gender, ethnicity) using RAF-DB as an in-the-wild challenging dataset. 
 	
-\item Explore how the new MLP head architectures improve the model’s resilience to a in-the-wild dataset by employing standard FER evaluation metrics (e.g., accuracy, F1-score) as well as metrics that specifically address in-the-wild challenges for example head pose-invariant accuracy \cite{guo_occrob_2023} or occlusion robustness metrics like for example  Mean Average Precision (MAP) \cite{marcu_pitfalls_2022} \cite{ranjan_light-weight_2018}.
+\item Explore how the new MLP head architectures improve the model’s resilience to a in-the-wild dataset by employing standard FER evaluation metrics (e.g., accuracy, F1-score) as well as metrics that specifically address in-the-wild challenges for example head pose-invariant accuracy  or occlusion robustness metrics.
 	
 \end{enumerate}
 
@@ -81,7 +81,7 @@ This section includes the scope of the investigation:
 \begin{itemize}
 \item This research focuses exclusively on predicting 7 discrete class FER emotions —happy, sad, surprise, fear, disgust, anger, and neutral. It deliberately excludes other FER prediction approaches such as analyzing Facial Action Units (AUs) or the Valence-Arousal (VA) model, which involve a more nuanced or continuous representation of emotion. \cite{mollahosseini_affectnet_2019}\cite{kollias_affect_2021}.
 
-\item The project will not include research that aims to analyze emotional states from dynamic sequences (video-based)\cite{wang_survey_2024}, only image-based static FER analysis will be conducted. While dynamic FER methods may capture temporal emotional transitions more effectively, this project centers on evaluating static images to streamline experimentation and ensure consistency.
+\item The project will not include research that aims analyzing emotional states from dynamic sequences (i.e. video-based methods)\cite{wang_survey_2024}, only image-based static FER analysis will be conducted. While dynamic FER methods may capture temporal emotional transitions more effectively, this project centers on evaluating static images to streamline experimentation and ensure consistency.
 
 \item The materials used in this research are limited to licensed and public resources. These include FER datasets, academic publications, source code, programming languages, and libraries, ensuring transparency, reproducibility, and ethical compliance in all aspects of the study.
 \end{itemize}
