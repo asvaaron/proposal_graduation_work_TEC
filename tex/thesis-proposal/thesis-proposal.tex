@@ -65,7 +65,8 @@
 % We define some strings that will use along
 \def \thesiskeywords {thesis, master degree, your topics here}
 \def \pdfauthor {Aarón Sibaja Villalobos}
-\def \thesistitle{Enhancing Visual Transformer Performance for Facial Expression Recognition: Investigating MLP Head Modifications for Improved Generalization and Robustness}
+\def \pdfsupervisor{Luis Alexander Calvo Valverde}
+\def \thesistitle{Enhancing Visual Transformer Performance for In-the-Wild Facial Expression Recognition: Investigating MLP Head Modifications for Improved Generalization and Robustness.}
 
 % Custom-commands and definitions
 % See this file for defining the keywords that will show up on the PDF file
@@ -78,17 +79,10 @@
 
 \usepackage{csvsimple}
 
-% Remove this
-\usepackage{todonotes}
-
-%\makeglossaries 
-
-%\newglossaryentry{latex}
-%{
-%    name=latex,
-%    description={Is a markup language specially suited 
-%    for scientific documents}
-%}
+% Add glossary
+\makeglossaries 
+\setglossarystyle{listhypergroup}
+\input{body/glossary}
 
 
 \begin{document}
@@ -110,10 +104,11 @@
 
 \selectlanguage{spanish}
 %\begin{acreditation}
+%\begin{acreditation}
 % The ghesis act goes here.
 %\makebox[\linewidth]{
+    \includegraphics[width=0.75\paperwidth,height=1\paperheight]{../images/certificate.pdf}
 %}
-
 %\end{acreditation}
 
 
@@ -123,6 +118,7 @@
 %Table of contents is generated here
 \tableofcontents
 
+%List of toddos goes here
 % Remove this
 \listoftodos
 \todo{Remove todo}
@@ -139,6 +135,7 @@
 %List of tables is generated here
 \listoftables
 
+\printglossaries
 
 \mainmatter
 % Use double space
@@ -168,8 +165,6 @@
 %Appendix
 \input{body/appendix}
 
-
-\printglossaries
 
 
 % Final pages
