@@ -9,7 +9,15 @@ This chapter describes the theoretical concepts needed to understand the work th
 
 Facial Expression Recognition (FER) is a crucial area of research in affective computing and human-computer interaction. It involves detecting and classifying human emotions based on facial expressions, which can enhance applications in psychology, security, and social robotics. Traditional FER methods relied on handcrafted features, such as Local Binary Patterns (LBP) and Histogram of Oriented Gradients (HOG), but deep learning has significantly advanced the field. Convolutional Neural Networks (CNNs) and Vision Transformers (ViTs) have demonstrated superior performance in FER by learning hierarchical spatial features and capturing global dependencies, respectively  \cite{zheng_poster_2022}, \cite{kollias_affect_2021}. 
 
-Despite these advancements, FER remains challenging due to variations in lighting, occlusions \cite{guo_occrob_2023}, and individual differences in expressing emotions. Datasets such as AffectNet, FER2013, and RAF-DB have been instrumental in training robust models, but their annotations introduce inherent subjectivity. RAF-DB provides diverse in-the-wild facial expressions, making it valuable for evaluating model robustness. This has led to growing interest in improving the robustness of FER architectures, particularly through modifications in model heads and multi-layer perceptrons (MLPs) to enhance generalization and representation learning \cite{abdullah_activator_2024},\cite{yu_rethinking_2021}. 
+
+\begin{figure}[H]
+\centering
+   \includegraphics[width=0.70\textwidth]{../images/cnn_FER.png}
+\caption{CNN in FER}
+\label{fig:cnn_FER}
+\end{figure}
+
+Despite these advancements, FER remains challenging due to variations in lighting, occlusions \cite{guo_occrob_2023}, and individual differences in expressing emotions. Datasets such as AffectNet, FER2013, and RAF-DB have been instrumental in training robust models, but their annotations introduce inherent subjectivity. RAF-DB provides diverse \gls{in-the-wild} facial expressions, making it valuable for evaluating model robustness. This has led to growing interest in improving the robustness of FER architectures, particularly through modifications in model heads and multi-layer perceptrons (MLPs) to enhance generalization and representation learning \cite{abdullah_activator_2024},\cite{yu_rethinking_2021}. 
 
 Recent research has also explored multimodal approaches that incorporate voice and physiological signals to complement facial expressions for example Zhao et al. \cite{zhao_former-dfer_2021}. These hybrid systems aim to enhance recognition accuracy by providing additional context to emotion classification, reducing ambiguity caused by facial occlusions or partial expressions \cite{wang_survey_2024}. Future work may focus on integrating cross-modal transformers that efficiently fuse information from multiple techniques to improve FER performance. 
 
@@ -23,7 +31,7 @@ Advancements in synthetic data generation have also been explored to address lab
 
 \subsection{FER in-the-wild}
 
-FER in controlled environments, such as laboratory settings, differs significantly from real-world ("in-the-wild") scenarios, where factors like illumination changes, occlusions, and spontaneous expressions impact model performance. In-the-wild datasets, including AffectNet, RAF-DB, and ExpW, provide diverse samples that improve model robustness but also introduce challenges like class imbalance and mislabeled data \cite{zhang_leave_2023}. 
+FER in controlled environments, such as laboratory settings, differs significantly from real-world \gls{in-the-wild} scenarios, where factors like illumination changes, occlusions, and spontaneous expressions impact model performance. \gls{in-the-wild} datasets, including AffectNet, RAF-DB, and ExpW, provide diverse samples that improve model robustness but also introduce challenges like class imbalance and mislabeled data \cite{zhang_leave_2023}. 
 
 
 \begin{figure}[H]
@@ -34,10 +42,10 @@ FER in controlled environments, such as laboratory settings, differs significant
 \end{figure}
 
  
-Recent works have incorporated domain adaptation, batch attention and contrastive learning to enhance in-the-wild FER. Transfer learning from large-scale vision models, such as ViTs, has proven effective in improving generalization to unseen expressions for example Her et al \cite{her_batch_2024}. However, real-time performance remains an issue, prompting researchers to investigate efficient architectures and explore new techniques to deploy FER models on edge devices.
+Recent works have incorporated domain adaptation, batch attention and contrastive learning to enhance \gls{in-the-wild} FER. Transfer learning from large-scale vision models, such as ViTs, has proven effective in improving generalization to unseen expressions for example Her et al \cite{her_batch_2024}. However, real-time performance remains an issue, prompting researchers to investigate efficient architectures and explore new techniques to deploy FER models on edge devices.
 
 
-Another emerging approach involves leveraging facial dynamics rather than static images. Temporal modeling techniques, such as graph convolutional networks (GCNs) and optical flow analysis, have been proposed to enhance in-the-wild FER by capturing motion-based cues \cite{wang_survey_2024}. These approaches improve robustness to varying facial conditions and enable more accurate emotion recognition in real-world applications. 
+Another emerging approach involves leveraging facial dynamics rather than static images. Temporal modeling techniques, such as graph convolutional networks (GCNs) and optical flow analysis, have been proposed to enhance \gls{in-the-wild} FER by capturing motion-based cues \cite{wang_survey_2024}. These approaches improve robustness to varying facial conditions and enable more accurate emotion recognition in real-world applications. 
 
 \section{FER Architectures}
 
@@ -52,7 +60,7 @@ However, CNN-based models struggle with long-range dependencies, leading to inte
 
 The shift towards transformers has opened new avenues for improving FER, particularly by modifying their classification heads and MLP layers to enhance discriminative power.  One such model is POSTER: A Pyramid Cross-Fusion Transformer Network for Facial Expression Recognition, which introduces a hierarchical fusion mechanism to enhance local and global facial feature interactions. POSTER effectively balances efficiency and accuracy by integrating multi-scale information processing within a transformer framework, demonstrating superior performance on benchmark FER datasets \cite{zheng_poster_2022}.
 
-POSTER addresses intra-class variation by leveraging a pyramid structure for multi-scale feature extraction, ensuring robust representation of subtle differences within the same expression. Its cross-fusion mechanism refines feature interactions, reducing the impact of pose, lighting, and intensity variations while enhancing consistency. To tackle inter-class variation, POSTER employs attention-based differentiation and hierarchical refinement, helping distinguish similar expressions by focusing on key distinguishing features. 
+POSTER addresses \gls{intra-class} variation by leveraging a pyramid structure for multi-scale feature extraction, ensuring robust representation of subtle differences within the same expression. Its cross-fusion mechanism refines feature interactions, reducing the impact of pose, lighting, and intensity variations while enhancing consistency. To tackle \gls{inter-class} variation, \gls{POSTER} employs attention-based differentiation and hierarchical refinement, helping distinguish similar expressions by focusing on key distinguishing features. 
 
 \begin{figure}[H]
 \centering
@@ -100,7 +108,7 @@ Another key evaluation metric is Mean Average Precision (mAP)  used in object de
 
 The evaluation of modified heads in FER architectures plays a crucial role in determining their impact on recognition accuracy and robustness. Model heads, particularly the multi-layer perceptrons (MLPs) used in transformer-based FER models, influence the ability to capture and classify facial features effectively. By modifying these heads, researchers aim to enhance feature representations and improve performance on benchmark datasets such as RAF-DB and AffectNet \cite{zheng_poster_2022}.
 
-One approach involves introducing adaptive MLP layers that incorporate attention mechanisms or gating functions to refine extracted features before classification. Such modifications have been shown to improve generalization, especially in in-the-wild FER scenarios where facial expressions vary significantly due to real-world conditions. Experimental studies indicate that evaluating modified heads using cross-validation techniques and ablation studies helps identify their effectiveness in different settings \cite{abdullah_activator_2024}.
+One approach involves introducing adaptive MLP layers that incorporate attention mechanisms or gating functions to refine extracted features before classification. Such modifications have been shown to improve generalization, especially in \gls{in-the-wild} FER scenarios where facial expressions vary significantly due to real-world conditions. Experimental studies indicate that evaluating modified heads using cross-validation techniques and ablation studies helps identify their effectiveness in different settings \cite{abdullah_activator_2024}.
 
 Furthermore, integrating auxiliary loss functions or regularization techniques within modified heads can prevent overfitting and improve model interpretability. Researchers have explored loss functions tailored for imbalanced emotional categories, ensuring better recognition across underrepresented emotions. As FER continues to advance, optimizing and evaluating these architectural modifications will remain a key area of research.
 
