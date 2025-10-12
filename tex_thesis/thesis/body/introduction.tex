@@ -13,24 +13,63 @@ Introduction section goes here. Here is an example reference
 
 \section{Problem}
 
-Problem context, description and summary goes in this section
+%Problem context, description and summary goes in this section
+
+Facial Expression Recognition (FER) is a critical area of research in computer
+vision with numerous applications, such as human-computer interaction, mental
+health monitoring, and affective computing. Despite significant advancements, FER
+remains a challenging task due to the inherent variability in real-world conditions,
+such as occlusions, varying lighting, and diverse facial poses. These challenges
+necessitate robust models capable of accurately capturing and interpreting subtle
+emotional cues across diverse scenarios.
+In recent years, Visual Transformers (ViTs) have emerged as a powerful alternative
+to traditional Convolutional Neural Networks (CNNs) in FER tasks. Their ability to leverage self-attention mechanisms enables them to capture long-range dependencies
+and global contextual information, making them well-suited for FER.
+
+Several hybrid approaches have combined ViTs with CNNs to exploit the strengths of both architectures, aiming to enhance feature extraction by integrating both local
+and global features. These approaches often achieve state-of-the-art performance, particularly in controlled environments.
+
+However, a critical limitation of existing research lies in its predominant focus on architectural innovations within the Transformer backbone or selective attention
+mechanisms. For example, efforts have been directed toward enhancing the encoder layers, incorporating pyramid fusion strategies, or developing cross-attention
+mechanisms to improve feature representation. While these advancements contribute to model performance, the exploration of modifications in the classification head
+particularly the Multi-Layer Perceptron (MLP) head has been relatively overlooked.
+
+The classification head plays an essential role in transforming learned features into final predictions. Modifying the MLP head architecture offers a promising avenue for innovation, as it directly impacts the model’s ability to generalize and interpret high-dimensional embedding effectively. Despite its importance, few studies have explored alternative configurations, activation functions, or dropout strategies.
+
+This represents a significant opportunity for meaningful contributions to FER research. By addressing this gap, the proposed research aims to investigate novel modifications to the MLP head in Visual Transformers for FER. This includes experimenting with advanced architectures, integrating recurrent layers and evaluating the impact of these changes on model performance under real-world conditions. Such an approach has
+the potential to provide deeper insights into the role of classification heads in FER, ultimately paving the path for more robust and adaptable models.
 
 \section{Document Structure}
+%
+%Provide a brief explanation of the intent of this document, as well as what has been described in the current section. Then describe what is included in each one of the sections. An example is provided but should be changed by the author.
+%
+%\nameref{chapter:theoretical-framework} chapter brings the theoretical concepts needed for understanding the research developed in this thesis, as well as the related work describing the state of the art of the specific topic that the author worked on.
+%The sections mentioned here are incomplete and should be completed with the specific chapters of the author.
+%\nameref{chapter:hypothesis-objectives} describes the hypothesis defined for the research as well as a description of the objectives and its deliverables. Also, the scope and limitations of this research effort can be found in that chapter.
+%
+%\nameref{chapter:methodology} chapter describes the experiment executed for this thesis, including the experiment design, the hardware used, and the analysis method for the data obtained.
+%
+%The \nameref{chapter:design} chapter presents the selected state of the implementation of what the author developed in its document. Also, the design and implementation details of the developed work are presented in this chapter. 
+%
+%\nameref{chapter:results} displays the results of the data obtained through the experiment and, the  \nameref{chapter:discussion} chapter analyses all the information obtained in \nameref{chapter:results}.
+%
+%Finally, \nameref{chapter:conclusions-fw} shows all the obtained conclusions and remarks from the research presented in this document. Future work is identified in this chapter.
 
-Provide a brief explanation of the intent of this document, as well as what has been described in the current section. Then describe what is included in each one of the sections. An example is provided but should be changed by the author.
 
-\nameref{chapter:theoretical-framework} chapter brings the theoretical concepts needed for understanding the research developed in this thesis, as well as the related work describing the state of the art of the specific topic that the author worked on.
-The sections mentioned here are incomplete and should be completed with the specific chapters of the author.
-\nameref{chapter:hypothesis-objectives} describes the hypothesis defined for the research as well as a description of the objectives and its deliverables. Also, the scope and limitations of this research effort can be found in that chapter.
+The document is structured into several key sections, starting with the
+\nameref{chapter:introduction}, which presents the research topic, the problem being addressed, and an
+overview of the document’s organization. 
 
-\nameref{chapter:methodology} chapter describes the experiment executed for this thesis, including the experiment design, the hardware used, and the analysis method for the data obtained.
+The \nameref{chapter:theoretical-framework} follows,
+providing background information on Facial Expression Recognition (FER), including emotional labeling, challenges in real-world scenarios, deep learning approaches, visual transformers, performance evaluation metrics, and related work. 
 
-The \nameref{chapter:design} chapter presents the selected state of the implementation of what the author developed in its document. Also, the design and implementation details of the developed work are presented in this chapter. 
+Next, the \nameref{chapter:hypothesis-objectives} section defines the research hypothesis, main and specific objectives, expected deliverable, and scope and limitations of the study.
 
-\nameref{chapter:results} displays the results of the data obtained through the experiment and, the  \nameref{chapter:discussion} chapter analyses all the information obtained in \nameref{chapter:results}.
+The Research Proposal section outlines the proposed methodology, experiment design, variables, statistical tools, and data collection process, detailing specific
+elements such as response variables and the dataset used. 
 
-Finally, \nameref{chapter:conclusions-fw} shows all the obtained conclusions and remarks from the research presented in this document. Future work is identified in this chapter.
+The Preliminary Results section presents initial findings, followed by \nameref{chapter:conclusions-fw},
+summarizing the outcomes and suggesting potential future directions. 
 
-
-
+Finally, the document includes \nameref{chapter:appendixes} for supplementary materials and a References section citing relevant sources. This structured approach ensures clarity in the research reading and a logical progression from problem identification to experimentation and evaluation. 
 
