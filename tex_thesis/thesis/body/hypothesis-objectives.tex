@@ -32,13 +32,22 @@ effectiveness on an In-the-Wild Real World Affective Faces Dataset(RAF-DB).
 
 \subsection{Specific Objectives}
 \label{section:specific-objectives}
+% \begin{enumerate}
+% 	\item Specific objective 1.
+	
+% 	\item Specific objective 2.
+	
+% 	\item Specific objective 3.
+	
+% \end{enumerate}
 
 \begin{enumerate}
-	\item Specific objective 1.
+
+\item Evaluate how the proposed modifications to the MLP head architecture provides insightful attention maps or feature representations that explain the model's decision-making process in FER.
 	
-	\item Specific objective 2.
+\item Investigate the modified Visual Transformer model to adversarial image environments, noise, or data perturbations (e.g., occlusions, lighting variations, or slight facial deformations) or human fairness such as demographic biases (age, gender, ethnicity) using RAF-DB as an in-the-wild challenging dataset. 
 	
-	\item Specific objective 3.
+\item Explore how the new MLP head architectures improve the model’s resilience to a in-the-wild dataset by employing standard FER evaluation metrics (e.g., accuracy, F1-score) as well as metrics that specifically address in-the-wild challenges for example head pose-invariant accuracy  or occlusion robustness metrics.
 	
 \end{enumerate}
 
@@ -46,21 +55,59 @@ effectiveness on an In-the-Wild Real World Affective Faces Dataset(RAF-DB).
 Example text:
 This section provides the deliverables assigned for each specific objective defined for the thesis.
 
-\textbf{Specific Objective 1:}
-Deliverable for specific objective 1. 
 
-\textbf{Specific Objective 2:}
-Deliverable for specific objective 2.
+\renewcommand{\arraystretch}{2.5}
+\begin{table}[H]
+\label{tb:table_deliverable}
+\caption{Deliverables for the Research}
+\begin{tabular}{@{}llp{10cm}@{}}
+\toprule
+\textbf{ID} & \textbf{Name} & \textbf{Description} \\ \midrule
+COD-01 & Modified POSTER & 
+\parbox[t]{10cm}{Modified version of the POSTER ViT with changes in Head architecture} \\
+COD-02 & POSTER Training Script & 
+\parbox[t]{10cm}{Script for training the modified POSTER ViT with RAFDB database} \\
+COD-03 & Experiment Script & 
+\parbox[t]{10cm}{A Script to automate the data collection, experimental runs and hypothesis testing
+} \\
+DOC-01 & Statistical Report & 
+\parbox[t]{10cm}{Report with details about results and conclusions obtained after conducting statistical analysis} \\
+DOC-02 & Article Draft & 
+\parbox[t]{10cm}{A draft of a scientific article with the research, ViT changes, findings, and conclusions} \\
+DOC-03 & Final Thesis Document & 
+\parbox[t]{10cm}{A final thesis document with all the previous deliverables' details, including an in-depth academic scientific analysis relevant to this research} \\
+PRE-01 & Thesis Proposal Presentation & 
+\parbox[t]{10cm}{A presentation encapsulating the scope of the study and a summary of the proposal} \\
+PRE-02 & Thesis Defense Presentation & 
+\parbox[t]{10cm}{A presentation with all the materials required for the thesis defense} \\ 
+\bottomrule
+\end{tabular}
+\end{table}
 
-\textbf{Specific Objective 3:}
-Deliverable for specific objective 3.
+
+% \textbf{Specific Objective 1:}
+% Deliverable for specific objective 1. 
+
+% \textbf{Specific Objective 2:}
+% Deliverable for specific objective 2.
+
+% \textbf{Specific Objective 3:}
+% Deliverable for specific objective 3.
 
 \section{Scope and Limitations}
 
 Should include the scope and limitations of the developed research.
 
-\textbf{Scope and limitation 1:} 
+% \textbf{Scope and limitation 1:} 
 
-\textbf{Scope and limitation 2:}
+% \textbf{Scope and limitation 2:}
  
-\textbf{Scope and limitation 3:} 
+% \textbf{Scope and limitation 3:} 
+
+\begin{itemize}
+\item This research focuses exclusively on predicting 7 discrete class FER emotions —happy, sad, surprise, fear, disgust, anger, and neutral. It deliberately excludes other FER prediction approaches such as analyzing Facial Action Units (AUs) or the Valence-Arousal (VA) model, which involve a more nuanced or continuous representation of emotion. \cite{mollahosseini_affectnet_2019}\cite{kollias_affect_2021}.
+
+\item The project will not include research that aims analyzing emotional states from dynamic sequences (i.e. video-based methods)\cite{wang_survey_2024}, only image-based static FER analysis will be conducted. While dynamic FER methods may capture temporal emotional transitions more effectively, this project centers on evaluating static images to streamline experimentation and ensure consistency.
+
+\item The materials used in this research are limited to licensed and public resources. These include FER datasets, academic publications, source code, programming languages, and libraries, ensuring transparency, reproducibility, and ethical compliance in all aspects of the study.
+\end{itemize}
