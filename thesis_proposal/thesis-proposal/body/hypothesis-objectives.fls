@@ -1,8 +1,0 @@
-PWD /Users/aaronmac/Projects/670c9f8440f8d8bbf52abfd4/tex/thesis-proposal/body
-INPUT /usr/local/texlive/2023/texmf.cnf
-INPUT /usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf
-INPUT /usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT hypothesis-objectives.tex
-OUTPUT hypothesis-objectives.log
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
