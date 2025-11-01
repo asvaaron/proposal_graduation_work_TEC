@@ -9,7 +9,7 @@
 \usepackage[english,spanish]{babel}
 
 \usepackage[table,xcdraw]{xcolor}
-
+\usepackage[nonumberlist,nopostdot,xindy]{glossaries} 
 
 \newenvironment{dedication}
 {
@@ -75,6 +75,7 @@ Generalization and Robustness.}
 % See this file for defining the keywords that will show up on the PDF file
 \input{../packages}
 
+\makeglossaries 
 
 
 \newtoggle{paper}
@@ -182,6 +183,11 @@ This section can be used for the acknowledgements.
 \addcontentsline{toc}{chapter}{\bibname}
 \bibliographystyle{plainnat}
 \bibliography{bibliography}{}
+
+% Add glossary
+\input{body/glossary}
+\setglossarystyle{listhypergroup}
+\printglossaries
 
 \doublespacing
 
