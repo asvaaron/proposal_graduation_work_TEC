@@ -9,7 +9,8 @@
 \usepackage[english,spanish]{babel}
 
 \usepackage[table,xcdraw]{xcolor}
-\usepackage[nonumberlist,nopostdot,xindy]{glossaries} 
+
+
 
 \newenvironment{dedication}
 {
@@ -186,8 +187,12 @@ This section can be used for the acknowledgements.
 
 % Add glossary
 \input{body/glossary}
+\cleardoublepage
+\phantomsection
 \setglossarystyle{listhypergroup}
-\printglossaries
+\addcontentsline{toc}{chapter}{Glossary}
+\printglossary[title=Glossary, toctitle=Glossary]
+
 
 \doublespacing
 
