@@ -11,29 +11,50 @@ Presents a brief introduction to kind of statistical tool used in the experiment
 \section{Experiment Design}
 \label{section:experiment-design}
 
+The experiment will consist of 8 unique configurations derived from the combination of the three factors and their respective levels $(2^k, \text{with K} = 3 = 8)$. For each configuration, the POSTER Visual Transformer will be trained on a facial expression dataset RAF-DB \ref{sub:raf-db}, and the performance will be evaluated based on a chosen metric, such as classification accuracy \ref{sub:accurracy} and F1-score \ref{sub:f1-score}.
+
+The models will be trained in a controlled environment, where the only variations between runs are the levels of the factors being tested. This will allow for a rigorous comparison of how pretrained weights, model size, learning rate and MLP head modifications influence the transformer’s performance in FER tasks.
+
+
 \section{Factors and Levels (if needed):}
 
 \section{Measures and Combinations of the Experiment (if needed)}
 The example \textbf{Table \ref{tab:table}} summarizes the factors and levels used in the experiments.
-\begin{table}[h]
-	\caption{Example table.}
-	\label{tab:table}
-	\begin{center}
-		\begin{tabular}{|l|l|l|l|l|}
-			\cline{2-5}
-			\multicolumn{1}{c|}{}	& \multicolumn{4}{c|}{Factor} \\ 
-			\cline{2-5}
-			\multicolumn{1}{c|}{}	& Factor 1 & Factor 2 & Factor 3 & Factor 4 \\ \hline
-			Levels
-			& Level 1 & Level 1	& Level 1  & Level 1   \\
-			& Level 2 & Level 2  & Level 2 & Level 2 \\
-			& Level 3 & Level 3 & Level 3 & Level 3 \\
-			& Level 4 &    & Level 4  &   \\ 
-			&  &    & Level 5  &   \\ 
-			&  &    & Level 6  &     \\\hline
-		\end{tabular}
-	\end{center}
+
+\begin{table}[H]
+\centering
+\caption{Factors and Levels}
+\label{tab:factors_and_levels}
+\begin{tabular}{clll}
+\hline
+\multicolumn{1}{l}{}             & \multicolumn{3}{c}{\textbf{Factors}}                       \\
+\multicolumn{1}{l}{}             & \textbf{Factor 1}  & \textbf{Factor 2} & \textbf{Factor 3} \\ \hline
+\multirow{3}{*}{\textbf{Levels}} & Pretrained Weights & Model Size        & MLP Head          \\
+                                 & Yes                & Base              & No Changes        \\
+                                 & No                 & Large             & \textbf{Modified MLP}      \\ \hline
+\end{tabular}
 \end{table}
+
+
+%\begin{table}[h]
+%	\caption{Example table.}
+%	\label{tab:table}
+%	\begin{center}
+%		\begin{tabular}{|l|l|l|l|l|}
+%			\cline{2-5}
+%			\multicolumn{1}{c|}{}	& \multicolumn{4}{c|}{Factor} \\ 
+%			\cline{2-5}
+%			\multicolumn{1}{c|}{}	& Factor 1 & Factor 2 & Factor 3 & Factor 4 \\ \hline
+%			Levels
+%			& Level 1 & Level 1	& Level 1  & Level 1   \\
+%			& Level 2 & Level 2  & Level 2 & Level 2 \\
+%			& Level 3 & Level 3 & Level 3 & Level 3 \\
+%			& Level 4 &    & Level 4  &   \\ 
+%			&  &    & Level 5  &   \\ 
+%			&  &    & Level 6  &     \\\hline
+%		\end{tabular}
+%	\end{center}
+%\end{table}
 
 
 
