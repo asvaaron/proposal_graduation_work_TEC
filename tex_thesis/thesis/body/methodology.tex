@@ -7,19 +7,22 @@
 
 \newpage
 
-Presents a brief introduction to kind of statistical tool used in the experiment and the details of the experiment of the research. 
+This section presents a brief introduction to kind of statistical tool used in the experiment and the details of the experiment of the research. 
 \section{Experiment Design}
 \label{section:experiment-design}
 
-The experiment will consist of 8 unique configurations derived from the combination of the three factors and their respective levels $(2^k, \text{with K} = 3 = 8)$. For each configuration, the POSTER Visual Transformer will be trained on a facial expression dataset RAF-DB \ref{sub:raf-db}, and the performance will be evaluated based on a chosen metric, such as classification accuracy \ref{sub:accurracy} and F1-score \ref{sub:f1-score}.
+The experiment will consist of 6 unique configurations derived from the combination of  two factors. Factor  $A$ corresponds to original model vs changes made in the head. Factor $B$ corresponds to the model size large/medium/small. In  \cite{zheng_poster_2022} the feature pyramid structure has features with embedding dim $DH = 512$, $DM = 256$, and $DL = 128$, respectively. For factor $A, s_a =2$ and Factor $B, s_b=3$, where $s$ is number of levels on each factor, we have a two-way factorial design $s_a \times s_b = 2 \times 3 = 6$. Each combination (cell) is a $\text{Head} \times \text{Size}$ pair (6 cells total).
 
-The models will be trained in a controlled environment, where the only variations between runs are the levels of the factors being tested. This will allow for a rigorous comparison of how pretrained weights, model size, learning rate and MLP head modifications influence the transformer’s performance in FER tasks.
+
+For each configuration, the POSTER Visual Transformer will be trained using a facial expression dataset RAF-DB \ref{sub:raf-db}, and the performance will be evaluated based on a chosen metric, such as classification accuracy \ref{sub:accurracy} and F1-score \ref{sub:f1-score}.
+
+The models will be trained in a controlled environment, where the only variations between runs are the levels of the factors being tested. This will allow for a rigorous comparison of how  model size, learning rate and head modifications influence the transformer’s performance in FER tasks using in \gls{in-the-wild} datasets.
 
 
 \section{Factors and Levels (if needed):}
 
 \section{Measures and Combinations of the Experiment (if needed)}
-The example \textbf{Table \ref{tab:table}} summarizes the factors and levels used in the experiments.
+The example \textbf{Table \ref{tab:factors_and_levels}} summarizes the factors and levels used in the experiments.
 
 \begin{table}[H]
 \centering
@@ -27,13 +30,29 @@ The example \textbf{Table \ref{tab:table}} summarizes the factors and levels use
 \label{tab:factors_and_levels}
 \begin{tabular}{clll}
 \hline
-\multicolumn{1}{l}{}             & \multicolumn{3}{c}{\textbf{Factors}}                       \\
-\multicolumn{1}{l}{}             & \textbf{Factor 1}  & \textbf{Factor 2} & \textbf{Factor 3} \\ \hline
-\multirow{3}{*}{\textbf{Levels}} & Pretrained Weights & Model Size        & MLP Head          \\
-                                 & Yes                & Base              & No Changes        \\
-                                 & No                 & Large             & \textbf{Modified MLP}      \\ \hline
+\multicolumn{1}{l}{}             & \multicolumn{3}{c}{\textbf{Factors}}                       \\ 
+\multicolumn{1}{l}{}             & \textbf{Factor 1} & \textbf{Factor 2} &  \\ \hline
+\multirow{3}{*}{\textbf{Levels}} & Model Head        & Model Size        &  \\ 
+                                 & Without Changes   & Tiny              &  \\ 
+                                 & With Changes      & Small              &  \\ 
+                                 & --                & Large              &  \\ \hline
 \end{tabular}
 \end{table}
+
+
+%\begin{table}[H]
+%\centering
+%\caption{Factors and Levels}
+%\label{tab:factors_and_levels}
+%\begin{tabular}{clll}
+%\hline
+%\multicolumn{1}{l}{}             & \multicolumn{3}{c}{\textbf{Factors}}                       \\
+%\multicolumn{1}{l}{}             & \textbf{Factor 1}  & \textbf{Factor 2} & \textbf{Factor 3} \\ \hline
+%\multirow{3}{*}{\textbf{Levels}} & Pretrained Weights & Model Size        & MLP Head          \\
+%                                 & Yes                & Base              & No Changes        \\
+%                                 & No                 & Large             & \textbf{Modified MLP}      \\ \hline
+%\end{tabular}
+%\end{table}
 
 
 %\begin{table}[h]
