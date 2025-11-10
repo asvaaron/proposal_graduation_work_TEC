@@ -20,7 +20,7 @@ build:
 clean:
 	rm -f *.aux *.bbl *.blg *.brf *.glg *.glo *.gls *.glsdefs \
 	      *.ist *.lof *.log *.lot *.lol *.out *.toc *.xdy *.synctex.gz \
-	      *.acn *.acr *.alg *.idx *.ilg *.ind
+	      *.acn *.acr *.alg *.idx *.ilg *.ind *.fls *.nlo *.fdb_latexmk
 
 # ------------------------------------------------------------
 # Deep clean (remove PDF too)
