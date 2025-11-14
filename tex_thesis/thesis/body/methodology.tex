@@ -139,9 +139,18 @@ A higher value of \ref{eq:f1-macro-avg} indicates better overall balance between
 
 \section{Data Recollection}
 
-Description of the data recollection process. Usually, it is a good idea to present a pointer to a GitHub page where all data and scripts used are available.
+%Description of the data recollection process. Usually, it is a good idea to present a pointer to a GitHub page where all data and scripts used are available.
 
-This is a sentence with a footnote\footnote{This is the text of the footnote}.
+
+For the experiment the  Real-world Affective Faces Database (RAF-DB) \footnote{https://www.kaggle.com/datasets/shuvoalok/raf-db-dataset} \footnote{http://www.whdeng.cn/RAF/model1.html} will be used. This is a widely used dataset in the field of facial expression recognition (FER).
+
+The images, collected from the Internet, are representative of diverse real-world conditions, including variations in ethnicity, age, gender, lighting, and occlusions (e.g. glasses, facial hair or self-occlusion), post-processing operations (e.g. various filters and special effects), etc. These particular features make RAF-DB a challenging dataset, ideal for evaluating FER models under realistic settings.
+
+Images in RAF-DB were labeled by 40 human annotators through crowdsourcing, and a majority voting scheme was used to finalize the annotations. The FER dataset flavor used in this thesis work includes 12,271 images for training and 3,068 for testing, focusing primarily on static image-based FER. Its real-world complexity, such as subtle expressions, extreme head poses, and high intra-class variability has driven advancements in FER models. 
+
+RAF-DB has been instrumental in benchmarking state-of-the-art models like ResNet-50 \cite{he_deep_2015}, Swin Transformer \cite{liu_swin_2021}, and POSTER \cite{zheng_poster_2022}, which achieved accuracies of 86.34 \%, 90.97 \%, and 92\%+, respectively.
+
+
 
 \section{Statistical Tool Used}
 
