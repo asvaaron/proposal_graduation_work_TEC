@@ -80,6 +80,59 @@ The example \textbf{Table \ref{tab:factors_and_levels}} summarizes the factors a
 \section{Response Variable}
 Description of the response variable used in the research.
 
+\subsection{Acurracy}
+
+The standard or top-1 acurracy will be used as the main metric for reviewing performance and robusteness compassion between models. The metric corresponds to a simple calculation taking the correctly classified samples and dividing it by the total number of samples. For multi-class classification, Accuracy represents the ratio of correctly predicted samples to the total number of samples across all emotion classes
+
+
+\begin{equation}
+\label{eq:accurracy}
+\text { Accuracy }=\frac{\sum_{i=1}^C T P_i}{N}
+\end{equation}
+
+Where:
+
+\begin{itemize}
+\item $C$: total number of classes(emotions)
+\item $TP_i$: number of correctly predicted samples in class $i$
+\item $N$: total number of samples in the dataset
+\end{itemize}
+
+\subsection{F1-Score(Macro-Averaged for Multi-class)}
+
+It's F1-score computation for each emotion independently, then averages them by giving equal weight to all classes.Macro F1-score provides a balanced metric by averaging the F1-score computed independently for each emotion class, ensuring equal importance is given to both majority and minority classes.
+
+
+\begin{equation}
+\label{eq:f1-macro-avg}
+\text{F1}_{\text{macro}} = \frac{1}{C} \sum_{i=1}^{C} \text{F1}_i
+\end{equation}
+
+where the F1-score for each class $i$ is given by:
+
+\begin{equation}
+\text{F1}_i = 2 \times \frac{\text{Precision}_i \times \text{Recall}_i}{\text{Precision}_i + \text{Recall}_i}
+\end{equation}
+
+and Precision and Recall for each class $i$ are defined as:
+
+\begin{equation}
+\text{Precision}_i = \frac{TP_i}{TP_i + FP_i}
+\end{equation}
+
+\begin{equation}
+\text{Recall}_i = \frac{TP_i}{TP_i + FN_i}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $TP_i$ (True Positives) — number of correctly predicted samples of class $i$.
+    \item $FP_i$ (False Positives) — number of samples incorrectly predicted as class $i$.
+    \item $FN_i$ (False Negatives) — number of samples from class $i$ incorrectly predicted as other classes.
+\end{itemize}
+
+A higher value of \ref{eq:f1-macro-avg} indicates better overall balance between precision and recall across all emotion categories.
+
 \section{Description of the set up of the experiments performed}
 
 \section{Description of the inputs of the system}
@@ -87,6 +140,8 @@ Description of the response variable used in the research.
 \section{Data Recollection}
 
 Description of the data recollection process. Usually, it is a good idea to present a pointer to a GitHub page where all data and scripts used are available.
+
+This is a sentence with a footnote\footnote{This is the text of the footnote}.
 
 \section{Statistical Tool Used}
 
