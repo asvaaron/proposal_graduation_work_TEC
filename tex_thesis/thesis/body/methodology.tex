@@ -80,7 +80,8 @@ The example \textbf{Table \ref{tab:factors_and_levels}} summarizes the factors a
 \section{Response Variable}
 Description of the response variable used in the research.
 
-\subsection{Acurracy}
+\subsection{Acurracy} \label{sub:accurracy}
+
 
 The standard or top-1 acurracy will be used as the main metric for reviewing performance and robusteness compassion between models. The metric corresponds to a simple calculation taking the correctly classified samples and dividing it by the total number of samples. For multi-class classification, Accuracy represents the ratio of correctly predicted samples to the total number of samples across all emotion classes
 
@@ -98,7 +99,7 @@ Where:
 \item $N$: total number of samples in the dataset
 \end{itemize}
 
-\subsection{F1-Score(Macro-Averaged for Multi-class)}
+\subsection{F1-Score(Macro-Averaged for Multi-class)} \label{sub:f1-score}
 
 It's F1-score computation for each emotion independently, then averages them by giving equal weight to all classes.Macro F1-score provides a balanced metric by averaging the F1-score computed independently for each emotion class, ensuring equal importance is given to both majority and minority classes.
 
@@ -142,7 +143,7 @@ A higher value of \ref{eq:f1-macro-avg} indicates better overall balance between
 %Description of the data recollection process. Usually, it is a good idea to present a pointer to a GitHub page where all data and scripts used are available.
 
 
-For the experiment the  Real-world Affective Faces Database (RAF-DB) \footnote{https://www.kaggle.com/datasets/shuvoalok/raf-db-dataset} \footnote{http://www.whdeng.cn/RAF/model1.html} will be used. This is a widely used dataset in the field of facial expression recognition (FER).
+For the experiment the  Real-world Affective Faces Database (RAF-DB) \footnote{https://www.kaggle.com/datasets/shuvoalok/raf-db-dataset} \footnote{http://www.whdeng.cn/RAF/model1.html} will be used. This is a widely used dataset in the field of Facial Expression Recognition (FER).
 
 The images, collected from the Internet, are representative of diverse real-world conditions, including variations in ethnicity, age, gender, lighting, and occlusions (e.g. glasses, facial hair or self-occlusion), post-processing operations (e.g. various filters and special effects), etc. These particular features make RAF-DB a challenging dataset, ideal for evaluating FER models under realistic settings.
 
