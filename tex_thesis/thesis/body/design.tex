@@ -3,7 +3,11 @@
 \label{chapter:design}
 \newpage
 
-This chapter presents the developed algorithm/mechanism used to test the hypothesis. The contents of this section vary depending on the research effort
+This chapter presents the developed algorithm/mechanism used to test the hypothesis. 
+
+%The contents of this section vary depending on the research effort
+
+
 \section{Design criteria used (if needed)}
 
 \subsection{Detailed specific criteria/tool}
@@ -26,22 +30,23 @@ class ClassificationHead(nn.Module):
 
 \end{lstlisting}
 
-The baseline head takes the 512-dimensional feature vector produced by the backbone and directly maps it to the 7 emotion classes using a single linear layer. Because it lacks intermediate processing, normalization, or regularization, this configuration can introduce several limitations in terms of generalization, feature refinement, and robustness.For example: 
+The baseline head consists of a Pytorch nn.Module class that takes the 512-dimensional feature vector produced by the backbone and directly maps it to the 7 emotion classes using a single linear layer. An example is shown in figure \ref{fig:poster_classification_head_base}.
 
+Because the classification head lacks  intermediate processing, normalization, or regularization, this configuration can introduce several limitations in terms of generalization, feature refinement, and robustness. For example: 
 
 
 \begin{itemize}
     \item \textbf{Easy Overfitting:} 
-    Without dropout, normalization, or nonlinear activations, the linear layer can memorize training patterns rather than learning general representations. 
+    Without dropout, normalization, or nonlinear activations, the linear layer can memorize training patterns rather than learning general representations \cite{dosovitskiy_image_2021}. 
 
     \item \textbf{No Feature Refinement:} 
-    A single linear transformation cannot abstract or transform the 512-dimensional features \cite{steiner_how_2022}. If some features produced by the backbone are noisy, redundant, or weakly informative, the head provides no mechanism to adjust or denoise them.
+    A single linear transformation cannot abstract or transform the 512-dimensional features \cite{steiner_how_2022} \cite{tolstikhin_mlp-mixer_2021}. If some features produced by the backbone are noisy, redundant, or weakly informative, the head provides no mechanism to adjust or de-noise them.
 
     \item \textbf{Lack of Non-Linearity:} 
 Since the head is purely linear, it cannot model complex relationships between features. This limits the expressiveness of the classifier, especially for subtle or overlapping facial expressions.
 
     \item \textbf{Sensitivity to Noisy Features:} 
-The absence of normalization (e.g., BatchNorm) makes the classifier sensitive to variations in feature scale \cite{steiner_how_2022}.Any instability in the backbone's feature outputs directly affects classification.
+The absence of normalization (e.g., BatchNorm) makes the classifier sensitive to variations in feature scale \cite{steiner_how_2022}. Any instability in the backbone's feature outputs directly affects classification.
 
     \item \textbf{No Regularization:} 
 Without dropout or other regularization strategies, the head may rely too heavily on individual features, amplifying noise and making the decision boundary less stable.
@@ -65,6 +70,7 @@ Without dropout or other regularization strategies, the head may rely too heavil
 \draw[arrow] (linear) -- (scores);
 
 \end{tikzpicture}
+\label{fig:poster_classification_head_base}
 \caption{MLP Base Head Output Layer Diagram}
 \end{figure}
 
@@ -77,7 +83,14 @@ Without dropout or other regularization strategies, the head may rely too heavil
 
 \section{Proposed algorithm}
 
+To address the base classification limitations, the current work propose an enhanced classification head that incorporates Batch Normalization, Dropout, and a hidden non-linear projection layer.
+
+ The model receives the flattened feature vector from the backbone and applies a sequence of normalization, regularization, 
+and non-linear transformations before performing final classification as shown in figure \ref{fig:poster_classification_head_enhanced}. 
+
+
 \subsection{Design of the proposed algorithm}
+
 %The  specific description of the design algorithm goes in this place, as well as a flow diagram with the description of how it works as seen on \textbf{Figure \ref{fig:proposedalgorithm} }
 %
 %\begin{figure}
@@ -145,7 +158,26 @@ class EnhancedHead_v1(nn.Module):
 
 \end{tikzpicture}
 \caption{MLP Enhanced Head Output Layer Diagram}
+\label{fig:poster_classification_head_enhanced}
 \end{figure}
+
+Some advantages of the new enhanced head include:
+
+\begin{itemize}
+    \item \textbf{Improved Generalization:} The inclusion of Dropout layers reduces overfitting, which is particularly important for FER "in-the-wild" datasets that contain relatively few samples per class.
+
+    \item \textbf{Feature Stabilization:} Batch Normalization normalizes the intermediate feature distributions, leading to more stable gradients and faster convergence during training.
+
+    \item \textbf{Enhanced Representational Power:} The hidden non-linear layer enables the head to refine and transform the ViT features before classification, capturing subtle expression cues that a single linear layer cannot model.
+
+    \item \textbf{Better Robustness to Noise:} The combination of normalization and dropout makes the head less sensitive to noisy or imperfect backbone features, which commonly occur in FER scenarios involving occlusions or variable illumination.
+
+    \item \textbf{Modular and Lightweight:} The head introduces only a small number of additional parameters, preserving computational efficiency while significantly improving classifier capacity.
+
+    \item \textbf{Compatible with multiple ViT's Backbone:} The enhanced head can be applied to various types of transformer architecture without modifying the underlying backbone.
+    
+    
+\end{itemize}
 
 
 \subsection{Limitations and Requirements}
