@@ -121,7 +121,7 @@ POSTER addresses \gls{intra-class} variation by leveraging a pyramid structure f
 \begin{figure}[H]
 \centering
    \includegraphics[width=0.70\textwidth]{../images/poster_image.png}
-\caption{POSTER Cross-Fusion Transformer Arquitecture Example}
+\caption{POSTER Cross-Fusion Transformer Architecture Example}
 \label{fig:poster_architecure_example}
 \end{figure}
 
@@ -140,8 +140,6 @@ POSTER addresses \gls{intra-class} variation by leveraging a pyramid structure f
 \label{fig:poster_cross_function}
 \end{figure}
 	
-
-Self-supervis
 
 Self-supervised learning techniques have also gained popularity in FER, as develop by Park et al\cite{park_what_2023}. These methods are particularly beneficial because they allow models to learn meaningful facial representations from large amounts of unlabeled data, reducing dependence on expensive annotated datasets. Given the inherent subjectivity and variability in emotional expressions, self-supervised learning helps improve generalization by capturing robust feature representations across different demographics, lighting conditions, and occlusions. Techniques such as contrastive learning and clustering-based approaches have demonstrated significant improvements in adaptability and performance for FER tasks. By leveraging unlabeled datasets, models can learn meaningful facial representations without explicit supervision, reducing the reliance on large annotated datasets. 
 
@@ -179,7 +177,7 @@ Facial expression recognition (FER) has been extensively studied over the past d
 
 The advent of convolutional neural networks (CNNs) revolutionized FER by enabling automatic feature extraction, with architectures such as VGGNet, ResNet \cite{he_deep_2015}, and EfficientNet achieving significant performance improvements. However, CNNs face limitations in capturing global dependencies and spatial relationships in images, which has motivated the exploration of transformer-based models in computer vision tasks \cite{islam_recent_2023}.
 
-The introduction of Vision Transformers (ViTs) by Dosovitskiy \cite{dosovitskiy_image_2021} marked a significant shift in how visual tasks are approached. By leveraging self-attention mechanisms, ViTs can model long-range dependencies and capture richer contextual information compared to traditional CNNs.
+The introduction of Vision Transformers (\gls{ViTs}) by Dosovitskiy \cite{dosovitskiy_image_2021} marked a significant shift in how visual tasks are approached. By leveraging self-attention mechanisms, ViTs can model long-range dependencies and capture richer contextual information compared to traditional CNNs.
 
 
 In recent work on Facial Expression Recognition (FER), several models have demonstrated promising results, each with its unique strengths and limitations. ResNet-50 \cite{he_deep_2015} , a baseline convolutional neural network (CNN), performs well in local feature extraction, achieving an accuracy of 86.34\%. However, it struggles with capturing global context, which limits its effectiveness in more complex FER scenarios. The Swin Transformer \cite{liu_swin_2021}, with its hierarchical design, leverages both local and global features but comes with significant computational expense, resulting in an accuracy of 90.97\%. The Vision Transformer (ViT) Base \cite{dosovitskiy_image_2021} model, though powerful, has difficulty handling subtle FER cues in real-world conditions, also achieving an accuracy of 86.34\%. In contrast, the POSTER model \cite{zheng_poster_2022} achieves a superior accuracy of 92.05\% by combining pyramid attention with cross-fusion mechanisms, enabling the synergy of local and global features, which enhances its performance in FER tasks. 
