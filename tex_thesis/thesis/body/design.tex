@@ -32,7 +32,7 @@ class ClassificationHead(nn.Module):
 
 The baseline head consists of a Pytorch nn.Module class that takes the 512-dimensional feature vector produced by the backbone and directly maps it to the 7 emotion classes using a single linear layer. An example is shown in figure \ref{fig:poster_classification_head_base}.
 
-Because the classification head lacks  intermediate processing, normalization, or regularization, this configuration can introduce several limitations in terms of generalization, feature refinement, and robustness. For example: 
+Because the classification head lacks of intermediate processing, normalization, and regularization, this configuration can introduce several limitations in terms of generalization, feature refinement, and robustness for a FER task. For example: 
 
 
 \begin{itemize}
@@ -76,14 +76,9 @@ Without dropout or other regularization strategies, the head may rely too heavil
 
 
 
-
-
-
-
-
 \section{Proposed algorithm}
 
-To address the base classification limitations, the current work propose an enhanced classification head that incorporates Batch Normalization, Dropout, and a hidden non-linear projection layer.
+To address the base classification limitations, the current work propose an enhanced classification head that incorporates batch normalization, dropout, and a hidden non-linear projection layer.
 
  The model receives the flattened feature vector from the backbone and applies a sequence of normalization, regularization, 
 and non-linear transformations before performing final classification as shown in figure \ref{fig:poster_classification_head_enhanced}. 
@@ -186,4 +181,79 @@ A brief description of the design mechanism's limitations and requirements in ac
 
 \subsection{Implementation}
 
-A brief description of the implementation and pointer to git where it can be downloaded and tested. \url{https://myalgorithm.com}.
+%A brief description of the implementation and pointer to git where it can be downloaded and tested. \url{https://myalgorithm.com}.
+
+
+The code of the ViT is based on the  repository \footnote{https://github.com/zczcwh/POSTER} which corresponds with the implementation of the paper \cite{zheng_poster_2022}. 
+
+The modified version for this thesis work can be found in the following repository \footnote{https://github.com/asvaaron/POSTER}. All experiments were conducted using NVIDIA GPUs with CUDA acceleration,the table \ref{tab:hardware_used} shows more information about the available hardware. 
+
+The training pipeline supports reproducibility through a hard-coded random seeds and modular configuration for adding the desired head changes, model sizes and hyper-parameters when training the models. The project directory structure can be found in this section \ref{lst:poster_custom_structure}
+
+\begin{table}[h]
+\centering
+\caption{Computational resources used in the experimental setup}
+\label{tab:hardware_used}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+\textbf{Environment} & \textbf{Component} & \textbf{Specs} \\
+\midrule
+\multirow{2}{*}{Local}
+ & GPU Setup & 2 × NVIDIA GeForce RTX 3060 \\
+ & Machine Type & Desktop workstation \\
+\midrule
+\multirow{2}{*}{Cloud}
+ & Platform & Google Colab Pro+ \\
+ & GPU & NVIDIA GPU (variable allocation) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+
+\begin{lstlisting}[caption={Project directory structure of the POSTER implementation}, label={lst:poster_custom_structure},
+%frame=none,
+%basicstyle=\ttfamily\small
+]
+
+POSTER/
+|-- checkpoint
+|-- Confusion_matrix
+|-- data
+|-- data_preprocessing
+|-- LICENSE
+|-- log
+|-- log_reader.py
+|-- models
+| 	|-- emotion_hyp_affect.py
+|	|-- emotion_hyp.py (modified head)
+|	|-- hyp_crossvit_affect.py
+|	|-- hyp_crossvit.py
+|	|-- ir50.py
+|	|-- mobilefacenet.py
+|-- README.md
+|-- requirements.txt
+|-- requirements_ubuntu.txt
+|-- scripts_local.sh
+|-- scripts.sh
+|-- test_affect.py
+|-- test.py
+|-- torchsampler
+|-- train_affect.py
+|-- train.py
+|-- utils.py
+|-- venv
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
