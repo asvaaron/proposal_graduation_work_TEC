@@ -30,6 +30,27 @@ class ClassificationHead(nn.Module):
 
 \end{lstlisting}
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=4cm,
+    every node/.style={rectangle, rounded corners, draw, align=center, minimum width=3cm, minimum height=1.2cm},
+    arrow/.style={->, thick}
+]
+
+\node (feat) {512 features};
+\node (linear) [right of=feat] {Linear Layer};
+\node (scores) [right of=linear] {7 class scores};
+
+\draw[arrow] (feat) -- (linear);
+\draw[arrow] (linear) -- (scores);
+
+\end{tikzpicture}
+\label{fig:poster_classification_head_base}
+\caption{MLP Base Head Output Layer Diagram}
+\end{figure}
+
+
 The baseline head consists of a Pytorch nn.Module class that takes the 512-dimensional feature vector produced by the backbone and directly maps it to the 7 emotion classes using a single linear layer. An example is shown in figure \ref{fig:poster_classification_head_base}.
 
 Because the classification head lacks of intermediate processing, normalization, and regularization, this configuration can introduce several limitations in terms of generalization, feature refinement, and robustness for a FER task. For example: 
@@ -54,25 +75,6 @@ Without dropout or other regularization strategies, the head may rely too heavil
 
 
 
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[
-    node distance=4cm,
-    every node/.style={rectangle, rounded corners, draw, align=center, minimum width=3cm, minimum height=1.2cm},
-    arrow/.style={->, thick}
-]
-
-\node (feat) {512 features};
-\node (linear) [right of=feat] {Linear Layer};
-\node (scores) [right of=linear] {7 class scores};
-
-\draw[arrow] (feat) -- (linear);
-\draw[arrow] (linear) -- (scores);
-
-\end{tikzpicture}
-\label{fig:poster_classification_head_base}
-\caption{MLP Base Head Output Layer Diagram}
-\end{figure}
 
 
 
@@ -163,7 +165,7 @@ Some advantages of the new enhanced head include:
 
     \item \textbf{Feature Stabilization:} Batch Normalization normalizes the intermediate feature distributions, leading to more stable gradients and faster convergence during training.
 
-    \item \textbf{Enhanced Representational Power:} The hidden non-linear layer enables the head to refine and transform the ViT features before classification, capturing subtle expression cues that a single linear layer cannot model.
+    \item \textbf{Enhanced Representational Power:} The hidden non-linear layer enables the head to refine and transform the ViT's features before classification, capturing subtle expression cues that a single linear layer cannot model.
 
     \item \textbf{Better Robustness to Noise:} The combination of normalization and dropout makes the head less sensitive to noisy or imperfect backbone features, which commonly occur in FER scenarios involving occlusions or variable illumination.
 
@@ -186,7 +188,7 @@ A brief description of the design mechanism's limitations and requirements in ac
 
 The code of the ViT is based on the  repository \footnote{https://github.com/zczcwh/POSTER} which corresponds with the implementation of the paper \cite{zheng_poster_2022}. 
 
-The modified version for this thesis work can be found in the following repository \footnote{https://github.com/asvaaron/POSTER}. All experiments were conducted using NVIDIA GPUs with CUDA acceleration,the table \ref{tab:hardware_used} shows more information about the available hardware. 
+The modified version for this thesis work can be found in the following repository \footnote{https://github.com/asvaaron/POSTER}. All experiments were conducted using NVIDIA GPUs with CUDA acceleration, the table \ref{tab:hardware_used} shows more information about the available hardware. 
 
 The training pipeline supports reproducibility through a hard-coded random seeds and modular configuration for adding the desired head changes, model sizes and hyper-parameters when training the models. The project directory structure can be found in this example \ref{lst:poster_custom_structure}.
 
