@@ -1,7 +1,7 @@
 \chapter{Theoretical Framework}
 \label{chapter:theoretical-framework}
 
-\epigraph{``Another quote goes here''}{\vspace{10pt}Other author}
+\epigraph{``Machines take me by surprise with great frequency.''}{\vspace{10pt}Allan Turing-Writing in Mind a Quarterly Review of Psychology and Philosophy in 1950}
 
 \newpage
 
@@ -87,7 +87,7 @@ Advancements in synthetic data generation have also been explored to address lab
 
 \subsection{FER in-the-wild}
 
-FER in controlled environments, such as laboratory settings, differs significantly from real-world \gls{in-the-wild} scenarios, where factors like illumination changes, occlusions, and spontaneous expressions impact model performance. \gls{in-the-wild} datasets, including AffectNet, RAF-DB, and ExpW, provide diverse samples that improve model robustness but also introduce challenges like class imbalance and mislabeled data \cite{zhang_leave_2023}. 
+FER in controlled environments, such as laboratory settings, differs significantly from real-world \gls{in-the-wild} scenarios, where factors like illumination changes, occlusions, and spontaneous expressions impact model performance. \gls{in-the-wild} datasets, including AffectNet\footnote{\url{https://www.mohammadmahoor.com/pages/databases/affectnet/}}, RAF-DB\footnote{\url{http://www.whdeng.cn/RAF/model1.html}}, and ExpW\footnote{\url{https://www.kaggle.com/datasets/shahzadabbas/expression-in-the-wild-expw-dataset}}, provide diverse samples that improve model robustness but also introduce challenges like class imbalance and mislabeled data \cite{zhang_leave_2023}. 
 
 
 \begin{figure}[H]
@@ -152,9 +152,9 @@ Self-supervised learning techniques have also gained popularity in FER, as devel
 
 Evaluating FER models requires appropriate performance metrics that capture both classification accuracy and robustness. Unlike other computer vision tasks, FER must contend with subtle variations in facial expressions, subjective emotion labels, and real-world challenges such as occlusions and lighting changes. These factors make robustness particularly critical, as models need to generalize well across diverse populations, emotional intensities, and environmental conditions. Standard metrics include accuracy, precision, recall, and F1-score, with the latter being particularly useful for handling class imbalances in datasets like RAF-DB and AffectNet. Additionally, area under the curve (AUC) and confusion matrices help assess model reliability across different emotional labels or categories \cite{ma_facial_2023}.
 
-One challenge in FER evaluation is the subjective nature of emotional labels, which can lead to misclassifications even in well-performing models. Researchers have proposed leveraging uncertainty estimation techniques and human-in-the-loop approaches to refine model predictions and enhance interpretability. Moreover, explainability methods, such as Grad-CAM and attention visualization, provide insights into how FER models make predictions, increasing their trustworthiness.
+One challenge in FER evaluation is the subjective nature of emotional labels, which can lead to misclassifications even in well-performing models. Researchers have proposed leveraging uncertainty estimation techniques and human-in-the-loop approaches to refine model predictions and enhance interpretability. Moreover, explainability methods, such as Grad-CAM \cite{selvaraju_grad-cam_2020} and attention visualization, provide insights into how FER models make predictions, increasing their trustworthiness.
 
-Cross-dataset evaluations have also become an essential aspect of FER benchmarking. For example, a study by Ma et. 2024 \cite{ma_facial_2023} evaluated a transformer-based FER model trained on AffectNet and tested on RAF-DB, highlighting the challenges of domain shifts and variations in emotional expression. Such studies emphasize the necessity of developing FER models that generalize well across datasets with different annotation styles, demographic distributions, and environmental conditions. Cross-dataset evaluations help identify robustness gaps and encourage the design of architectures that are more resilient to dataset biases. Evaluating models across multiple datasets ensures that they generalize well beyond their training domain, addressing issues related to dataset bias and overfitting. 
+Cross-dataset evaluations have also become an essential aspect of FER benchmarking. For example, a study by Ma et.2024 \cite{ma_facial_2023} evaluated a transformer-based FER model trained on AffectNet and tested on RAF-DB, highlighting the challenges of domain shifts and variations in emotional expression. Such study emphasize the necessity of developing FER models that generalize well across datasets with different annotation styles, demographic distributions, and environmental conditions. Cross-dataset evaluations help identify robustness gaps and encourage the design of architectures that are more resilient to dataset biases. Evaluating models across multiple datasets ensures that they generalize well beyond their training domain, addressing issues related to dataset bias and overfitting. 
 
 Another key evaluation metric is Mean Average Precision (mAP)  used in object detection and retrieval tasks, assessing a model’s ability to accurately predict object locations and classifications. It is derived from the Precision-Recall (PR) curve, where precision measures how many predicted objects are correct, and recall measures how many actual objects are detected. The metric computes the Average Precision (AP) for each object class, which represents the area under the PR curve, and then averages these AP scores across all classes\cite{marcu_pitfalls_2022} \cite{ranjan_light-weight_2018}.
 
@@ -180,12 +180,13 @@ The advent of convolutional neural networks (CNNs) revolutionized FER by enablin
 The introduction of Vision Transformers (\gls{ViTs}) by Dosovitskiy \cite{dosovitskiy_image_2021} marked a significant shift in how visual tasks are approached. By leveraging self-attention mechanisms, ViTs can model long-range dependencies and capture richer contextual information compared to traditional CNNs.
 
 
-In recent work on Facial Expression Recognition (FER), several models have demonstrated promising results, each with its unique strengths and limitations. ResNet-50 \cite{he_deep_2015} , a baseline convolutional neural network (CNN), performs well in local feature extraction, achieving an accuracy of 86.34\%. However, it struggles with capturing global context, which limits its effectiveness in more complex FER scenarios. The Swin Transformer \cite{liu_swin_2021}, with its hierarchical design, leverages both local and global features but comes with significant computational expense, resulting in an accuracy of 90.97\%. The Vision Transformer (ViT) Base \cite{dosovitskiy_image_2021} model, though powerful, has difficulty handling subtle FER cues in real-world conditions, also achieving an accuracy of 86.34\%. In contrast, the POSTER model \cite{zheng_poster_2022} achieves a superior accuracy of 92.05\% by combining pyramid attention with cross-fusion mechanisms, enabling the synergy of local and global features, which enhances its performance in FER tasks. 
+In recent work on Facial Expression Recognition (FER), several models have demonstrated promising results, each with its unique strengths and limitations. ResNet-50 \cite{he_deep_2015} , a baseline convolutional neural network (CNN), performs well in local feature extraction, achieving an accuracy of 86.34\%. However, it struggles with capturing global context, which limits its effectiveness in more complex FER scenarios. The Swin Transformer \cite{liu_swin_2021}, with its hierarchical design, leverages both local and global features but comes with significant computational expense, resulting in an accuracy of 90.97\%. The Vision Transformer (ViT) Base \cite{dosovitskiy_image_2021} model, though powerful, has difficulty handling subtle FER cues in real-world conditions, also achieving an accuracy of 86.34\%. In contrast, the POSTER model \cite{zheng_poster_2022} achieves a superior accuracy of 92.05\% by combining pyramid attention with cross-fusion mechanisms, enabling the synergy of local and global features, which enhances its performance in FER tasks. Additional information of each of the models can be found on table \ref{tab:state_of_the_art_fer_models}
 
 
 \begin{table}[H]
 \centering
-\caption{State of the Art of FER systems}
+\caption{State of the Art of FER models}
+\label{tab:state_of_the_art_fer_models}
 \renewcommand{\arraystretch}{1.5} % Adjust row spacing
 \begin{tabular}{llll}
 \hline
