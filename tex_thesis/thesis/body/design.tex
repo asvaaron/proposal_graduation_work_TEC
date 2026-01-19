@@ -1,5 +1,5 @@
 \chapter{Design}
-\epigraph{``Another quote.''}{\vspace{10pt}Another Author}
+\epigraph{``There should be no such thing as boring mathematics.''}{\vspace{10pt}Edsger Dijkstra}
 \label{chapter:design}
 \newpage
 
@@ -14,9 +14,9 @@ This chapter presents the developed algorithm/mechanism used to test the hypothe
 
 \section{Description of the implementation of other algorithms (by other authors) used to test the hypothesis}
 
-Section \ref{section:hypothesis} outlines the hypothesis, which proposes evaluating the model using the baseline head architecture introduced in Zheng et al. \cite{zheng_poster_2022}.
+Section \ref{section:hypothesis} outlines the hypothesis, which proposes evaluating the model using the baseline head architecture introduced in Zheng et al. \cite{zheng_poster_2022}. An example of the implementation of the classification head is shown on \ref{cod:base_classification_head}
 
-\begin{lstlisting}[language=Python, caption={Base classification head}]
+\begin{lstlisting}[language=Python, caption={Base classification head}, label={cod:base_classification_head}]
 
 class ClassificationHead(nn.Module):
     def __init__(self, input_dim: int, target_dim: int):
@@ -29,6 +29,9 @@ class ClassificationHead(nn.Module):
         return y_hat
 
 \end{lstlisting}
+
+
+The baseline head consists of a Pytorch nn.Module class that takes the 512-dimensional feature vector produced by the backbone and directly maps it to the 7 emotion classes using a single linear layer. An example is shown in figure \ref{fig:poster_classification_head_base}.
 
 \begin{figure}[H]
 \centering
@@ -46,12 +49,9 @@ class ClassificationHead(nn.Module):
 \draw[arrow] (linear) -- (scores);
 
 \end{tikzpicture}
-\label{fig:poster_classification_head_base}
 \caption{MLP Base Head Output Layer Diagram}
+\label{fig:poster_classification_head_base}
 \end{figure}
-
-
-The baseline head consists of a Pytorch nn.Module class that takes the 512-dimensional feature vector produced by the backbone and directly maps it to the 7 emotion classes using a single linear layer. An example is shown in figure \ref{fig:poster_classification_head_base}.
 
 Because the classification head lacks of intermediate processing, normalization, and regularization, this configuration can introduce several limitations in terms of generalization, feature refinement, and robustness for a FER task. For example: 
 
@@ -80,10 +80,10 @@ Without dropout or other regularization strategies, the head may rely too heavil
 
 \section{Proposed algorithm}
 
-To address the base classification limitations, the current work propose an enhanced classification head that incorporates batch normalization, dropout, and a hidden non-linear projection layer.
+To address the base classification limitations, the current work propose an enhanced classification head that incorporates batch normalization, dropout, and a hidden non-linear projection layer. An implementation of the modified head code can be found in \ref{cod:modified_classification_head}.
 
  The model receives the flattened feature vector from the backbone and applies a sequence of normalization, regularization, 
-and non-linear transformations before performing final classification as shown in figure \ref{fig:poster_classification_head_enhanced}. 
+and non-linear transformations before performing final classification. All the parts of the new modified head is shown in figure \ref{fig:poster_classification_head_enhanced}. 
 
 
 \subsection{Design of the proposed algorithm}
@@ -99,7 +99,8 @@ and non-linear transformations before performing final classification as shown i
 %\end{figure} 
 
 
-\begin{lstlisting}[language=Python, caption={Enhanced classification head}]
+\begin{lstlisting}[language=Python, caption={Enhanced classification head},
+label={cod:modified_classification_head}]
 
 class EnhancedHead_v1(nn.Module):
     """
@@ -186,9 +187,9 @@ A brief description of the design mechanism's limitations and requirements in ac
 %A brief description of the implementation and pointer to git where it can be downloaded and tested. \url{https://myalgorithm.com}.
 
 
-The code of the ViT is based on the  repository \footnote{https://github.com/zczcwh/POSTER} which corresponds with the implementation of the paper \cite{zheng_poster_2022}. 
+The code of the ViT is based on the  repository\footnote{\url{https://github.com/zczcwh/POSTER}} which corresponds with the implementation of the paper \cite{zheng_poster_2022}. 
 
-The modified version for this thesis work can be found in the following repository \footnote{https://github.com/asvaaron/POSTER}. All experiments were conducted using NVIDIA GPUs with CUDA acceleration, the table \ref{tab:hardware_used} shows more information about the available hardware. 
+The modified version for this thesis work can be found in the following repository\footnote{\url{https://github.com/asvaaron/POSTER}}. All experiments were conducted using NVIDIA GPUs with CUDA acceleration, the table \ref{tab:hardware_used} shows more information about the available hardware. 
 
 The training pipeline supports reproducibility through a hard-coded random seeds and modular configuration for adding the desired head changes, model sizes and hyper-parameters when training the models. The project directory structure can be found in this example \ref{lst:poster_custom_structure}.
 
