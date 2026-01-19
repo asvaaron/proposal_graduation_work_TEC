@@ -1,6 +1,6 @@
 \chapter{Hypothesis and Objectives}
 \label{chapter:hypothesis-objectives}
-\epigraph{``Another quote.''.}{\vspace{10pt}Another Author}
+\epigraph{``If we choose, we can live in a world of comforting illusion''.}{\vspace{10pt}Noam Chomsky}
 
 \newpage
 %Example text:
@@ -16,8 +16,10 @@ The hypothesis for this research effort reads as follows:
 
 %``Our proposed method $P$ in the research can improve by $Q$\footnote{If numbers are involved, usually an explanation of why that specific number was used is given in a footnote \cite{examplereference2}.} the relation in metric 1 and metric 2\footnote{The \cite{examplereference} definition of is used.}.''
 
-''By systematically exploring and evaluating various modifications to the model's head architecture of a Visual Transformer for Facial Expression
-Recognition (FER), it is possible to surpass the current state-of-the-art performance achieved by the POSTER model on the RAF-DB dataset. Specifically, this study aims to improve the accuracy from POSTER’s reported 92.05\% to at least 93.00\%''
+%''By systematically exploring and evaluating various modifications to the model's head architecture of a Visual Transformer for Facial Expression
+%Recognition (FER), it is possible to surpass the current state-of-the-art performance achieved by the POSTER model on the RAF-DB dataset. Specifically, this study aims to improve the accuracy from POSTER’s reported 92.05\% to at least 93.00\%''
+
+By systematically exploring and evaluating various modifications to the classification head architecture of a Visual Transformer for Facial Expression Recognition, it is possible that performance improvements can be achieved on the RAF-DB dataset, particularly for challenging emotion classes. These improvements are expected to be reflected in increased class wise precision, recall, and F1 score for under performing categories, while maintaining or improving overall model performance. 
 
 \section{Objectives}
 \label{section:objectives}
@@ -28,7 +30,7 @@ The current research established the following objectives:
 \label{objective:main}
 %Main Objective Text.
 
-To enhance the performance of the POSTER (Pyramid Cross-Fusion Transformer) architecture for Facial Expression Recognition (FER) by introducing novel modifications to its head network—specifically redesigning the model's architecture classification head using alternative structures such as alternative layer structure, varied dropout strategies, and expanded depths and evaluating the impact of these changes on accuracy, loss, and F1-score using the Real-World Affective Faces Database (RAF-DB).
+To enhance the performance of the POSTER (Pyramid Cross-Fusion Transformer) architecture for Facial Expression Recognition (FER) by introducing novel modifications to its head network—specifically redesigning the model's architecture classification head using alternative structures such as alternative layer structure, varied dropout strategies, and expanded depths and evaluating the impact of these changes on accuracy, loss, recall and F1-score using the Real-World Affective Faces Database (RAF-DB).
 
 \subsection{Specific Objectives}
 \label{section:specific-objectives}
@@ -43,22 +45,24 @@ To enhance the performance of the POSTER (Pyramid Cross-Fusion Transformer) arch
 
 \begin{enumerate}
 
-\item Evaluate how the proposed modifications to the  head architecture provides insightful attention maps or feature representations that explain the model's decision-making process in FER.
+\item Evaluate how the proposed modifications to the  head architecture provides insightful feature representations that explain the model's decision-making process in FER.
 	
 \item Investigate the modified Visual Transformer model to adversarial image environments, noise, or data perturbations (e.g., occlusions, lighting variations, or slight facial deformations) or human fairness such as demographic biases (age, gender, ethnicity) using RAF-DB as an in-the-wild challenging dataset. 
 	
-\item Explore how the new MLP head architectures improve the model’s resilience to a in-the-wild dataset by employing standard FER evaluation metrics (e.g., accuracy, F1-score) as well as metrics that specifically address in-the-wild challenges for example head pose-invariant accuracy  or occlusion robustness metrics.
-	
+\item Explore how the new MLP head architecture improve the model’s resilience to a in-the-wild dataset by employing standard FER evaluation metrics like accuracy, F1-score, recall, confusion matrices and loss function curves. 
+
 \end{enumerate}
 
 \subsection{Deliverables}
-Example text:
-This section provides the deliverables assigned for each specific objective defined for the thesis.
+%Example text:
+The following section provides the deliverables assigned for each objective defined for the thesis.
+
+The table \ref{tab:table_deliverable} shows the correspoding deliverables worked during the development of the thesis work.
 
 
 \renewcommand{\arraystretch}{2.5}
 \begin{table}[H]
-\label{tb:table_deliverable}
+\label{tab:table_deliverable}
 \caption{Deliverables for the Research}
 \begin{tabular}{@{}llp{10cm}@{}}
 \toprule
@@ -107,7 +111,7 @@ Should include the scope and limitations of the developed research.
 \begin{itemize}
 \item This research focuses exclusively on predicting 7 discrete class FER emotions —happy, sad, surprise, fear, disgust, anger, and neutral. It deliberately excludes other FER prediction approaches such as analyzing Facial Action Units (AUs) or the Valence-Arousal (VA) model, which involve a more nuanced or continuous representation of emotion. \cite{mollahosseini_affectnet_2019}\cite{kollias_affect_2021}.
 
-\item The project will not include research that aims analyzing emotional states from dynamic sequences (i.e. video-based methods)\cite{wang_survey_2024}, only image-based static FER analysis will be conducted. While dynamic FER methods may capture temporal emotional transitions more effectively, this project centers on evaluating static images to streamline experimentation and ensure consistency.
+\item The project did not include research that aims analyzing emotional states from dynamic sequences (i.e. video-based methods)\cite{wang_survey_2024}, only image-based static FER analysis was conducted during the development. While dynamic FER methods may capture temporal emotional transitions more effectively, this project centers on evaluating static images to streamline experimentation and ensure consistency.
 
 \item The materials used in this research are limited to licensed and public resources. These include FER datasets, academic publications, source code, programming languages, and libraries, ensuring transparency, reproducibility, and ethical compliance in all aspects of the study.
 \end{itemize}
