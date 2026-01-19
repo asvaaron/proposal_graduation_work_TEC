@@ -7,21 +7,28 @@
 
 \newpage
 
-This section presents a brief introduction to kind of statistical tool used in the experiment and the details of the experiment of the research. 
+This section presents a brief introduction to the statistical tool used in the experiment and the whole details of the experiment used in the research. 
+
+
 \section{Experiment Design}
 \label{section:experiment-design}
 
-The experiment will consist of 6 unique configurations derived from the combination of  two factors. Factor  $A$ corresponds to original model vs changes made in the head. Factor $B$ corresponds to the model size large/medium/small. In  \cite{zheng_poster_2022} the feature pyramid structure has features with embedding dim $DH = 512$, $DM = 256$, and $DL = 128$, respectively. For factor $A, s_a =2$ and Factor $B, s_b=3$, where $s$ is number of levels on each factor, we have a two-way factorial design $s_a \times s_b = 2 \times 3 = 6$. Each combination (cell) is a $\text{Head} \times \text{Size}$ pair (6 cells total).
+The experiment consisted of 6 unique configurations derived from the combination of  two factors. Factor  $A$ corresponds to original model vs changes made in the head. Factor $B$ corresponds to the model size large/medium/small. In  \cite{zheng_poster_2022} the feature pyramid structure has features with embedding dim $DH = 512$, $DM = 256$, and $DL = 128$, respectively. For factor $A, s_a =2$ and Factor $B, s_b=3$, where $s$ is number of levels on each factor, we have a two-way factorial design $s_a \times s_b = 2 \times 3 = 6$. Each combination (cell) is a $\text{Head} \times \text{Size}$ pair (6 cells total).
 
 
-For each configuration, the POSTER Visual Transformer will be trained using a facial expression dataset RAF-DB, and the performance will be evaluated based on a chosen metric, such as classification accuracy \ref{sub:accurracy} and F1-score \ref{sub:f1-score}.
+For each configuration, the POSTER Visual Transformer was trained using a facial expression dataset RAF-DB, and the performance was evaluated based on a chosen metric, such as classification accuracy \ref{sub:accurracy} and F1-score \ref{sub:f1-score}.
 
-The models will be trained in a controlled environment, where the only variations between runs are the levels of the factors being tested. This will allow for a rigorous comparison of how  model size, learning rate and head modifications influence the transformer’s performance in FER tasks using \gls{in-the-wild} datasets.
+The models were trained in a controlled environment, where the only variations between runs are the levels of the factors being tested. This allowed for a rigorous comparison of how  model size, learning rate and head modifications influence the transformer’s performance in FER tasks using \gls{in-the-wild} datasets.
 
 
-\section{Factors and Levels (if needed):}
+%\section{Factors and Levels (if needed):}
 
-\section{Measures and Combinations of the Experiment (if needed)}
+\section{Factors and Levels}
+
+%\section{Measures and Combinations of the Experiment (if needed)}
+
+\section{Measures and Combinations of the Experiment}
+
 The example \textbf{Table \ref{tab:factors_and_levels}} summarizes the factors and levels used in the experiments.
 
 \begin{table}[H]
@@ -83,7 +90,7 @@ Description of the response variable used in the research.
 \subsection{Accuracy} \label{sub:accurracy}
 
 
-The standard or top-1 accuracy will be used as the main metric for reviewing performance and robustness comparison between models. The metric corresponds to a simple calculation taking the correctly classified samples and dividing it by the total number of samples. For multi-class classification, Accuracy represents the ratio of correctly predicted samples to the total number of samples across all emotion classes
+The standard or top-1 accuracy was used as the main metric for reviewing performance and robustness comparison between models. The metric corresponds to a simple calculation taking the correctly classified samples and dividing it by the total number of samples. For multi-class classification, Accuracy represents the ratio of correctly predicted samples to the total number of samples across all emotion classes
 
 
 \begin{equation}
@@ -168,11 +175,48 @@ The mixed feature representation produced by the dual branch architecture serves
 %Description of the data recollection process. Usually, it is a good idea to present a pointer to a GitHub page where all data and scripts used are available.
 
 
-For the experiment the  Real-world Affective Faces Database (RAF-DB) \footnote{https://www.kaggle.com/datasets/shuvoalok/raf-db-dataset} \footnote{http://www.whdeng.cn/RAF/model1.html} will be used. This is a widely used dataset in the field of Facial Expression Recognition (FER).
+For conducting all of the experiments the datased Real-world Affective Faces Database (RAF-DB) \footnote{\url{https://www.kaggle.com/datasets/shuvoalok/raf-db-dataset}} \footnote{\url{http://www.whdeng.cn/RAF/model1.html}} was be used. This corresponds to a widely used dataset in the field of Facial Expression Recognition (FER).
 
 The images, collected from the Internet, are representative of diverse real-world conditions, including variations in ethnicity, age, gender, lighting, and occlusions (e.g. glasses, facial hair or self-occlusion), post-processing operations (e.g. various filters and special effects), etc. These particular features make RAF-DB a challenging dataset, ideal for evaluating FER models under realistic settings.
 
-Images in RAF-DB were labeled by 40 human annotators through crowdsourcing, and a majority voting scheme was used to finalize the annotations. The FER dataset flavor used in this thesis work includes 12,271 images for training and 3,068 for testing, focusing primarily on static image-based FER. Its real-world complexity, such as subtle expressions, extreme head poses, and high intra-class variability has driven advancements in FER models. 
+Images in RAF-DB were labeled by 40 human annotators through crowdsourcing, and a majority voting scheme was used to finalize the annotations. The FER dataset flavor used in this thesis work includes 12,271 images for training and 3,068 for testing, focusing primarily on static image-based FER. Additional information of each class distribution for training and testing is provided in table \ref{tab:class_distribution}. 
+
+RAF-DB corresponds to real-world complexity dataset that includes images with subtle expressions, extreme head poses, and high intra-class variability which has driven important advancements in other FER models. 
+
+\begin{table}[H]
+\centering
+\caption{Class distribution for training and test datasets}
+\label{tab:class_distribution}
+\begin{tabular}{llcc}
+\hline
+\textbf{Dataset} & \textbf{Class} & \textbf{Class ID} & \textbf{Samples} \\
+\hline
+\multirow{7}{*}{Test} 
+ & Angry    & 1 & 329  \\
+ & Disgust  & 2 & 74   \\
+ & Fear     & 3 & 160  \\
+ & Happy    & 4 & 1185 \\
+ & Neutral  & 5 & 478  \\
+ & Sad      & 6 & 162  \\
+ & Surprise & 7 & 680  \\
+\cline{2-4}
+ & \textbf{Total} &  & \textbf{3068} \\
+\hline
+\multirow{7}{*}{Train} 
+ & Angry    & 1 & 1290 \\
+ & Disgust  & 2 & 281  \\
+ & Fear     & 3 & 717  \\
+ & Happy    & 4 & 4772 \\
+ & Neutral  & 5 & 1982 \\
+ & Sad      & 6 & 705  \\
+ & Surprise & 7 & 2524 \\
+\cline{2-4}
+ & \textbf{Total} &  & \textbf{12271} \\
+\hline
+\end{tabular}
+\end{table}
+
+
 
 RAF-DB has been instrumental in benchmarking state-of-the-art models like ResNet-50 \cite{he_deep_2015}, Swin Transformer \cite{liu_swin_2021}, and POSTER \cite{zheng_poster_2022}, which achieved accuracies of 86.34 \%, 90.97 \%, and 92\%+, respectively.
 
@@ -180,9 +224,15 @@ RAF-DB has been instrumental in benchmarking state-of-the-art models like ResNet
 
 \section{Statistical Tool Used}
 
-Include a section briefly explaining the statistical tool used to analyze the data from the experiments.
-\subsection{Hypothesis of the statistical tool used}
+%Include a section briefly explaining the statistical tool used to analyze the data from the experiments.
 
-\textbf{Null hypothesis:}
+To evaluate the impact of the proposed classification head modifications, a statistical analysis was conducted using aggregated performance metrics obtained from multiple experimental runs. For each model configuration, the average values and standard deviation of accuracy, macro averaged F1-score, precision, recall, and training loss were computed across the validation set. Using averaged metrics reduces the effect of stochastic variation introduced by random initialization and optimization dynamics, enabling a more stable and reliable comparison between configurations. 
 
-\textbf{Alternate hypothesis:} 
+In addition to aggregated metrics, training and validation loss curves were plotted for each model configuration in order to analyze convergence behavior and training stability. Furthermore, per class precision and recall values were computed and visualized, and a confusion matrix was generated for each model to provide a detailed analysis of class wise performance and miss-classification patterns across the seven emotion categories.
+
+%
+%\subsection{Hypothesis of the statistical tool used}
+%
+%\textbf{Null hypothesis:}
+%
+%\textbf{Alternate hypothesis:} 
