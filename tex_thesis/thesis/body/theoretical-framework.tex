@@ -87,7 +87,7 @@ Advancements in synthetic data generation have also been explored to address lab
 
 \subsection{FER in-the-wild}
 
-FER in controlled environments, such as laboratory settings, differs significantly from real-world \gls{in-the-wild} scenarios, where factors like illumination changes, occlusions, and spontaneous expressions impact model performance. \gls{in-the-wild} datasets, including AffectNet\footnote{\url{https://www.mohammadmahoor.com/pages/databases/affectnet/}}, RAF-DB\footnote{\url{http://www.whdeng.cn/RAF/model1.html}}, and ExpW\footnote{\url{https://www.kaggle.com/datasets/shahzadabbas/expression-in-the-wild-expw-dataset}}, provide diverse samples that improve model robustness but also introduce challenges like class imbalance and mislabeled data \cite{zhang_leave_2023}. 
+FER in controlled environments, such as laboratory settings, differs significantly from real-world \gls{in-the-wild} scenarios, where factors like illumination changes, occlusions, and spontaneous expressions impact model performance. \gls{in-the-wild} datasets, including AffectNet\footnote{\url{https://www.mohammadmahoor.com/pages/databases/affectnet/}}, RAF-DB\footnote{\url{http://www.whdeng.cn/RAF/model1.html}}, and ExpW\footnote{\url{https://www.kaggle.com/datasets/shahzadabbas/expression-in-the-wild-expw-dataset}}, provide diverse samples that improve model robustness but also introduce challenges like class imbalance and mislabeled data \cite{zhang_leave_2023}. Image \ref{fig:RAF-DB} shows multiple variations of RAF-DB, the first row contains six of the seven emotion labels. The current thesis work focused on all all these categories including neutral emotion. 
 
 
 \begin{figure}[H]
@@ -114,32 +114,39 @@ However, CNN-based models struggle with long-range dependencies, leading to inte
 
 \subsection{Visual Transformer}
 
-The shift towards transformers has opened new avenues for improving FER, particularly by modifying their classification heads and MLP layers to enhance discriminative power. One such model is POSTER: A Pyramid Cross-Fusion Transformer Network for Facial Expression Recognition, which introduces a hierarchical fusion mechanism to enhance local and global facial feature interactions. POSTER effectively balances efficiency and accuracy by integrating multi-scale information processing within a transformer framework, demonstrating superior performance on benchmark FER datasets \cite{zheng_poster_2022}.
+Unlike Convolutional Neural Networks (CNNs), which rely on local receptive fields and convolutional filters, Visual Transformers model images using global self-attention mechanisms. As shown by A. Dosovitskiy et al. \cite{dosovitskiy_image_2021} the reliance on CNNs is not necessary and a pure transformer applied directly to sequences of image patches can perform very well on image classification tasks. This new approach allows to capture long-range dependencies and contextual relationships across the entire image, which is especially useful in complex real-world (in-the-wild) scenarios \cite{steiner_how_2022}  where expressions may be affected by pose, occlusion, or illumination.The core idea behind most Visual Transformers is to treat an image as a sequence of patches, analogous to words in a sentence. Each patch is embedded into a vector space and processed by a Transformer encoder composed of multi-head self-attention layers and feed-forward network \cite{islam_recent_2023} \cite{park_what_2023}. 
 
-POSTER addresses \gls{intra-class} variation by leveraging a pyramid structure for multi-scale feature extraction, ensuring robust representation of subtle differences within the same expression. Its cross-fusion mechanism refines feature interactions, reducing the impact of pose, lighting, and intensity variations while enhancing consistency. To tackle \gls{inter-class} variation, \gls{POSTER} employs attention-based differentiation and hierarchical refinement, helping distinguish similar expressions by focusing on key distinguishing features. 
+
+One such model is POSTER: A Pyramid Cross-Fusion Transformer Network for Facial Expression Recognition, which introduces a hierarchical fusion mechanism to enhance local and global facial feature interactions. POSTER effectively balances efficiency and accuracy by integrating multi-scale information processing within a transformer framework, demonstrating superior performance on benchmark FER datasets \cite{zheng_poster_2022}.
+
+As show in image \ref{fig:intra_inter_classes_images} POSTER addresses \gls{intra-class} and \gls{inter-class} variation by leveraging a pyramid structure for multi-scale feature extraction, ensuring robust representation of subtle differences within the same expression. Its cross-fusion mechanism refines feature interactions, reducing the impact of pose, lighting, and intensity variations while enhancing consistency. To tackle \gls{inter-class} variation, \gls{POSTER} employs attention-based differentiation and hierarchical refinement, helping distinguish similar expressions by focusing on key distinguishing features. POSTER's architecture most relevant parts are shown in figure \ref{fig:poster_architecure_example}. 
 
 \begin{figure}[H]
 \centering
-   \includegraphics[width=0.70\textwidth]{../images/poster_image.png}
-\caption{POSTER Cross-Fusion Transformer Architecture Example}
+   \includegraphics[width=0.90\textwidth]{../images/poster_image.png}
+\caption{POSTER Cross-Fusion Transformer Architecture Example \\ 
+\textbf{Source:} POSTER\cite{zheng_poster_2022}}
 \label{fig:poster_architecure_example}
 \end{figure}
 
 
 \begin{figure}[H]
 \centering
-   \includegraphics[width=0.70\textwidth]{../images/intra_inter_classes_images.png}
-\caption{POSTER Cross-Fusion Transformer Intra and Inter Image Classes}
+   \includegraphics[width=0.90\textwidth]{../images/intra_inter_classes_images.png}
+\caption{POSTER Cross-Fusion Transformer Intra and Inter Image Classes \\ 
+\textbf{Source:} POSTER\cite{zheng_poster_2022}}
 \label{fig:intra_inter_classes_images}
 \end{figure}
 	
-\begin{figure}[H]
-\centering
-   \includegraphics[width=0.70\textwidth]{../images/poster_cross_function.png}
-\caption{POSTER Cross-Fusion Transformer vs Previous Versions}
-\label{fig:poster_cross_function}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%   \includegraphics[width=0.70\textwidth]{../images/poster_cross_function.png}
+%\caption{POSTER Cross-Fusion Transformer vs Previous Versions}
+%\label{fig:poster_cross_function}
+%\end{figure}
 	
+	
+The shift towards transformers has opened new avenues for improving FER, particularly by modifying their classification heads and MLP layers to enhance discriminative power \cite{tolstikhin_mlp-mixer_2021} \cite{abdullah_activator_2024}. 
 
 Self-supervised learning technique has also gained popularity in FER, as demonstrated by Park et al. \cite{park_what_2023}. These methods are particularly beneficial because they allow models to learn meaningful facial representations from large amounts of unlabeled data, reducing dependence on expensive annotated datasets. Given the inherent subjectivity and variability in emotional expressions, self-supervised learning helps improve generalization by capturing robust feature representations across different demographics, lighting conditions, and occlusions. Techniques such as contrastive learning and clustering-based approaches have demonstrated significant improvements in adaptability and performance for FER tasks. By leveraging unlabeled datasets, models can learn meaningful facial representations without explicit supervision, reducing the reliance on large annotated datasets. 
 
@@ -150,7 +157,7 @@ Self-supervised learning technique has also gained popularity in FER, as demonst
 
 \subsection{Performance Metrics for FER}
 
-Evaluating FER models requires appropriate performance metrics that capture both classification accuracy and robustness. Unlike other computer vision tasks, FER must contend with subtle variations in facial expressions, subjective emotion labels, and real-world challenges such as occlusions and lighting changes. These factors make robustness particularly critical, as models need to generalize well across diverse populations, emotional intensities, and environmental conditions. Standard metrics include accuracy, precision, recall, and F1-score, with the latter being particularly useful for handling class imbalances in datasets like RAF-DB and AffectNet. Additionally, area under the curve (AUC) and confusion matrices help assess model reliability across different emotional labels or categories \cite{ma_facial_2023}.
+Evaluating FER models requires appropriate performance metrics that capture both classification accuracy and robustness. Unlike other computer vision tasks, FER must contend with subtle variations in facial expressions, subjective emotion labels, and real-world challenges such as occlusions and lighting changes. These factors make robustness particularly critical, as models need to generalize well across diverse populations, emotional intensities, and environmental conditions. Standard metrics include accuracy, precision, recall, and F1-score, with the latter being particularly useful for handling class imbalances in datasets like RAF-DB and AffectNet. Additionally, loss curves, area under the curve (AUC) graphics and confusion matrices help assess model reliability across different emotional labels or categories \cite{ma_facial_2023}.
 
 One challenge in FER evaluation is the subjective nature of emotional labels, which can lead to misclassifications even in well-performing models. Researchers have proposed leveraging uncertainty estimation techniques and human-in-the-loop approaches to refine model predictions and enhance interpretability. Moreover, explainability methods, such as Grad-CAM \cite{selvaraju_grad-cam_2020} and attention visualization, provide insights into how FER models make predictions, increasing their trustworthiness.
 
