@@ -5,6 +5,9 @@
 
 This chapter presents the developed algorithm/mechanism used to test the hypothesis. 
 
+
+This chapter describes the experimental design adopted in this research, including the algorithm,  architectural decisions, evaluation criteria, and constraints that guided the development and assessment used to test the hypotesis. The design is structured to ensure reproducibility, statistical validity, and relevance to real-world Facial Expression Recognition (FER) scenarios.
+
 %The contents of this section vary depending on the research effort
 
 
@@ -14,7 +17,7 @@ This chapter presents the developed algorithm/mechanism used to test the hypothe
 
 \section{Description of the implementation of other algorithms (by other authors) used to test the hypothesis}
 
-Section \ref{section:hypothesis} outlines the hypothesis, which proposes evaluating the model using the baseline head architecture introduced in Zheng et al. \cite{zheng_poster_2022}. An example of the implementation of the classification head is shown on \ref{cod:base_classification_head}
+Section \ref{section:hypothesis} outlines the hypothesis, which proposes evaluating the model using the baseline head architecture introduced in Zheng et al.\cite{zheng_poster_2022}. An example of the implementation of the classification head is shown on\ref{cod:base_classification_head}
 
 \begin{lstlisting}[language=Python, caption={Base classification head}, label={cod:base_classification_head}]
 
@@ -31,7 +34,7 @@ class ClassificationHead(nn.Module):
 \end{lstlisting}
 
 
-The baseline head consists of a Pytorch nn.Module class that takes the 512-dimensional feature vector produced by the backbone and directly maps it to the 7 emotion classes using a single linear layer. An example is shown in figure \ref{fig:poster_classification_head_base}.
+The baseline head consists of a PyTorch nn.Module class that takes the 512-dimensional feature vector produced by the backbone and directly maps it to the seven emotion classes using a single linear layer. An example  of the basic MLP architecture flow is shown in figure \ref{fig:poster_classification_head_base}.
 
 \begin{figure}[H]
 \centering
@@ -180,6 +183,45 @@ Some advantages of the new enhanced head include:
 
 \subsection{Limitations and Requirements}
 A brief description of the design mechanism's limitations and requirements in accordance with the definitions in Scope and Limitations.
+
+\subsubsection{Dataset Limitations}
+
+Although RAF-DB is widely used for in-the-wild FER, it has several limitations:
+
+\begin{itemize}
+
+
+\item Contains class imbalance across emotion categories
+
+\item Relies on human annotations, which may introduce subjectivity
+
+\item Does not fully represent extreme real-world scenarios such as heavy occlusion or extreme poses
+
+\end{itemize}
+
+These factors may limit the generalizability of the findings.
+
+\subsubsection{Architectural Scope}
+
+This study focuses exclusively on modifications to the classification head of the POSTER architecture. Consequently improvements cannot be attributed to changes in feature extraction. Also, potential gains from modifying attention mechanisms or fusion strategies are not explored
+
+\subsubsection{Computational Constraints}
+
+The depth and number of experimental configurations are constrained by available computational resources. As a result:
+
+\begin{itemize}
+
+\item Extremely deep or large head architectures are not evaluated
+
+\item Training is performed under fixed hardware and time limitations
+
+\end{itemize}
+
+
+
+%Fairness Analysis Limitations
+%
+%While fairness-related aspects such as demographic bias are considered conceptually, the lack of explicit demographic labels in RAF-DB restricts the depth of quantitative fairness analysis. Any observations regarding bias remain exploratory rather than definitive.
 
 
 \subsection{Implementation}
