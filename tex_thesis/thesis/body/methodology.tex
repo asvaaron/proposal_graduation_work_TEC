@@ -7,7 +7,7 @@
 
 \newpage
 
-This section presents a brief introduction to the statistical tool used in the experiment and the whole details of the experiment used in the research. 
+This section presents a brief introduction to the statistical tools used in the experiment, as well as a detailed description of the experiment used in the research. 
 
 
 \section{Experiment Design}
@@ -16,7 +16,7 @@ This section presents a brief introduction to the statistical tool used in the e
 The experiment consisted of 6 unique configurations derived from the combination of  two factors. Factor  $A$ corresponds to original model vs changes made in the head. Factor $B$ corresponds to the model size large/medium/small. In  \cite{zheng_poster_2022} the feature pyramid structure has features with embedding dim $DH = 512$, $DM = 256$, and $DL = 128$, respectively. For factor $A, s_a =2$ and Factor $B, s_b=3$, where $s$ is number of levels on each factor, we have a two-way factorial design $s_a \times s_b = 2 \times 3 = 6$. Each combination (cell) is a $\text{Head} \times \text{Size}$ pair (6 cells total).
 
 
-For each configuration, the POSTER Visual Transformer was trained using a facial expression dataset RAF-DB, and the performance was evaluated based on a chosen metric, such as classification accuracy \ref{sub:accurracy} and F1-score \ref{sub:f1-score}.
+For each configuration, the POSTER Visual Transformer was trained using a facial expression dataset RAF-DB, and the performance was evaluated based on a chosen metric, such as classification accuracy Section \ref{sub:accurracy} and F1-score Section \ref{sub:f1-score}.
 
 The models were trained in a controlled environment, where the only variations between runs are the levels of the factors being tested. This allowed for a rigorous comparison of how  model size, learning rate and head modifications influence the transformer’s performance in FER tasks using \gls{in-the-wild} datasets.
 
@@ -29,7 +29,7 @@ The models were trained in a controlled environment, where the only variations b
 
 \section{Measures and Combinations of the Experiment}
 
-The example \textbf{Table \ref{tab:factors_and_levels}} summarizes the factors and levels used in the experiments.
+Table \ref{tab:factors_and_levels} summarizes the factors and levels used on all of the experiments. 
 
 \begin{table}[H]
 \centering
@@ -85,7 +85,7 @@ The example \textbf{Table \ref{tab:factors_and_levels}} summarizes the factors a
 
 
 \section{Response Variable}
-Description of the response variable used in the research.
+This sections shows a description of all the response variables used and obtained during the development of this research.
 
 \subsection{Accuracy} \label{sub:accurracy}
 
@@ -108,7 +108,7 @@ Where:
 
 \subsection{F1-Score(Macro-Averaged for Multi-class)} \label{sub:f1-score}
 
-It's F1-score computation for each emotion independently, then averages them by giving equal weight to all classes. Macro F1-score provides a balanced metric by averaging the F1-score computed independently for each emotion class, ensuring equal importance is given to both majority and minority classes.
+It computes f1-score for each emotion independently, then averages them by giving equal weight to all classes. At the same time macro-averaged f1-score, equation \ref{eq:f1-macro-avg}, provides a balanced metric by averaging the f1-score computed independently for each emotion class, ensuring equal importance is given to both majority and minority classes.
 
 
 \begin{equation}
@@ -116,21 +116,38 @@ It's F1-score computation for each emotion independently, then averages them by 
 \text{F1}_{\text{macro}} = \frac{1}{C} \sum_{i=1}^{C} \text{F1}_i
 \end{equation}
 
-where the F1-score for each class $i$ is given by:
+where the f1-score for each class $i$ is given by:
 
 \begin{equation}
 \text{F1}_i = 2 \times \frac{\text{Precision}_i \times \text{Recall}_i}{\text{Precision}_i + \text{Recall}_i}
 \end{equation}
 
-and Precision and Recall for each class $i$ are defined as:
+%Precision \ref{eq:precision-class} recall \ref{eq:recall-class} for each class $i$ are defined as follows:
+
+\subsection{Precision} \label{sub:precision}
+
+Precision is an evaluation metric that measures the accuracy of the model’s positive predictions, equation \ref{eq:precision-class}. In Facial Expression Recognition (FER), precision quantifies how many of the samples predicted as a specific emotion truly belong to that emotion class.
 
 \begin{equation}
+\label{eq:precision-class}
 \text{Precision}_i = \frac{TP_i}{TP_i + FP_i}
 \end{equation}
 
+A high precision score indicates that the model produces fewer false positives, meaning it is less likely to incorrectly assign an emotion label to a facial expression that does not belong to that category. This is particularly important in FER tasks where certain emotions share visual similarities, leading to potential misclassification (e.g., happiness vs. surprise).
+
+In this research, precision is computed on a per-class basis and aggregated to evaluate the reliability of the modified Visual Transformer’s predictions. Precision analysis complements recall by highlighting trade-offs between sensitivity and prediction confidence, providing a more comprehensive understanding of model performance.
+
+
+\subsection{Recall} \label{sub:recall}
+
+Recall is a fundamental evaluation metric used to measure the model’s ability to correctly identify instances of a given class, formally the equation \ref{eq:recall-class}. In the context of Facial Expression Recognition (FER), recall quantifies how effectively the proposed model detects each facial expression among all samples that truly belong to that expression class.
+
 \begin{equation}
+\label{eq:recall-class}
 \text{Recall}_i = \frac{TP_i}{TP_i + FN_i}
 \end{equation}
+
+A high recall value indicates that the model successfully minimizes false negatives, which is particularly important in FER tasks where under-detection of certain emotions (e.g., fear or disgust) can negatively impact downstream applications such as affective computing or human–computer interaction
 
 where:
 \begin{itemize}
@@ -139,7 +156,49 @@ where:
     \item $FN_i$ (False Negatives) — number of samples from class $i$ incorrectly predicted as other classes.
 \end{itemize}
 
-A higher value of \ref{eq:f1-macro-avg} indicates better overall balance between precision and recall across all emotion categories.
+A higher value of \ref{eq:f1-macro-avg} indicates better overall balance between precision \ref{sub:precision} and recall \ref{sub:recall} across all emotion categories.
+
+\subsection{Confusion Matrix} \label{sub:confusion-matrix}
+
+To further analyze the classification behavior of the model, confusion matrices are employed. A confusion matrix provides a detailed breakdown of predicted versus actual class labels,\ref{fig:confusion-matrix-poster} enabling a comprehensive assessment of both correct and incorrect predictions across all emotion categories.
+
+Each row of the confusion matrix corresponds to the true class labels, while each column represents the predicted labels. Diagonal elements indicate correct classifications, whereas off-diagonal elements highlight specific misclassification patterns between emotion classes.
+
+
+
+\begin{figure}[H]
+\centering
+   \includegraphics[width=0.90\textwidth]{../images/poster_cm_datasets.png}
+\caption{POSTER Confusion Matrix multiple datasets \\ \textbf{Source:} POSTER\cite{zheng_poster_2022}}
+\label{fig:confusion-matrix-poster}
+\end{figure}
+
+\subsection{Loss Curves} \label{sub:loss-curves}
+
+Loss functions play a critical role in guiding the optimization process during model training. In this work, the training loss is monitored across epochs to evaluate convergence behavior and learning stability of the proposed model variants. As shown in image \ref{fig:training-validation-loss-example} typically training and validation plots are made for each training epoch. 
+
+
+
+\begin{figure}[H]
+\centering
+   \includegraphics[width=0.90\textwidth]{../images/training-validation-loss-example.png}
+\caption{Training and validation loss per epoch example \\ \textbf{Source:} Facial Expression Recognition using Squeeze and Excitation-powered Swin  Transformers\cite{vats_facial_2023}}
+\label{fig:training-validation-loss-example}
+\end{figure}
+
+
+Loss function plots are generated to visualize:
+
+\begin{itemize}
+\item Training loss evolution
+\item Validation loss trends
+\item Potential overfitting or underfitting behavior
+
+\end{itemize}
+
+
+A consistent decrease in training and validation loss indicates effective learning, whereas divergence between the two may suggest overfitting. By comparing loss curves across different head configurations, this study assesses how architectural modifications impact optimization efficiency and generalization performance.
+
 
 \section{Description of the set up of the experiments performed}
 
@@ -226,9 +285,9 @@ RAF-DB has been instrumental in benchmarking state-of-the-art models like ResNet
 
 %Include a section briefly explaining the statistical tool used to analyze the data from the experiments.
 
-To evaluate the impact of the proposed classification head modifications, a statistical analysis was conducted using aggregated performance metrics obtained from multiple experimental runs. For each model configuration, the average values and standard deviation of accuracy, macro averaged F1-score, precision, recall, and training loss were computed across the validation set. Using averaged metrics reduces the effect of stochastic variation introduced by random initialization and optimization dynamics, enabling a more stable and reliable comparison between configurations. 
+To evaluate the impact of the proposed classification head modifications, a statistical analysis was conducted using aggregated performance metrics obtained from multiple experimental runs. For each model configuration, the average values and standard deviation of accuracy, macro averaged f1-score, precision, recall. Using averaged metrics reduces the effect of stochastic variation introduced by random initialization and optimization dynamics, enabling a more stable and reliable comparison between configurations. 
 
-In addition to aggregated metrics, training and validation loss curves were plotted for each model configuration in order to analyze convergence behavior and training stability. Furthermore, per class precision and recall values were computed and visualized, and a confusion matrix was generated for each model to provide a detailed analysis of class wise performance and miss-classification patterns across the seven emotion categories.
+In addition to aggregated metrics, training and validation loss curves were plotted for each model configuration in order to analyze convergence behavior and training stability. Furthermore, per-class precision and recall values were computed and visualized, and a confusion matrix was generated for each model to provide a detailed analysis of class-wise performance and misclassification patterns across the seven emotion categories.
 
 %
 %\subsection{Hypothesis of the statistical tool used}
