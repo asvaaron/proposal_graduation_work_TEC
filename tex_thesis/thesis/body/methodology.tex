@@ -29,22 +29,32 @@ The models were trained in a controlled environment, where the only variations b
 
 \section{Measures and Combinations of the Experiment}
 
-Table \ref{tab:factors_and_levels} summarizes the factors and levels used on all of the experiments. 
+Table \ref{tab:factors-and-levels} summarizes the factors and levels used on all of the experiments. 
+
 
 \begin{table}[H]
 \centering
-\caption{Factors and Levels}
-\label{tab:factors_and_levels}
-\begin{tabular}{clll}
-\hline
-\multicolumn{1}{l}{}             & \multicolumn{3}{c}{\textbf{Factors}}                       \\ 
-\multicolumn{1}{l}{}             & \textbf{Factor 1} & \textbf{Factor 2} &  \\ \hline
-\multirow{3}{*}{\textbf{Levels}} & Model Head        & Model Size        &  \\ 
-                                 & Without Changes   & Tiny              &  \\ 
-                                 & With Changes      & Small              &  \\ 
-                                 & --                & Large              &  \\ \hline
+\caption{Experimental Factors and Levels}
+\label{tab:factors-and-levels}
+\begin{tabular}{lll}
+\toprule
+\textbf{Factor} & \textbf{Description} & \textbf{Levels} \\
+\midrule
+Factor 1 & Model Head Architecture 
+         & Without Changes \\
+         &                       
+         & With Changes \\
+\midrule
+Factor 2 & Model Size             
+         & Tiny \\
+         &                       
+         & Small \\
+         &                       
+         & Large \\
+\bottomrule
 \end{tabular}
 \end{table}
+
 
 
 %\begin{table}[H]
@@ -87,10 +97,28 @@ Table \ref{tab:factors_and_levels} summarizes the factors and levels used on all
 \section{Response Variable}
 This sections shows a description of all the response variables used and obtained during the development of this research.
 
+For the next sections the following concepts are defined: 
+
+\begin{itemize}
+    \item $TP_i$ (True Positives) — number of correctly predicted samples of class $i$.
+    \item $FP_i$ (False Positives) — number of samples incorrectly predicted as class $i$.
+    \item $FN_i$ (False Negatives) — number of samples from class $i$ incorrectly predicted as other classes.
+\end{itemize}
+
 \subsection{Accuracy} \label{sub:accurracy}
 
 
-The standard or top-1 accuracy was used as the main metric for reviewing performance and robustness comparison between models. The metric corresponds to a simple calculation taking the correctly classified samples and dividing it by the total number of samples. For multi-class classification, Accuracy represents the ratio of correctly predicted samples to the total number of samples across all emotion classes
+The standard or top-1 accuracy was used as the main metric for reviewing performance and robustness comparison between models. The metric corresponds to a simple calculation taking the correctly classified samples and dividing it by the total number of samples. Equation \ref{eq:accurracy} shows how accuracy is calculated. 
+
+For multi-class classification, Accuracy represents the ratio of correctly predicted samples to the total number of samples across all emotion classes. Additionally, both training and validation accuracy were monitored throughout the learning process to assess the model’s generalization capability and detect potential overfitting, an example of the curves comparison is shown on image \ref{fig:training-validation-acurracy-example}.
+
+\begin{figure}[H]
+\centering
+   \includegraphics[width=0.90\textwidth]{../images/training-validation-accurracy-example.png}
+\caption{Training and validation accuracy per epoch example \\ \textbf{Source:} Facial Expression Recognition using Squeeze and Excitation-powered Swin  Transformers\cite{vats_facial_2023}}
+\label{fig:training-validation-acurracy-example}
+\end{figure}
+
 
 
 \begin{equation}
@@ -108,7 +136,7 @@ Where:
 
 \subsection{F1-Score(Macro-Averaged for Multi-class)} \label{sub:f1-score}
 
-It computes f1-score for each emotion independently, then averages them by giving equal weight to all classes. At the same time macro-averaged f1-score, equation \ref{eq:f1-macro-avg}, provides a balanced metric by averaging the f1-score computed independently for each emotion class, ensuring equal importance is given to both majority and minority classes.
+F1-score is computed for each emotion independently, then averages them by giving equal weight to all classes. At the same time macro-averaged f1-score, equation \ref{eq:f1-macro-avg}, provides a balanced metric by averaging the f1-score computed independently for each emotion class, ensuring equal importance is given to both majority and minority classes.
 
 
 \begin{equation}
@@ -133,9 +161,7 @@ Precision is an evaluation metric that measures the accuracy of the model’s po
 \text{Precision}_i = \frac{TP_i}{TP_i + FP_i}
 \end{equation}
 
-A high precision score indicates that the model produces fewer false positives, meaning it is less likely to incorrectly assign an emotion label to a facial expression that does not belong to that category. This is particularly important in FER tasks where certain emotions share visual similarities, leading to potential misclassification (e.g., happiness vs. surprise).
-
-In this research, precision is computed on a per-class basis and aggregated to evaluate the reliability of the modified Visual Transformer’s predictions. Precision analysis complements recall by highlighting trade-offs between sensitivity and prediction confidence, providing a more comprehensive understanding of model performance.
+A high precision score indicates that the model produces fewer false positives, meaning it is less likely to incorrectly assign an emotion label to a facial expression that does not belong to that category. This is particularly important in FER tasks where certain emotions share visual similarities, leading to potential misclassification (e.g., happiness vs. surprise). In this research, precision is computed on a per-class basis and aggregated to evaluate the reliability of the modified Visual Transformer’s predictions. 
 
 
 \subsection{Recall} \label{sub:recall}
@@ -149,12 +175,6 @@ Recall is a fundamental evaluation metric used to measure the model’s ability 
 
 A high recall value indicates that the model successfully minimizes false negatives, which is particularly important in FER tasks where under-detection of certain emotions (e.g., fear or disgust) can negatively impact downstream applications such as affective computing or human–computer interaction
 
-where:
-\begin{itemize}
-    \item $TP_i$ (True Positives) — number of correctly predicted samples of class $i$.
-    \item $FP_i$ (False Positives) — number of samples incorrectly predicted as class $i$.
-    \item $FN_i$ (False Negatives) — number of samples from class $i$ incorrectly predicted as other classes.
-\end{itemize}
 
 A higher value of \ref{eq:f1-macro-avg} indicates better overall balance between precision \ref{sub:precision} and recall \ref{sub:recall} across all emotion categories.
 
@@ -231,21 +251,23 @@ The mixed feature representation produced by the dual branch architecture serves
 
 \section{Data Recollection}
 
-%Description of the data recollection process. Usually, it is a good idea to present a pointer to a GitHub page where all data and scripts used are available.
+This section shows a brief description of the data recollection process. 
 
+%Usually, it is a good idea to present a pointer to a GitHub page where all data and scripts used are available.
+\subsection{RAF-DB}
 
-For conducting all of the experiments the datased Real-world Affective Faces Database (RAF-DB) \footnote{\url{https://www.kaggle.com/datasets/shuvoalok/raf-db-dataset}} \footnote{\url{http://www.whdeng.cn/RAF/model1.html}} was be used. This corresponds to a widely used dataset in the field of Facial Expression Recognition (FER).
+For conducting all of the experiments the dataset Real-world Affective Faces Database (RAF-DB)\footnote{\url{https://www.kaggle.com/datasets/shuvoalok/raf-db-dataset}}\footnote{\url{http://www.whdeng.cn/RAF/model1.html}} was be used. This corresponds to a widely used dataset in the field of Facial Expression Recognition (FER).
 
 The images, collected from the Internet, are representative of diverse real-world conditions, including variations in ethnicity, age, gender, lighting, and occlusions (e.g. glasses, facial hair or self-occlusion), post-processing operations (e.g. various filters and special effects), etc. These particular features make RAF-DB a challenging dataset, ideal for evaluating FER models under realistic settings.
 
-Images in RAF-DB were labeled by 40 human annotators through crowdsourcing, and a majority voting scheme was used to finalize the annotations. The FER dataset flavor used in this thesis work includes 12,271 images for training and 3,068 for testing, focusing primarily on static image-based FER. Additional information of each class distribution for training and testing is provided in table \ref{tab:class_distribution}. 
+Images in RAF-DB were labeled by 40 human annotators through crowdsourcing, and a majority voting scheme was used to finalize the annotations. The FER dataset flavor used in this thesis work includes 12,271 images for training and 3,068 for testing, focusing primarily on static image-based FER. Additional information of each class distribution for training and testing is provided in table \ref{tab:class-distribution}. 
 
-RAF-DB corresponds to real-world complexity dataset that includes images with subtle expressions, extreme head poses, and high intra-class variability which has driven important advancements in other FER models. 
+The RAF-DB dataset contains facial images collected from a wide international population, exhibiting substantial diversity in ethnicity, age, and gender. Although detailed demographic labels such as age values or ethnicity categories are not explicitly provided, the dataset includes faces from Caucasian, Asian, African-descent, and Latin American groups, as well as a broad range of age groups extending from children, adults and older adults. This demographic variability, combined with variations in pose, illumination, occlusion, and background, contributes to the dataset’s realism and makes it a suitable benchmark for evaluating the generalization capability of facial expression recognition models.
 
 \begin{table}[H]
 \centering
 \caption{Class distribution for training and test datasets}
-\label{tab:class_distribution}
+\label{tab:class-distribution}
 \begin{tabular}{llcc}
 \hline
 \textbf{Dataset} & \textbf{Class} & \textbf{Class ID} & \textbf{Samples} \\
@@ -277,7 +299,7 @@ RAF-DB corresponds to real-world complexity dataset that includes images with su
 
 
 
-RAF-DB has been instrumental in benchmarking state-of-the-art models like ResNet-50 \cite{he_deep_2015}, Swin Transformer \cite{liu_swin_2021}, and POSTER \cite{zheng_poster_2022}, which achieved accuracies of 86.34 \%, 90.97 \%, and 92\%+, respectively.
+RAF-DB has been instrumental in multiple benchmarking state-of-the-art models like ResNet-50 \cite{he_deep_2015}, Swin Transformer \cite{liu_swin_2021}, and POSTER \cite{zheng_poster_2022}, which achieved accuracy values of 86.34 \%, 90.97 \%, and 92\%+, respectively.
 
 
 
