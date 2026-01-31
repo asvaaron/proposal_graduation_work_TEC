@@ -3,7 +3,7 @@
 \label{chapter:design}
 \newpage
 
-This chapter presents the developed algorithm/mechanism used to test the hypothesis. 
+%This chapter presents the developed algorithm/mechanism used to test the hypothesis. 
 
 
 This chapter describes the experimental design adopted in this research, including the algorithm,  architectural decisions, evaluation criteria, and constraints that guided the development and assessment used to test the hypotesis. The design is structured to ensure reproducibility, statistical validity, and relevance to real-world Facial Expression Recognition (FER) scenarios.
@@ -182,41 +182,20 @@ Some advantages of the new enhanced head include:
 
 
 \subsection{Limitations and Requirements}
-A brief description of the design mechanism's limitations and requirements in accordance with the definitions in Scope and Limitations.
+
+A brief description of the design mechanism's limitations and requirements in accordance with the definitions in section \ref{section:scope-limitations} Scope and Limitations.
 
 \subsubsection{Dataset Limitations}
 
-Although RAF-DB is widely used for in-the-wild FER, it has several limitations:
+Although the RAF-DB dataset is widely adopted for in-the-wild facial expression recognition, it presents several inherent limitations that may affect the interpretation of results. One notable challenge is the imbalance across emotion classes, where certain expressions are underrepresented compared to others, potentially biasing the learning process toward more frequent categories. Additionally, the dataset relies on human annotations, which introduces a degree of subjectivity and inconsistency, particularly for ambiguous or subtle expressions. Furthermore, RAF-DB does not comprehensively capture extreme real-world conditions such as severe occlusions, exaggerated head poses, or highly adverse lighting environments. 
 
-\begin{itemize}
-
-
-\item Contains class imbalance across emotion categories
-
-\item Relies on human annotations, which may introduce subjectivity
-
-\item Does not fully represent extreme real-world scenarios such as heavy occlusion or extreme poses
-
-\end{itemize}
-
-These factors may limit the generalizability of the findings.
 
 \subsubsection{Architectural Scope}
 
-This study focuses exclusively on modifications to the classification head of the POSTER architecture. Consequently improvements cannot be attributed to changes in feature extraction. Also, potential gains from modifying attention mechanisms or fusion strategies are not explored
+The architectural scope of this study is deliberately constrained to modifications applied solely to the classification head of the POSTER architecture. As a result, any observed performance changes can be attributed to alterations in the decision-making layers rather than improvements in feature extraction. Consequently, the potential benefits of modifying earlier stages, attention mechanisms, or feature fusion strategies are beyond the scope of this work and are not examined. This focused design choice ensures controlled experimentation but limits the exploration of broader architectural enhancements.
 
 \subsubsection{Computational Constraints}
-
-The depth and number of experimental configurations are constrained by available computational resources. As a result:
-
-\begin{itemize}
-
-\item Extremely deep or large head architectures are not evaluated
-
-\item Training is performed under fixed hardware and time limitations
-
-\end{itemize}
-
+The extent of architectural experimentation and hyperparameter exploration is further constrained by available computational resources. Training and evaluation are conducted under fixed hardware and time limitations, which restrict the feasibility of testing extremely deep or computationally intensive classification head designs. These constraints demand a balance between experimental depth and practical feasibility, potentially limiting the exploration of more complex or resource-demanding configurations.
 
 
 %Fairness Analysis Limitations
