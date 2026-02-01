@@ -63,7 +63,7 @@ This chapter describes the theoretical concepts needed to understand the work de
 
 \section{FER}
 
-Facial Expression Recognition (\gls{FER}) is a crucial area of research in affective computing and human-computer interaction. It involves detecting and classifying human emotions based on facial expressions, which can enhance applications in psychology, security, and social robotics. Traditional FER methods relied on handcrafted features, such as Local Binary Patterns (LBP) and Histogram of Oriented Gradients (HOG), but deep learning has significantly advanced the field. Convolutional Neural Networks (CNNs) and Vision Transformers (ViTs) have demonstrated superior performance in FER by learning hierarchical spatial features and capturing global dependencies, respectively  \cite{zheng_poster_2022}, \cite{kollias_affect_2021}. 
+Facial Expression Recognition (\gls{FER}) is a crucial area of research in affective computing and human-computer interaction. It involves detecting and classifying human emotions based on facial expressions, which can enhance applications in psychology, security, and social robotics. Traditional FER methods relied on handcrafted features, such as Local Binary Patterns (LBP) \cite{el_moussati_local_2020} and Histogram of Oriented Gradients (HOG) \cite{carcagni_facial_2015}, but deep learning has significantly advanced the field. Convolutional Neural Networks (CNNs) and Vision Transformers (ViTs) have demonstrated superior performance in FER by learning hierarchical spatial features and capturing global dependencies, respectively  \cite{zheng_poster_2022}, \cite{kollias_affect_2021}. 
 
 
 %\begin{figure}[H]
@@ -141,7 +141,8 @@ As show in image \ref{fig:intra-inter-classes-images} POSTER addresses \gls{intr
 \begin{figure}[H]
 \centering
    \includegraphics[width=0.70\textwidth]{../images/poster_cross_function.png}
-\caption{POSTER Cross-Fusion Transformer vs Previous Versions}
+\caption{POSTER Cross-Fusion Transformer vs Previous Versions  \\ 
+\textbf{Source:} POSTER\cite{zheng_poster_2022}}
 \label{fig:poster-cross-function}
 \end{figure}
 	
@@ -180,11 +181,9 @@ Furthermore, integrating auxiliary loss functions or regularization techniques w
 
 The related work for the research is included in this section:
 
-Facial expression recognition (FER) has been extensively studied over the past decades, evolving from traditional machine learning approaches to deep learning methods. Early FER systems relied on handcrafted features such as Local Binary Patterns (LBP) and Histogram of Oriented Gradients (HOG). These approaches, while computationally efficient, often struggled to generalize across diverse datasets due to limited feature representation capabilities. 
+Facial expression recognition (FER) has been extensively studied over the past decades, evolving from traditional machine learning approaches to deep learning methods. Early FER systems relied on handcrafted features such as Local Binary Patterns (LBP) \cite{el_moussati_local_2020} and Histogram of Oriented Gradients (HOG) \cite{carcagni_facial_2015}. These approaches, while computationally efficient, often struggled to generalize across diverse datasets due to limited feature representation capabilities. 
 
-The advent of convolutional neural networks (CNNs) revolutionized FER by enabling automatic feature extraction, with architectures such as VGGNet, ResNet \cite{he_deep_2015}, and EfficientNet achieving significant performance improvements. However, CNNs face limitations in capturing global dependencies and spatial relationships in images, which has motivated the exploration of transformer-based models in computer vision tasks \cite{islam_recent_2023}.
-
-The introduction of Vision Transformers (\gls{ViTs}) by Dosovitskiy \cite{dosovitskiy_image_2021} marked a significant shift in how visual tasks are approached. By leveraging self-attention mechanisms, ViTs can model long-range dependencies and capture richer contextual information compared to traditional CNNs.
+The advent of convolutional neural networks (CNNs) revolutionized FER by enabling automatic feature extraction, with architectures such as VGGNet \cite{simonyan_very_2015}, ResNet \cite{he_deep_2015}, and EfficientNet \cite{tan_efficientnet_2020} achieving significant performance improvements. However, CNNs face limitations in capturing global dependencies and spatial relationships in images, which has motivated the exploration of transformer-based models in computer vision tasks \cite{islam_recent_2023}. The introduction of Vision Transformers \gls{ViTs} on FER by Dosovitskiy \cite{dosovitskiy_image_2021} marked a significant shift in how FER visual tasks are approached. By leveraging self-attention mechanisms, \gls{ViTs} can model long-range dependencies and capture richer contextual information, this attains excellent results compared to state-of-the-art convolutional networks.
 
 
 In recent work on Facial Expression Recognition (FER), several models have demonstrated promising results, each with its unique strengths and limitations. ResNet-50 \cite{he_deep_2015}, a baseline convolutional neural network (CNN), performs well in local feature extraction, achieving an accuracy of 86.34\%. However, it struggles with capturing global context, which limits its effectiveness in more complex FER scenarios. The Swin Transformer \cite{liu_swin_2021}, with its hierarchical design, leverages both local and global features but comes with significant computational expense, resulting in an accuracy of 90.97\%. The Vision Transformer (ViT) Base \cite{dosovitskiy_image_2021} model, though powerful, has difficulty handling subtle FER cues in real-world conditions, also achieving an accuracy of 86.34\%. In contrast, the POSTER model \cite{zheng_poster_2022} achieves a superior accuracy of 92.05\% by combining pyramid attention with cross-fusion mechanisms, enabling synergy between local and global features, thereby enhancing its performance in FER tasks. Additional information of each of the models referenced before can be found on table \ref{tab:state_of_the_art_fer_models}.
