@@ -93,7 +93,7 @@ FER in controlled environments, such as laboratory settings, differs significant
 \begin{figure}[H]
 \centering
    \includegraphics[width=0.70\textwidth]{../images/faces_rafdb_dataset.png}
-\caption{Real-world Affective Faces Database (RAF-DB), a dataset for facial expression}
+\caption{Real-world Affective Faces Database (RAF-DB), a dataset for facial expression \\ \textbf{Source:} Reliable Crowdsourcing and Deep Locality-Preserving Learning for Expression Recognition in the Wild  \cite{li_reliable_2017}}
 \label{fig:RAF-DB}
 \end{figure}
 
@@ -119,15 +119,15 @@ Unlike Convolutional Neural Networks (CNNs), which rely on local receptive field
 
 One such model is POSTER: A Pyramid Cross-Fusion Transformer Network for Facial Expression Recognition, which introduces a hierarchical fusion mechanism to enhance local and global facial feature interactions. POSTER effectively balances efficiency and accuracy by integrating multi-scale information processing within a transformer framework, demonstrating superior performance on benchmark FER datasets \cite{zheng_poster_2022}.
 
-As show in image \ref{fig:intra_inter_classes_images} POSTER addresses \gls{intra-class} and \gls{inter-class} variation by leveraging a pyramid structure for multi-scale feature extraction, ensuring robust representation of subtle differences within the same expression. Its cross-fusion mechanism refines feature interactions, reducing the impact of pose, lighting, and intensity variations while enhancing consistency. To tackle \gls{inter-class} variation, \gls{POSTER} employs attention-based differentiation and hierarchical refinement, helping distinguish similar expressions by focusing on key distinguishing features. POSTER's architecture most relevant parts are shown in figure \ref{fig:poster_architecure_example}. 
+As show in image \ref{fig:intra-inter-classes-images} POSTER addresses \gls{intra-class} and \gls{inter-class} variation by leveraging a pyramid structure for multi-scale feature extraction, ensuring robust representation of subtle differences within the same expression. Its cross-fusion mechanism refines feature interactions, reducing the impact of pose, lighting, and intensity variations while enhancing consistency. To tackle \gls{inter-class} variation, \gls{POSTER} employs attention-based differentiation and hierarchical refinement, helping distinguish similar expressions by focusing on key distinguishing features. POSTER's architecture cross function parts are shown in figure \ref{fig:poster-cross-function}. 
 
-\begin{figure}[H]
-\centering
-   \includegraphics[width=0.90\textwidth]{../images/poster_image.png}
-\caption{POSTER Cross-Fusion Transformer Architecture Example \\ 
-\textbf{Source:} POSTER\cite{zheng_poster_2022}}
-\label{fig:poster_architecure_example}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%   \includegraphics[width=0.90\textwidth]{../images/poster_image.png}
+%\caption{POSTER Cross-Fusion Transformer Architecture Example \\ 
+%\textbf{Source:} POSTER\cite{zheng_poster_2022}}
+%\label{fig:poster_architecure_example}
+%\end{figure}
 
 
 \begin{figure}[H]
@@ -135,15 +135,15 @@ As show in image \ref{fig:intra_inter_classes_images} POSTER addresses \gls{intr
    \includegraphics[width=0.90\textwidth]{../images/intra_inter_classes_images.png}
 \caption{POSTER Cross-Fusion Transformer Intra and Inter Image Classes \\ 
 \textbf{Source:} POSTER\cite{zheng_poster_2022}}
-\label{fig:intra_inter_classes_images}
+\label{fig:intra-inter-classes-images}
 \end{figure}
 	
-%\begin{figure}[H]
-%\centering
-%   \includegraphics[width=0.70\textwidth]{../images/poster_cross_function.png}
-%\caption{POSTER Cross-Fusion Transformer vs Previous Versions}
-%\label{fig:poster_cross_function}
-%\end{figure}
+\begin{figure}[H]
+\centering
+   \includegraphics[width=0.70\textwidth]{../images/poster_cross_function.png}
+\caption{POSTER Cross-Fusion Transformer vs Previous Versions}
+\label{fig:poster-cross-function}
+\end{figure}
 	
 	
 The shift towards transformers has opened new avenues for improving FER, particularly by modifying their classification heads and MLP layers to enhance discriminative power \cite{tolstikhin_mlp-mixer_2021} \cite{abdullah_activator_2024}. 
@@ -192,7 +192,8 @@ In recent work on Facial Expression Recognition (FER), several models have demon
 
 \begin{table}[H]
 \centering
-\caption{State of the Art of FER models}
+\caption{State of the Art of FER models \\ 
+\textbf{Source:} POSTER\cite{zheng_poster_2022}}
 \label{tab:state_of_the_art_fer_models}
 \renewcommand{\arraystretch}{1.5} % Adjust row spacing
 \begin{tabular}{llll}
