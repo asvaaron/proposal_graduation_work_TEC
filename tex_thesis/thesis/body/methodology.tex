@@ -13,7 +13,7 @@ This section presents a brief introduction to the statistical tools used in the 
 \section{Experiment Design}
 \label{section:experiment-design}
 
-The experiment consisted of 6 unique configurations derived from the combination of  two factors. Factor  $A$ corresponds to original model vs changes made in the head. Factor $B$ corresponds to the model size large/medium/small. In  \cite{zheng_poster_2022} the feature pyramid structure has features with embedding dim $DH = 512$, $DM = 256$, and $DL = 128$, respectively. For factor $A, s_a =2$ and Factor $B, s_b=3$, where $s$ is number of levels on each factor, we have a two-way factorial design $s_a \times s_b = 2 \times 3 = 6$. Each combination (cell) is a $\text{Head} \times \text{Size}$ pair (6 cells total).
+The experiment consisted of 6 unique configurations derived from the combination of  two factors. Factor  $A$ corresponds to original model vs changes made in the head. Factor $B$ corresponds to the model size large/base/small. In  \cite{zheng_poster_2022} the feature pyramid structure has features with embedding dim $DH = 512$, $DM = 256$, and $DL = 128$, respectively. For factor $A, s_a =2$ and Factor $B, s_b=3$, where $s$ is number of levels on each factor, we have a two-way factorial design $s_a \times s_b = 2 \times 3 = 6$. Each combination (cell) is a $\text{Head} \times \text{Size}$ pair (6 cells total).
 
 
 For each configuration, the POSTER Visual Transformer was trained using a facial expression dataset RAF-DB, and the performance was evaluated based on a chosen metric, such as classification accuracy Section \ref{sub:accuracy} and F1-score Section \ref{sub:f1-score}.
@@ -46,9 +46,9 @@ Factor 1 & Model Head Architecture
          & With Changes \\
 \midrule
 Factor 2 & Model Size             
-         & Tiny \\
-         &                       
          & Small \\
+         &                       
+         & Base \\
          &                       
          & Large \\
 \bottomrule
