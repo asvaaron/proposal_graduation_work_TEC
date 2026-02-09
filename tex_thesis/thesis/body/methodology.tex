@@ -3,7 +3,7 @@
 
 \chapter{Methodology}
 \label{chapter:methodology}
-\epigraph{``It doesn't matter how beautiful your theory is, it doesn't matter how smart you are. If it doesn't agree with experiment, it's wrong.''}{\vspace{10pt}Richard Feynman }
+\epigraph{``It doesn't matter how beautiful your theory is, it doesn't matter how smart you are. If it doesn't agree with experiment, it's wrong.''}{\vspace{10pt}Richard Feynman}
 
 \newpage
 
@@ -16,9 +16,9 @@ This section presents a brief introduction to the statistical tools used in the 
 The experiment consisted of 6 unique configurations derived from the combination of  two factors. Factor  $A$ corresponds to original model vs changes made in the head. Factor $B$ corresponds to the model size large/medium/small. In  \cite{zheng_poster_2022} the feature pyramid structure has features with embedding dim $DH = 512$, $DM = 256$, and $DL = 128$, respectively. For factor $A, s_a =2$ and Factor $B, s_b=3$, where $s$ is number of levels on each factor, we have a two-way factorial design $s_a \times s_b = 2 \times 3 = 6$. Each combination (cell) is a $\text{Head} \times \text{Size}$ pair (6 cells total).
 
 
-For each configuration, the POSTER Visual Transformer was trained using a facial expression dataset RAF-DB, and the performance was evaluated based on a chosen metric, such as classification accuracy Section \ref{sub:accurracy} and F1-score Section \ref{sub:f1-score}.
+For each configuration, the POSTER Visual Transformer was trained using a facial expression dataset RAF-DB, and the performance was evaluated based on a chosen metric, such as classification accuracy Section \ref{sub:accuracy} and F1-score Section \ref{sub:f1-score}.
 
-The models were trained in a controlled environment, where the only variations between runs are the levels of the factors being tested. This allowed for a rigorous comparison of how  model size, learning rate and head modifications influence the transformer’s performance in FER tasks using \gls{in-the-wild} datasets.
+The models were trained in a controlled environment, where the only variations between runs are the levels of the factors being tested. This allowed for a rigorous comparison of how  model size, learning rate and head modifications influence the transformer's performance in FER tasks using \gls{in-the-wild} datasets.
 
 
 %\section{Factors and Levels (if needed):}
@@ -29,13 +29,13 @@ The models were trained in a controlled environment, where the only variations b
 
 \section{Measures and Combinations of the Experiment}
 
-Table \ref{tab:factors-and-levels} summarizes the factors and levels used on all of the experiments. 
+Table \ref{tab:factors_and_levels} summarizes the factors and levels used on all of the experiments. 
 
 
 \begin{table}[H]
 \centering
 \caption{Experimental Factors and Levels}
-\label{tab:factors-and-levels}
+\label{tab:factors_and_levels}
 \begin{tabular}{lll}
 \toprule
 \textbf{Factor} & \textbf{Description} & \textbf{Levels} \\
@@ -108,13 +108,13 @@ For the next sections the following concepts are defined:
 \subsection{Accuracy} \label{sub:accurracy}
 
 
-The standard or top-1 accuracy was used as the main metric for reviewing performance and robustness comparison between models. The metric corresponds to a simple calculation taking the correctly classified samples and dividing it by the total number of samples. Equation \ref{eq:accurracy} shows how accuracy is calculated. 
+The standard or top-1 accuracy was used as the main metric for reviewing performance and robustness comparison between models. The metric corresponds to a simple calculation taking the correctly classified samples and dividing it by the total number of samples. Equation \ref{eq:accuracy} shows how accuracy is calculated. 
 
-For multi-class classification, Accuracy represents the ratio of correctly predicted samples to the total number of samples across all emotion classes. Additionally, both training and validation accuracy were monitored throughout the learning process to assess the model’s generalization capability and detect potential overfitting, an example of the curves comparison is shown on image \ref{fig:training-validation-acurracy-example}.
+For multi-class classification, Accuracy represents the ratio of correctly predicted samples to the total number of samples across all emotion classes. Additionally, both training and validation accuracy were monitored throughout the learning process to assess the model's generalization capability and detect potential overfitting, an example of the curves comparison is shown on image \ref{fig:training-validation-acurracy-example}.
 
 \begin{figure}[H]
 \centering
-   \includegraphics[width=0.90\textwidth]{../images/training-validation-accurracy-example.png}
+   \includegraphics[width=0.90\textwidth]{../images/training-validation-acurracy-example.png}
 \caption{Training and validation accuracy per epoch example \\ \textbf{Source:} Facial Expression Recognition using Squeeze and Excitation-powered Swin  Transformers\cite{vats_facial_2023}}
 \label{fig:training-validation-acurracy-example}
 \end{figure}
@@ -161,7 +161,7 @@ Precision is an evaluation metric that measures the accuracy of the model’s po
 \text{Precision}_i = \frac{TP_i}{TP_i + FP_i}
 \end{equation}
 
-A high precision score indicates that the model produces fewer false positives, meaning it is less likely to incorrectly assign an emotion label to a facial expression that does not belong to that category. This is particularly important in FER tasks where certain emotions share visual similarities, leading to potential misclassification (e.g., happiness vs. surprise). In this research, precision is computed on a per-class basis and aggregated to evaluate the reliability of the modified Visual Transformer’s predictions. 
+A high precision score indicates that the model produces fewer false positives, meaning it is less likely to incorrectly assign an emotion label to a facial expression that does not belong to that category. This is particularly important in FER tasks where certain emotions share visual similarities, leading to potential misclassification (e.g., happiness vs. surprise). In this research, precision is computed on a per-class basis and aggregated to evaluate the reliability of the modified visual transformer’s predictions. 
 
 
 \subsection{Recall} \label{sub:recall}
@@ -173,7 +173,7 @@ Recall is a fundamental evaluation metric used to measure the model’s ability 
 \text{Recall}_i = \frac{TP_i}{TP_i + FN_i}
 \end{equation}
 
-A high recall value indicates that the model successfully minimizes false negatives, which is particularly important in FER tasks where under-detection of certain emotions (e.g., fear or disgust) can negatively impact downstream applications such as affective computing or human–computer interaction
+A high recall value indicates that the model successfully minimizes false negatives, which is particularly important in FER tasks where under-detection of certain challenging emotions (e.g., fear or disgust) can negatively impact downstream applications such as affective computing or human–computer interaction
 
 
 A higher value of \ref{eq:f1-macro-avg} indicates better overall balance between precision \ref{sub:precision} and recall \ref{sub:recall} across all emotion categories.
@@ -212,7 +212,7 @@ Loss function plots are generated to visualize:
 \begin{itemize}
 \item Training loss evolution
 \item Validation loss trends
-\item Potential overfitting or underfitting behavior
+\item Potential overfitting or under fitting behavior
 
 \end{itemize}
 
@@ -226,24 +226,49 @@ The experimental setup was designed to ensure reproducibility, fairness, and con
 
 Training was performed using NVIDIA GPUs with CUDA acceleration. Both local and cloud-based environments were used, including a desktop workstation equipped with two NVIDIA GeForce RTX 3060 GPUs and Google Colab Pro Plus instances with dynamically allocated NVIDIA GPUs. All experiments were executed using PyTorch, and deterministic CUDA behavior was enforced by fixing random seeds for Python, NumPy, and PyTorch.
 
-Each model configuration was trained for 250 epochs under identical hyperparameter settings, including a training batch size of 120, a validation batch size of 30, the Adam optimizer, and a learning rate of $4 \times 10^{-4}$. Early stopping was not applied in order to ensure consistent training dynamics across all experimental runs. Model checkpoints and training logs were stored for post hoc analysis and metric aggregation.
+Each model configuration was trained for 250 epochs under identical hyper parameter settings, including a training batch size of 120, a validation batch size of 30, the Adam optimizer, and a learning rate of $4 \times 10^{-4}$. Early stopping was not applied in order to ensure consistent training dynamics across all experimental runs. Model checkpoints and training logs were stored for post hoc analysis and metric aggregation.
 
 
 
 \section{Description of the inputs of the system}
 
 
-The input to the system consists of static facial images obtained from the Real World Affective Faces Database (RAF-DB). All images are processed using a standardized preprocessing pipeline to ensure consistency and reproducibility across all the experiments. Each image is converted to RGB format and resized to a fixed spatial resolution of $224 \times 224$ pixels, which is compatible with the POSTER backbone and Vision Transformer based architectures. Pixel intensities are normalized using channel wise mean and standard deviation values computed from the training dataset. After preprocessing, each image is represented as a tensor with three channels and a spatial resolution of 224 by 224 pixels $(3 \times 224 \times 244)$ and is passed to the feature extraction stage of the model. 
+The input to the system consists of static facial images obtained from the Real World Affective Faces Database (RAF-DB). All images are processed using a standardized preprocessing pipeline to ensure consistency and reproducibility across all the experiments. Each image is converted to RGB format and resized to a fixed spatial resolution of $224 \times 224$ pixels, which is compatible with the POSTER backbone and Vision Transformer based architectures. Pixel intensities are normalized using channel wise mean and standard deviation values computed from the training dataset. After preprocessing, each image is represented as a tensor with three channels and a spatial resolution of 224 by 224 pixels $(3 \times 224 \times 224)$ and is passed to the feature extraction stage of the model. 
 
 
 \begin{figure}[H]
 \centering
    \includegraphics[width=0.90\textwidth]{../images/poster_architecture_pretrained.png}
-\caption{POSTER Cross-Fusion Transformer Architecture showing Pretrained models}
+\caption{POSTER Cross-Fusion Transformer Architecture showing Pretrained models \\ \textbf{Source:} POSTER\cite{zheng_poster_2022}}
 \label{fig:poster_cross_function_architecture_pretrained}
 \end{figure}
 
-The architecture uses a dual branch design in which two complementary feature representations are extracted in parallel. Both branches rely on pretrained models. One branch focuses on facial landmark based features and is implemented using MobileFaceNet\footnote{\url{https://github.com/cunjian/pytorch_face_landmark}}. This branch captures geometric deformations related to facial muscle movements such as smiles, frowns, and eyebrow raises. The second branch relies on an IR50 based appearance encoder, which captures fine grained texture and intensity variations such as wrinkles, shading, and facial tension. This dual branch strategy is particularly well suited for RAF-DB, as in the wild facial expressions exhibit both geometric and appearance based variability. A detailed explanation of this architecture is shown in figure \ref{fig:poster_cross_function_architecture_pretrained}.
+\subsection{Feature Extraction Backbones: IR50 and MobileFaceNet}
+
+
+\subsubsection{IR50 Appearance Encoder}
+
+The IR50 backbone corresponds to an InsightFace-style ResNet-50 architecture, commonly referred to as IResNet-50 \footnote{\url{https://github.com/deepinsight/insightface}}. This model has been widely used in face analysis tasks \cite{deng_arcface_2022} 
+\cite{vedaldi_sub-center_2020} due to its strong representational capacity for capturing fine-grained facial appearance features. In the POSTER \cite{zheng_poster_2022} framework, the IR50 branch functions acts as an appearance encoder, extracting texture-based information such as wrinkles, shading variations, and subtle intensity changes around key facial regions.
+
+
+IR-based backbones are frequently pretrained using margin-based loss functions, such as ArcFace \cite{deng_arcface_2022}, which enhance inter-class separability and intra-class compactness in the learned embedding space. Although originally developed for face identity recognition, these pretrained representations have proven effective when transferred to related facial analysis tasks, including facial expression recognition, due to their robustness to pose, illumination, and identity variation.
+
+
+Within this research, the IR50 backbone is kept fixed across all experimental configurations. This design choice ensures that any observed performance differences can be attributed exclusively to modifications in the classification head rather than changes in the feature extraction stage.
+
+
+\subsubsection{MobileFaceNet Geometric Encoder}
+
+MobileFaceNet\footnote{\url{https://github.com/cunjian/pytorch_face_landmark}} \footnote{\url{https://github.com/TreB1eN/InsightFace_Pytorch?tab=readme-ov-file}} is a lightweight convolutional neural network architecture specifically designed for efficient facial representation learning. Its compact structure enables the extraction of discriminative geometric features while maintaining a low computational footprint \cite{tan_efficientnet_2020} 
+\cite{chen_mobilefacenets_2018}. In POSTER \cite{zheng_poster_2022}, MobileFaceNet is employed as the landmark-oriented branch, focusing on capturing facial geometry and muscle deformation patterns associated with expressions, such as eyebrow movements, mouth opening, and cheek displacement.
+
+
+The use of MobileFaceNet complements the appearance-focused IR50 branch by emphasizing structural information that remains informative even under challenging in-the-wild conditions, such as partial occlusion or low image quality. Through the pyramid cross-fusion mechanism, geometric and appearance-based features are combined at multiple scales, improving the model’s robustness to intra-class variation and inter-class similarity. As with the IR50 branch, the MobileFaceNet encoder remains unchanged throughout all experiments in this thesis, enabling a controlled evaluation of the proposed classification head modifications.
+
+\subsection{POSTER Architecture}
+
+The architecture uses a dual branch design in which two complementary feature representations are extracted in parallel. Both branches rely on pretrained models. The branch that focuses on facial landmark based features is implemented using MobileFaceNet. This branch captures geometric deformations related to facial muscle movements such as smiles, frowns, and eyebrow raises. The second branch relies on an IR50 based appearance encoder, which captures fine grained texture and intensity variations such as wrinkles, shading, and facial tension. This dual branch strategy is particularly well suited for RAF-DB, as in the wild facial expressions exhibit both geometric and appearance based variability. A detailed explanation of this architecture is shown in figure \ref{fig:poster_cross_function_architecture_pretrained}.
 
 
 The mixed feature representation produced by the dual branch architecture serves as the direct input to the modified classification head evaluated in this work. After multi-scale pyramid fusion, the features are refined using a channel wise attention mechanism implemented through a Squeeze and Excitation block. This operation emphasizes informative feature channels while suppressing less relevant responses, resulting in a compact and discriminative representation. The output of this attention enhanced feature vector is then passed to the proposed classification head, where architectural variations are introduced and evaluated. By keeping the input feature representation fixed and modifying only the structure of the classification head, this methodology enables a controlled analysis of the impact of head design on facial expression recognition performance using RAF-DB.
@@ -254,6 +279,7 @@ The mixed feature representation produced by the dual branch architecture serves
 This section shows a brief description of the data recollection process. 
 
 %Usually, it is a good idea to present a pointer to a GitHub page where all data and scripts used are available.
+
 \subsection{RAF-DB}
 
 For conducting all of the experiments the dataset Real-world Affective Faces Database (RAF-DB)\footnote{\url{https://www.kaggle.com/datasets/shuvoalok/raf-db-dataset}}\footnote{\url{http://www.whdeng.cn/RAF/model1.html}} was be used. This corresponds to a widely used dataset in the field of Facial Expression Recognition (FER).

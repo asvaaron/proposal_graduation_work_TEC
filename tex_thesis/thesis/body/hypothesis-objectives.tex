@@ -9,6 +9,7 @@ This chapter presents the hypothesis formulated for the thesis. Also, it display
 
 \section{Hypothesis}
 \label{section:hypothesis}
+
 %A brief context description of the formulation of the hypothesis can go here, followed by.
 
 
@@ -19,7 +20,7 @@ The hypothesis for this research effort reads as follows:
 %''By systematically exploring and evaluating various modifications to the model's head architecture of a Visual Transformer for Facial Expression
 %Recognition (FER), it is possible to surpass the current state-of-the-art performance achieved by the POSTER model on the RAF-DB dataset. Specifically, this study aims to improve the accuracy from POSTER’s reported 92.05\% to at least 93.00\%''
 
-By systematically exploring and evaluating various modifications to the classification head architecture of a Visual Transformer for Facial Expression Recognition, it is possible to achieve performance improvements using RAF-DB dataset, particularly for challenging emotion classes. These improvements are expected to be reflected in increased class-wise precision, recall, and f1-score for underperforming categories, while maintaining or improving overall model performance. 
+By systematically exploring and evaluating various modifications to the classification head architecture of a Visual Transformer for Facial Expression Recognition, it is possible to achieve performance improvements using RAF-DB data set, particularly for challenging emotion classes. These improvements are expected to be reflected in increased class-wise precision, recall, and f1-score for under performing categories, while maintaining or improving overall model performance. 
 
 \section{Objectives}
 \label{section:objectives}
@@ -47,9 +48,9 @@ Examine the performance of the POSTER (Pyramid Cross-Fusion Transformer) archite
 
 \item Evaluate how the proposed modifications to the  head architecture delivers insightful feature representations that explain the model's decision-making process in FER.
 	
-\item Investigate the robustness of the modified Visual Transformer model under adversarial and challenging image conditions, including noise and data perturbations such as occlusions, illumination variations, and subtle facial deformations, as well as fairness-related aspects involving demographic biases (e.g., age, gender, and ethnicity), using the RAF-DB dataset to represent in-the-wild conditions.
+\item Investigate the robustness of the modified Visual Transformer model under adversarial and challenging image conditions, including noise and data perturbations such as occlusions, illumination variations, and subtle facial deformations, as well as fairness-related aspects involving demographic biases (e.g., age, gender, and ethnicity), using the RAF-DB data set to represent in-the-wild conditions.
 	
-\item Explore how the new MLP head architecture improve the model’s resilience to a \gls{in-the-wild} dataset by employing standard \gls{FER} evaluation metrics like accuracy, f1-score, recall, confusion matrices and loss function curves. 
+\item Explore how the new MLP head architecture improve the model's resilience to a \gls{in-the-wild} data set by employing standard \gls{FER} evaluation metrics like accuracy, f1-score, recall, confusion matrices and loss function curves. 
 
 \end{enumerate}
 
@@ -111,10 +112,10 @@ Should include the scope and limitations of the developed research.
 % \textbf{Scope and limitation 3:} 
 
 \begin{itemize}
-\item This research focuses exclusively on predicting seven discrete class FER emotions classes —happy, sad, surprise, fear, disgust, anger, and neutral. It deliberately excludes other FER prediction approaches such as analyzing Facial Action Units (AUs) or the Valence-Arousal (VA), which involve a more nuanced or continuous representation of the emotions\cite{mollahosseini_affectnet_2019}\cite{kollias_affect_2021}.
+\item This research focuses exclusively on predicting seven discrete class FER emotions classes happy, sad, surprise, fear, disgust, anger, and neutral. It deliberately excludes other FER prediction approaches such as analyzing Facial Action Units (AUs) or the Valence-Arousal (VA), which involve a more nuanced or continuous representation of the emotions\cite{mollahosseini_affectnet_2019}\cite{kollias_affect_2021}.
 
 \item The project did not include research that aims to analyze emotional states from dynamic sequences for example video-based or video-voice methods\cite{wang_survey_2024}, only image-based static FER analysis was conducted during the development. While dynamic FER methods may capture temporal emotional transitions more effectively, this project centers on evaluating static images to streamline experimentation and ensure consistency.
 
-\item The materials used in this research are limited to licensed and public resources. These include FER datasets, academic publications, source code, programming languages, and libraries, ensuring transparency, reproducibility, and ethical compliance in all aspects of the study.
+\item The materials used in this research are limited to licensed and public resources. These include FER data sets, academic publications, source code, programming languages, and libraries, ensuring transparency, reproducibility, and ethical compliance in all aspects of the study.
 
 \end{itemize}
