@@ -24,6 +24,7 @@ The models were trained in a controlled environment, where the only variations b
 %\section{Factors and Levels (if needed):}
 
 \section{Factors and Levels}
+\label{sec:factors_and_levels}
 
 %\section{Measures and Combinations of the Experiment (if needed)}
 
@@ -94,7 +95,8 @@ Factor 2 & Model Size
 
 
 
-\section{Response Variable}
+\section{Response Variables}
+\label{sec:response_variables}
 This sections shows a description of all the response variables used and obtained during the development of this research.
 
 For the next sections the following concepts are defined: 
@@ -335,7 +337,7 @@ RAF-DB has been instrumental in multiple benchmarking state-of-the-art models li
 
 To evaluate the impact of the proposed classification head modifications, a statistical analysis was conducted using aggregated performance metrics obtained from multiple experimental runs. For each model configuration, the average values and standard deviation of accuracy, macro averaged f1-score, precision, recall. Using averaged metrics reduces the effect of stochastic variation introduced by random initialization and optimization dynamics, enabling a more stable and reliable comparison between configurations. 
 
-In addition to aggregated metrics, training and validation loss curves were plotted for each model configuration in order to analyze convergence behavior and training stability. Furthermore, per-class precision and recall values were computed and visualized, and a confusion matrix was generated for each model to provide a detailed analysis of class-wise performance and misclassification patterns across the seven emotion categories.
+In addition to aggregated metrics, training and validation loss and accuracy curves were plotted for each model configuration in order to analyze convergence behavior and training stability. Furthermore, per-class precision and recall values were computed and visualized, and a confusion matrix was generated for each model to provide a detailed analysis of class-wise performance and misclassification patterns across the seven emotion categories.
 
 %
 %\subsection{Hypothesis of the statistical tool used}
