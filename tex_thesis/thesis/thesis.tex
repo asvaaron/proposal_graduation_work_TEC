@@ -138,6 +138,15 @@ My sincere thanks to Professor Dr. Luis Alexander for all his patience and commi
 %List of tables is generated here
 \listoftables
 
+% Add glossary
+\input{body/glossary}
+\cleardoublepage
+\phantomsection
+\setglossarystyle{listhypergroup}
+\addcontentsline{toc}{chapter}{Glossary}
+\printglossary[title=Glossary, toctitle=Glossary]
+\label{chapter:glossary}
+
 \mainmatter
 % Use double space
 \doublespacing
@@ -188,14 +197,7 @@ My sincere thanks to Professor Dr. Luis Alexander for all his patience and commi
 \bibliographystyle{plainnat}
 \bibliography{bibliography}{}
 
-% Add glossary
-\input{body/glossary}
-\cleardoublepage
-\phantomsection
-\setglossarystyle{listhypergroup}
-\addcontentsline{toc}{chapter}{Glossary}
-\printglossary[title=Glossary, toctitle=Glossary]
-\label{chapter:glossary}
+
 
 \doublespacing
 
