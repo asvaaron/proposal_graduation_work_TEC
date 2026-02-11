@@ -11,9 +11,9 @@ This chapter describes the experimental design adopted in this research, includi
 %The contents of this section vary depending on the research effort
 
 
-\section{Design criteria used (if needed)}
-
-\subsection{Detailed specific criteria/tool}
+%\section{Design criteria used (if needed)}
+%
+%\subsection{Detailed specific criteria/tool}
 
 \section{Description of the implementation of other algorithms (by other authors) used to test the hypothesis}
 
@@ -83,10 +83,10 @@ Without dropout or other regularization strategies, the head may rely too heavil
 
 \section{Proposed algorithm}
 
-To address the base classification limitations, the current work propose an enhanced classification head that incorporates batch normalization, dropout, and a hidden non-linear projection layer. An implementation of the modified head code can be found in \ref{cod:modified_classification_head}.
+To address the base classification limitations, the current work proposes an enhanced classification head that incorporates batch normalization, dropout, and a hidden non-linear projection layer. An implementation of the modified head code can be found in \ref{cod:modified_classification_head}.
 
  The model receives the flattened feature vector from the backbone and applies a sequence of normalization, regularization, 
-and non-linear transformations before performing final classification. All the parts of the new modified head is shown in figure \ref{fig:poster_classification_head_enhanced}. 
+and non-linear transformations before performing final classification. All the sections of the new modified head are shown in figure \ref{fig:poster_classification_head_enhanced}. 
 
 
 \subsection{Design of the proposed algorithm}
@@ -165,7 +165,7 @@ class EnhancedHead_v1(nn.Module):
 Some advantages of the new enhanced head include:
 
 \begin{itemize}
-    \item \textbf{Improved Generalization:} The inclusion of Dropout layers reduces overfitting, which is particularly important for FER "in-the-wild" datasets that contain relatively few samples per class.
+    \item \textbf{Improved Generalization:} The inclusion of Dropout layers reduces overfitting, which is particularly important for \gls{FER} \gls{in-the-wild} datasets that contain relatively few samples per class.
 
     \item \textbf{Feature Stabilization:} Batch Normalization normalizes the intermediate feature distributions, leading to more stable gradients and faster convergence during training.
 
@@ -183,11 +183,11 @@ Some advantages of the new enhanced head include:
 
 \subsection{Limitations and Requirements}
 
-A brief description of the design mechanism's limitations and requirements in accordance with the definitions in section \nameref{section:scope-limitations} Scope and Limitations.
+This section summarizes limitations and practical requirements that constrains the design and interpretation of the proposed head modifications. These contexts are consistent with the scope defined in \nameref{section:scope-limitations}. 
 
 \subsubsection{Dataset Limitations}
 
-Although the RAF-DB dataset is widely adopted for in-the-wild facial expression recognition, it presents several inherent limitations that may affect the interpretation of results. One notable challenge is the imbalance across emotion classes, where certain expressions are underrepresented compared to others, potentially biasing the learning process toward more frequent categories. Additionally, the dataset relies on human annotations, which introduces a degree of subjectivity and inconsistency, particularly for ambiguous or subtle expressions. Furthermore, RAF-DB does not comprehensively capture extreme real-world conditions such as severe occlusions, exaggerated head poses, or highly adverse lighting environments. 
+Although the RAF-DB dataset is widely adopted for \gls{in-the-wild} facial expression recognition, it presents several inherent limitations that may affect the interpretation of results. One notable challenge is the imbalance across emotion classes, where certain expressions are underrepresented compared to others, potentially biasing the learning process toward more frequent categories. Additionally, the dataset relies on human annotations, which introduces a degree of subjectivity and inconsistency, particularly for ambiguous or subtle expressions. Furthermore, RAF-DB does not comprehensively capture extreme real-world conditions such as severe occlusions, exaggerated head poses, or highly adverse lighting environments. 
 
 
 \subsubsection{Architectural Scope}
