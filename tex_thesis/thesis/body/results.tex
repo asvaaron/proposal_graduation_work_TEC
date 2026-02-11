@@ -9,20 +9,403 @@ This chapter presents the results obtained while evaluating the proposed algorit
 \section{Performance evaluation}
  
 \section{Statistical Tool Assumptions Tests}
+
 The evaluation of the assumptions of the statistical tool used should be reported.
 
+
+
 \section{Statistical Tool Results}
-The results of the statistical tool used are presented in this section.
+
+The results of the statistical tool used are presented in this section. Table \ref{tab:testing_model_global_metrics} shows the global metrics for each of the experiments performed, each of the combination are aligned with the  \nameref{sec:factors_and_levels} section. Results are also aligned with the response variables presented on section \nameref{sec:response_variables}, for example  \nameref{sub:accurracy}, \nameref{sub:f1-score}, \nameref{sub:precision} and \nameref{sub:recall}.
+
+
+
+\begin{table}[H]
+\centering
+\caption{Model's global metrics}
+\label{tab:testing_model_global_metrics}
+
+\begin{tabular}{llllll}
+\hline
+\textbf{Model Size} & \textbf{Head Changes} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} \\ \hline
+Base                & No        & 0.9276            & 0.9014             & 0.8627          & 0.8794            \\
+Base                & Yes       & 0.9247            & 0.8906             & 0.8671          & 0.8778            \\
+Small               & No        & 0.9237            & 0.8973             & 0.8553          & 0.8731            \\
+Small               & Yes       & 0.9234            & 0.8937             & 0.8654          & 0.8779            \\
+Large               & No        & 0.9250            & 0.8933             & 0.8641          & 0.8769            \\
+Large               & Yes       & 0.9254            & 0.8910             & 0.8605          & 0.8734           
+\end{tabular}
+\end{table}
+
+
+\subsection{Confusion Matrices}
+
+Figures \ref{fig:cm_base}, \ref{fig:cm_small} and  \ref{fig:cm_large} present a pair of confusion matrices corresponding to the three model  configuration sizes evaluated with and without modifications to the head classification module. The matrices are displayed side by side to facilitate direct visual comparison under identical evaluation conditions. 
+
+In all confusion matrices, the vertical axis (y-axis) represents the ground-truth or target class labels, while the horizontal axis (x-axis) corresponds to the predicted class labels. Each cell indicates the number of samples belonging to a given true class that are assigned to a particular predicted class.Correct classifications are represented along the main diagonal of the matrix, where the predicted label matches the true label. Off-diagonal cells correspond to misclassifications, indicating confusion between emotion categories. Emotions mapping abbreviation can be found in this table \ref{tab:emotion_classes}.
+
+
+% Base confusion matrices
+
+\begin{figure}[H]
+\centering
+\caption{Confusion matrices for the Base model with and without head classification changes}
+\label{fig:cm_base}
+
+\begin{subfigure}{0.49\textwidth}
+\centering
+\includegraphics[width=\linewidth]{../images/local_base_no_changes_acc0.9276.png}
+\caption{Without head changes}
+\label{fig:cm_base_no_head}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.49\textwidth}
+\centering
+\includegraphics[width=\linewidth]{../images/local_base_enhanced_v1_acc0.9247.png}
+\caption{With head changes}
+\label{fig:cm_base_head}
+\end{subfigure}
+
+\end{figure}
+
+% Small confusion matrices
+\begin{figure}[H]
+\centering
+\caption{Confusion matrices for the Small model with and without head classification changes}
+\label{fig:cm_small}
+
+\begin{subfigure}{0.49\textwidth}
+\centering
+\includegraphics[width=\linewidth]{../images/local_small_no_changes_acc0.9237.png}
+\caption{Without head changes}
+\label{fig:cm_small_no_head}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.49\textwidth}
+\centering
+\includegraphics[width=\linewidth]{../images/local_small_enhanced_v1_acc0.9234.png}
+\caption{With head changes}
+\label{fig:cm_small_head}
+\end{subfigure}
+
+\end{figure}
+
+% Large confusion matrices
+
+\begin{figure}[H]
+\centering
+\caption{Confusion matrices for the Large model with and without head classification changes}
+\label{fig:cm_large}
+
+\begin{subfigure}{0.49\textwidth}
+\centering
+\includegraphics[width=\linewidth]{../images/local_large_no_changes_acc0.9250.png}
+\caption{Without head changes}
+\label{fig:cm_large_no_head}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.49\textwidth}
+\centering
+\includegraphics[width=\linewidth]{../images/local_large_enhanced_v1_acc0.9254.png}
+\caption{With head changes}
+\label{fig:cm_large_head}
+\end{subfigure}
+
+\end{figure}
+
+
+\subsection{Loss Curves}
+
+Figures \ref{fig:base_loss}, \ref{fig:small_loss} and \ref{fig:large_loss} illustrate the evolution of the loss value per epoch, where the x-axis represents the number of training epochs and the y-axis corresponds to the loss magnitude. For each model size, training and validation loss are displayed side by side, and each plot includes curves for both the baseline configuration and the model with modifications in the classification head. Plotting both configurations within the same chart enables a direct comparison of their optimization behavior and convergence trends under identical training conditions.
+
+% Base Loss Curves
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/base_train_loss.png}
+        \caption{Training loss}
+        \label{fig:base_train_loss}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/base_validation_loss.png}
+        \caption{Validation loss}
+        \label{fig:base_val_loss}
+    \end{subfigure}
+    \caption{Training and validation loss for the Base POSTER model}
+    \label{fig:base_loss}
+\end{figure}
+
+%Small Loss Curves
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/small_train_loss.png}
+        \caption{Training loss}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/small_validation_loss.png}
+        \caption{Validation loss}
+    \end{subfigure}
+    \caption{Training and validation loss for the Small POSTER model}
+     \label{fig:small_loss}
+
+\end{figure}
+
+%Large Loss Curves
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/large_train_loss.png}
+        \caption{Training loss}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/large_validation_loss.png}
+        \caption{Validation loss}
+    \end{subfigure}
+    \caption{Training and validation loss for the Large POSTER model}
+    \label{fig:large_loss}
+
+\end{figure}
+
+\subsection{Accuracy Curves}
+
+The accuracy figures \ref{fig:base_accuracy}, \ref{fig:small_acurracy} and \ref{fig:large_acurracy} depict the classification accuracy per epoch, with the x-axis indicating the number of training epochs and the y-axis representing accuracy values. Training and validation accuracy are shown side by side for each model size, and curves corresponding to the models with and without changes in the classification head are overlaid within each plot. This unified representation provides a consistent basis for comparing learning progression and generalization behavior across model configurations.
+
+% Base Accurracy Curves
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/base_train_accuracy.png}
+        \caption{Training accuracy}
+        \label{fig:base_train_acc}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/base_validation_accuracy.png}
+        \caption{Validation accuracy}
+        \label{fig:base_val_acc}
+    \end{subfigure}
+    \caption{Training and validation accuracy for the Base POSTER model}
+    \label{fig:base_accuracy}
+\end{figure}
+
+% Small Accurracy Curves
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/small_train_accuracy.png}
+        \caption{Training accuracy}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/small_validation_accuracy.png}
+        \caption{Validation accuracy}
+    \end{subfigure}
+    \caption{Training and validation accuracy for the Small POSTER model}
+     \label{fig:small_acurracy}
+
+\end{figure}
+
+
+% Large Accurracy Curves
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/large_train_accuracy.png}
+        \caption{Training accuracy}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../images/large_validation_accuracy.png}
+        \caption{Validation accuracy}
+    \end{subfigure}
+    \caption{Training and validation accuracy for the Large POSTER model}
+    \label{fig:large_acurracy}
+
+\end{figure}
+
 
 \section{Obtained Metrics}
-Additional metrics obtained during the development of the research are presented in this section. 
+Additional metrics obtained during the development of the research are presented in this section. Table \ref{tab:training_time_experiments} shows each of the experiments training average times, calculated based on the mean of all the $250$ epochs used to train all the models. 
+
+\begin{table}[H]
+\centering
+\caption{Average Training Times for Each Experiment}
+\label{tab:training_time_experiments}
+\begin{tabular}{ccc}
+\hline
+\textbf{Model Size} & \textbf{Head Changes} & \textbf{Average Training Time per Epoch}                            \\ \hline
+Base                & Yes                   & 2.46 min                                 \\ 
+Base                & No                    & 2.41 min                                 \\ 
+Small               & Yes                   & 2.12 min                                 \\ 
+Small               & No                    & 2.08 min                                 \\ 
+Large               & Yes                   & 2.75 min                                 \\
+Large               & No                    & 2.74 min
+\end{tabular}
+\end{table}
 
 
-\subsection{Most Complex Scenario Metrics (if needed)}
+
+Tables \ref{tab:class_base_model_comparison}, \ref{tab:class_large_model_comparison}, and 
+\ref{tab:class_small_model_comparison} present the class-wise classification performance of the Base, Small, and Large model variants, respectively, evaluated on the FER dataset. For each model size, results are reported with and without modifications to the classification head, using precision, recall, and f1-score as evaluation metrics.
 
 
-\section{Correctness (if needed)}
-If the correctness of the proposal was evaluated, it should be presented in this section.
-\section{Output (If needed)}
-If the proposal's output differs from what was analyzed with the statistical tool, it should be presented in this section.
+% Base Model Comparison
+\begin{table}[H]
+\centering
+\caption{Comparison of Base Model Classification Results}
+\label{tab:class_base_model_comparison}
+
+\begin{subtable}{0.48\textwidth}
+\centering
+\small % or \footnotesize
+\caption{Without Changes in the Head}
+\begin{tabular}{cccc}
+\hline
+\textbf{Class Label} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} \\ \hline
+Surprise  & 0.8980 & 0.9362 & 0.9167 \\
+Fear      & 0.8214 & 0.6216 & 0.7077 \\
+Disgusted & 0.8993 & 0.7812 & 0.8361 \\
+Happy     & 0.9665 & 0.9730 & 0.9697 \\
+Sad       & 0.9037 & 0.9226 & 0.9130 \\
+Angry     & 0.9103 & 0.8765 & 0.8931 \\
+Neutral   & 0.9105 & 0.9279 & 0.9192 \\
+\hline
+\end{tabular}
+\end{subtable}
+\hfill
+\begin{subtable}{0.48\textwidth}
+\centering
+\small
+\caption{With Changes in the Head}
+\begin{tabular}{ccc}
+\hline
+\textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} \\ \hline
+0.9053 & 0.9301 & 0.9175 \\
+0.8095 & 0.6892 & 0.7445 \\
+0.8472 & 0.7625 & 0.8026 \\
+0.9713 & 0.9705 & 0.9709 \\
+0.8925 & 0.9205 & 0.9063 \\
+0.8987 & 0.8765 & 0.8875 \\
+0.9099 & 0.9206 & 0.9152 \\
+\hline
+\end{tabular}
+\end{subtable}
+
+\end{table}
+
+% Small model comparison
+\begin{table}[H]
+\centering
+\caption{Comparison of Small Model Classification Results}
+\label{tab:class_small_model_comparison}
+
+\begin{subtable}{0.48\textwidth}
+\centering
+\small % or \footnotesize
+\caption{Without Changes in the Head}
+\begin{tabular}{cccc}
+\hline
+\textbf{Class Label} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} \\ \hline
+Surprise  & 0.8957 & 0.9392 & 0.9169 \\
+Fear      & 0.8364 & 0.6216 & 0.7132 \\
+Disgusted & 0.8815 & 0.7437 & 0.8068 \\
+Happy     & 0.9656 & 0.9705 & 0.9680 \\
+Sad       & 0.9004 & 0.9079 & 0.9042 \\
+Angry     & 0.8981 & 0.8704 & 0.8840 \\
+Neutral   & 0.9033 & 0.9338 & 0.9183 \\
+\hline
+\end{tabular}
+\end{subtable}
+\hfill
+\begin{subtable}{0.48\textwidth}
+\centering
+\small
+\caption{With Changes in the Head}
+\begin{tabular}{ccc}
+\hline
+\textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} \\ \hline
+0.8935 & 0.9179 & 0.9055 \\
+0.8333 & 0.6757 & 0.7463 \\
+0.8531 & 0.7625 & 0.8053 \\
+0.9770 & 0.9688 & 0.9729 \\
+0.8787 & 0.9247 & 0.9011 \\
+0.9172 & 0.8889 & 0.9028 \\
+0.9032 & 0.9191 & 0.9111 \\
+\hline
+\end{tabular}
+\end{subtable}
+
+\end{table}
+
+
+% Large model comparison
+\begin{table}[H]
+\centering
+\caption{Comparison of Large Model Classification Results}
+\label{tab:class_large_model_comparison}
+
+\begin{subtable}{0.48\textwidth}
+\centering
+\small % or \footnotesize
+\caption{Without Changes in the Head}
+\begin{tabular}{cccc}
+\hline
+\textbf{Class Label} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} \\ \hline
+Surprise  & 0.9000 & 0.9301 & 0.9148 \\
+Fear      & 0.8167 & 0.6622 & 0.7313 \\
+Disgusted & 0.8500 & 0.7437 & 0.7933 \\
+Happy     & 0.9680 & 0.9688 & 0.9684 \\
+Sad       & 0.9040 & 0.9059 & 0.9049 \\
+Angry     & 0.9068 & 0.9012 & 0.9040 \\
+Neutral   & 0.9074 & 0.9368 & 0.9219 \\
+\hline
+\end{tabular}
+\end{subtable}
+\hfill
+\begin{subtable}{0.48\textwidth}
+\centering
+\small
+\caption{With Changes in the Head}
+\begin{tabular}{ccc}
+\hline
+\textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} \\ \hline
+0.8857 & 0.9422 & 0.9131 \\
+0.7869 & 0.6486 & 0.7111 \\
+0.8923 & 0.7250 & 0.8000 \\
+0.9738 & 0.9713 & 0.9725 \\
+0.8909 & 0.9226 & 0.9065 \\
+0.8944 & 0.8889 & 0.8916 \\
+0.9129 & 0.9250 & 0.9189 \\
+\hline
+\end{tabular}
+\end{subtable}
+
+\end{table}
+
+%
+%\subsection{Most Complex Scenario Metrics (if needed)}
+%
+%
+%\section{Correctness (if needed)}
+%If the correctness of the proposal was evaluated, it should be presented in this section.
+%\section{Output (If needed)}
+%If the proposal's output differs from what was analyzed with the statistical tool, it should be presented in this section.
+
+
 \newpage
