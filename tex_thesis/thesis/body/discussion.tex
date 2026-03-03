@@ -20,9 +20,11 @@ The head changes also introduces small regressions for certain majority or easie
 \section{Error patterns and class imbalance}
 
 
-%Improvements concentrate on classes that are traditionally considered difficult in FER—such as Fear, which are also among the least represented categories in RAF-DB (Table \ref{tab:class-distribution}). The enhanced head lifts Fear F1-Score in Small and Base models ($+0.0331$ and $+0.0368$), these results can be validated on tables \ref{tab:class_base_model_comparison} and 
-%\ref{tab:class_small_model_comparison}. In contrast, classes with abundant, distinctive samples (e.g., Happy) tend to maintain their performance or exhibit small positive shifts. This pattern suggests that the additional non‑linearity and normalization introduced in the enhanced head help the model learn finer decision boundaries low‑prevalence expressions. Meanwhile, overall accuracy remains effectively unchanged because it is dominated by majority classes: as shown in table \ref{tab:class-distribution}, Happy and Surprise represent $38.62 %  $ and $22.16 %$ of the test set, respectively, so small improvements in minority/ambiguous classes barely move the aggregate metrics.
-% 	
+Improvements concentrate on classes that are traditionally considered difficult in FER such as Fear, which are also among the least represented categories in RAF-DB (Table \ref{tab:class-distribution}). The enhanced head lifts Fear F1-Score in Small and Base models ($+0.0331$ and $+0.0368$), these results can be validated on tables \ref{tab:class_base_model_comparison} and 
+\ref{tab:class_small_model_comparison}. 
+
+In contrast, classes with abundant, distinctive samples (e.g., Happy) tend to maintain their performance or exhibit small positive shifts. This pattern suggests that the additional non-linearity and normalization introduced in the enhanced head help the model learn finer decision boundaries low-prevalence expressions.Meanwhile, overall accuracy remains effectively unchanged because it is dominated by majority classes as shown in table \ref{tab:class-distribution}, Happy and Surprise represent $38.62 \%$ and $22.16 \%$ of the test set, respectively, so small improvements in the  minority or ambiguous classes barely move the aggregate metrics.
+
 
 %Therefore, macro averaged metrics are better aligned with the objective of lifting underperforming categories, and they should be emphasized in the main results table. 
 
