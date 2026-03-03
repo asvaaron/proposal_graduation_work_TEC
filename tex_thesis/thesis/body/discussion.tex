@@ -28,5 +28,10 @@ In contrast, classes with abundant, distinctive samples (e.g., Happy) tend to ma
 
 %Therefore, macro averaged metrics are better aligned with the objective of lifting underperforming categories, and they should be emphasized in the main results table. 
 
-\subsection{Model's Size}
+\subsection{Efficiency--Accuracy Trade-off}
+
+As shown in  Table~\ref{tab:testing_model_global_metrics}, the Small and Base POSTER models achieve almost the same accuracy and macro-F1 as the Large model (all accuracies lie within $0.923$--$0.925$). Because performance remains essentially unchanged across sizes, the main practical difference comes from training efficiency. Table~\ref{tab:training_time_experiments} shows that the Small model trains in approximately $2.10$ minutes per epoch, compared to $2.74$ minutes for the Large model, representing a reduction of about $23\%$ in training time. The Base model also trains faster than the Large model, saving roughly $11\%$ per epoch.
+
+
+Over the 250 epoch training run using in all the experiments, this corresponds to a total time saving of approximately $2.7$ hours when training the Small model instead of the Large model, and about $1.3$ hours when training the Base model. Given that both Small and Base models reach comparable accuracy and macro-F1 to the Large model, these configurations offer a more efficient accuracy--cost trade-off. In a nutshell, the Small and Base POSTER models with the enhanced head provide near-identical performance with some increse in f1-metrics and challending classes reduced computational resources, making this approach an attractive choice for experimentation and deployment.
 
