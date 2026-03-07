@@ -20,18 +20,77 @@ The head changes also introduces small regressions for certain majority or easie
 \section{Error patterns and class imbalance}
 
 
-Improvements concentrate on classes that are traditionally considered difficult in FER such as Fear, which are also among the least represented categories in RAF-DB (Table \ref{tab:class-distribution}). The enhanced head lifts Fear F1-Score in Small and Base models ($+0.0331$ and $+0.0368$), these results can be validated on tables \ref{tab:class_base_model_comparison} and 
+Improvements concentrate on classes that are traditionally considered difficult in \gls{FER} such as Fear, which are also among the least represented categories in RAF-DB (Table \ref{tab:class-distribution}). The enhanced head lifts Fear F1-Score in Small and Base models ($+0.0331$ and $+0.0368$), these results can be validated on tables \ref{tab:class_base_model_comparison} and 
 \ref{tab:class_small_model_comparison}. 
 
-In contrast, classes with abundant, distinctive samples (e.g., Happy) tend to maintain their performance or exhibit small positive shifts. This pattern suggests that the additional non-linearity and normalization introduced in the enhanced head help the model learn finer decision boundaries low-prevalence expressions.Meanwhile, overall accuracy remains effectively unchanged because it is dominated by majority classes as shown in table \ref{tab:class-distribution}, Happy and Surprise represent $38.62 \%$ and $22.16 \%$ of the test set, respectively, so small improvements in the  minority or ambiguous classes barely move the aggregate metrics.
+In contrast, classes with abundant, distinctive samples (e.g., Happy) tend to maintain their performance or exhibit small positive shifts. This pattern suggests that the additional non-linearity and normalization introduced in the enhanced head help the model learn finer decision boundaries low-prevalence expressions. Meanwhile, overall accuracy remains effectively unchanged because it is dominated by majority classes as shown in table \ref{tab:class-distribution}, Happy and Surprise represent $38.62 \%$ and $22.16 \%$ of the test set, respectively, so small improvements in the  minority or ambiguous classes barely move the aggregate metrics.
+
+
+The observed improvements for minority emotions such as Fear are consistent with the design choices of the enhanced head. The additional non‑linearity and regularization enable the classifier to refine decision boundaries in low-data regimes, where a purely linear mapping may overfit dominant patterns from majority classes. Batch normalization stabilizes feature scales across batches, while dropout reduces reliance on a few highly frequent patterns, allowing the model to give more weight to subtle cues that characterize rare or unbalanced expressions. Consequently, the enhanced head behaves as a capacity‑controlled refinement stage that is particularly beneficial for classes with limited and noisy samples.
 
 
 %Therefore, macro averaged metrics are better aligned with the objective of lifting underperforming categories, and they should be emphasized in the main results table. 
 
 \subsection{Efficiency--Accuracy Trade-off}
 
-As shown in  Table~\ref{tab:testing_model_global_metrics}, the Small and Base POSTER models achieve almost the same accuracy and macro-F1 as the Large model (all accuracies lie within $0.923$--$0.925$). Because performance remains essentially unchanged across sizes, the main practical difference comes from training efficiency. Table~\ref{tab:training_time_experiments} shows that the Small model trains in approximately $2.10$ minutes per epoch, compared to $2.74$ minutes for the Large model, representing a reduction of about $23\%$ in training time. The Base model also trains faster than the Large model, saving roughly $11\%$ per epoch.
+As shown in  Table~\ref{tab:testing_model_global_metrics}, the Small and Base POSTER models achieve almost the same accuracy and macro-F1 as the Large model (all accuracies lie within $0.923$--$0.925$). Because performance remains essentially unchanged across sizes, the main practical difference comes from training efficiency. 
+
+In addition to the class-wise behavior, the results shown on Table~\ref{tab:training_time_experiments} also highlight substantial differences in training efficiency across model sizes. Using the Large with the head changes POSTER model (2.75 min per epoch) as the reference point, the Base with the head changes POSTER configuration (2.46 min per epoch) achieves a reduction in training time of:
+
+$$
+\frac{2.75 - 2.46}{2.75} \times 100 = 10.55\% .
+$$
+
+Similarly, the Small with the head changes POSTER model (2.12 min per epoch) reduces training time by:
+
+$$
+\frac{2.75 - 2.12}{2.75} \times 100 = 22.91\% .
+$$
+
+When comparing the Base with the head changes POSTER model and Small  with the head changes POSTER model training times directly, the Small model is faster by:
+
+$$
+\frac{2.46 - 2.12}{2.46} \times 100 = 13.82\% .
+$$
+
+Over the 250 training epochs used in all experiments, the per-epoch efficiency differences accumulate into substantial total time savings. Using the Large with head changes POSTER model as the reference (2.75 min per epoch), the total training time for each configuration is:
+
+$$
+T_{\text{Large with head changes}} = 2.75 \times 250 = 687.50 \text{ min}
+$$
+
+$$
+T_{\text{Base with head changes}} = 2.46 \times 250 = 615.00 \text{ min}
+$$
+
+$$
+T_{\text{Small with head changes}} = 2.12 \times 250 = 530.00 \text{ min}
+$$
+
+The total time saved when training the Small model instead of the Large model is therefore:
+
+$$
+\Delta T = T_{\text{Large with head changes}}- T_{\text{Small with head changes}}= 687.50 \text{ min} - 530.00 \text{ min} = 157.50 \text{ min}
+$$
+
+$$
+\frac{157.50}{60} = 2.625 \text{ h} \approx 2.6 \text{ h}
+$$
+
+Likewise, the total time saved when training the Base model instead of the Large model is:
+
+$$
+\Delta T = T_{\text{Large with head changes}}- T_{\text{Base with head changes}} = 687.50 \text{ min} - 615.00 \text{ min} = 72.50 \text{ min}
+$$
+
+$$
+\frac{72.50}{60} = 1.208 \text{ h} \approx 1.2 \text{ h}
+$$
+
+Thus, over a full 250‑epoch training run, the Small POSTER model saves approximately $2.6$ hours relative to the Large model, while the Base model saves approximately $1.2$ hours. Given that both Small and Base models reach comparable accuracy and macro-F1 to the Large model, these configurations offer a more efficient accuracy--cost trade-off. In a nutshell, the Small and Base POSTER models with the enhanced head provide near-identical performance with some increase in F1-Score metrics and challenging classes reduced computational resources, making this approach an attractive choice for experimentation and deployment.
 
 
-Over the 250 epoch training run using in all the experiments, this corresponds to a total time saving of approximately $2.7$ hours when training the Small model instead of the Large model, and about $1.3$ hours when training the Base model. Given that both Small and Base models reach comparable accuracy and macro-F1 to the Large model, these configurations offer a more efficient accuracy--cost trade-off. In a nutshell, the Small and Base POSTER models with the enhanced head provide near-identical performance with some increse in f1-metrics and challending classes reduced computational resources, making this approach an attractive choice for experimentation and deployment.
+These results clearly demonstrate that although all three POSTER models achieve nearly identical top-1 accuracy on RAF-DB, the Small and Base variants offer substantial computational savings. In particular, the Small model trains almost $23\%$ faster than the Large model, while maintaining comparable accuracy and improved F1-Score performance for minority classes such as Fear emotion. This efficiency difference, combined with the enhanced head’s benefits on challenging classes, reinforces the suitability of the Small and Base POSTER variants for real-time or resource-constrained FER applications.
 
+From an engineering standpoint, these findings highlight that smaller POSTER variants equipped with an enhanced head offer a more favorable accuracy-efficiency balance than the Large model. In scenarios such as real-time affective interfaces or deployment on resource-constrained devices, the Small or Base models preserve competitive recognition performance while substantially reducing resources in training stages and inference costs. This supports the objectives of the investigation on evaluating how the changes impacts the model's classification decision, for a \gls{FER} \gls{in-the-wild}, architectural effort can be profitably concentrated on the classification head, rather than exclusively scaling Visual Transformer's backbone depth and width.
+ 

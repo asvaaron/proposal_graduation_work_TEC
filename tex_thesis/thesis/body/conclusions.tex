@@ -14,22 +14,37 @@ This project focused on the evaluation of the impact of modifying the MLP head i
 
 Thought the work developed in the thesis, a new version of the head is presented as an opportunity to explore on how the final classification can help improve model predictability or,also achieve better results on specific classes or challenging classes. The head was integrated into the code with parameters but using the base of hyperarameters  that helps run systematic experiments adding different sizes of the model. 
 
+%
+%\begin{itemize}
+%	
+%	\item  Conclusion 1: The experimental results confirm the research hypothesis that modifying the MLP head leads to improved FER performance compared to the baseline POSTER architecture.
+%	
+%	\item Conclusion 2.
+%	
+%	\item Conclusion 3.
+%	
+%	
+%\end{itemize}
 
-\begin{itemize}
-	
-	\item  Conclusion 1: The experimental results confirm the research hypothesis that modifying the MLP head leads to improved FER performance compared to the baseline POSTER architecture.
-	
-	\item Conclusion 2.
-	
-	\item Conclusion 3.
-	
-	
-\end{itemize}
+\textbf{Conclusion 1 - Head modifications can improve FER performance in a nuanced way.}
+
+
+The experimental results partially confirm the research hypothesis. Across all six configurations, overall top‑1 accuracy remained stable $(\approx 0.923–0.928)$, indicating that the choice of head architecture does not drastically affect dataset-level accuracy. However, macro‑F1 and per-class metrics reveal that the enhanced head delivers consistent gains for specific emotions, especially in the Small and Base POSTER variants. Thus, while global accuracy is largely preserved, the modified head improves the quality of predictions at a finer granularity, particularly for less represented or more ambiguous classes.
+
+\textbf{Conclusion 2 - The enhanced head benefits minority and difficult emotion classes.}
+
+Detailed analysis of class-wise precision, recall, and F1‑Score shows that the enhanced head improves performance for challenging categories such as Fear, which are both underrepresented and harder to discriminate. These gains are achieved without harming, and in some cases slightly improving, well-defined majority classes like Happy. This suggests that the combination of non-linear transformation, normalization, and regularization in the head helps the model exploit subtle facial cues that a purely linear MLP head fails to capture, thereby increasing robustness to intra-class variability and class imbalance.
+
+
+\textbf{Conclusion 3 - Smaller POSTER variants with enhanced heads offer an efficient accuracy–cost trade‑off.}
+
+
+The comparison between Small, Base, and Large POSTER models indicates that larger backbones do not yield substantial accuracy gains over more compact configurations when the classification head is properly designed. Training-time analysis shows that Small and Base models are significantly more efficient, while achieving almost identical accuracy and macro‑F1 as the Large model. Consequently, from a practical perspective, deploying a Small or Base POSTER model with the enhanced head is preferable for many \gls{in-the-wild} FER applications, as it provides competitive performance with lower computational cost and resource requirements.
 
 
 \section{Future Work}
 
-The project allows to have a lot opportunities to outperform the Poster baseline architecture
+The project allows to have a lot opportunities to outperform the Poster research head investigation
 
 
 \begin{itemize}
@@ -37,7 +52,7 @@ The project allows to have a lot opportunities to outperform the Poster baseline
 
 Although RAF-DB was selected as the primary dataset for the thesis work due to its balanced annotations and widespread adoption in transformer-based FER research and state of the art papers, other commonly used datasets include FER2013\footnote{\url{https://www.kaggle.com/datasets/msambare/fer2013}} \cite{khaireddin_facial_2021} and AffectNet, which are often employed for large-scale or cross-dataset generalization studies.
 
-
+\item Additional statistical test can be applied for getting nore 
 \end{itemize}. 
 
 
