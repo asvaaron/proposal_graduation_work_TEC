@@ -40,7 +40,7 @@ Large               & Yes       & 0.9254            & 0.8910             & 0.860
 
 \subsection{Confusion Matrices}
 
-Figures \ref{fig:cm_base}, \ref{fig:cm_small} and  \ref{fig:cm_large} present a pair of confusion matrices corresponding to the three model  configuration sizes evaluated with and without modifications to the head classification module. The matrices are displayed side by side to facilitate direct visual comparison under identical evaluation conditions. 
+Figures \ref{fig:cm_base}, \ref{fig:cm_small} and  \ref{fig:cm_large} present a pair of confusion matrices corresponding to the three model configuration sizes evaluated with and without modifications to the head classification module. The matrices are displayed side by side to facilitate direct visual comparison under identical evaluation conditions, also a total of 250 epochs were used for displaying the curves. 
 
 In all confusion matrices, the vertical axis (y-axis) represents the ground-truth or target class labels, while the horizontal axis (x-axis) corresponds to the predicted class labels. Each cell indicates the number of samples belonging to a given true class that are assigned to a particular predicted class.Correct classifications are represented along the main diagonal of the matrix, where the predicted label matches the true label. Off-diagonal cells correspond to misclassifications, indicating confusion between emotion categories. Emotions mapping abbreviation can be found in this table \ref{tab:emotion_classes}.
 
@@ -116,7 +116,7 @@ In all confusion matrices, the vertical axis (y-axis) represents the ground-trut
 
 \subsection{Loss Curves}
 
-Figures \ref{fig:base_loss}, \ref{fig:small_loss} and \ref{fig:large_loss} illustrate the evolution of the loss value per epoch, where the x-axis represents the number of training epochs and the y-axis corresponds to the loss magnitude. For each model size, training and validation loss are displayed side by side, and each plot includes curves for both the baseline configuration and the model with modifications in the classification head. Plotting both configurations within the same chart enables a direct comparison of their optimization behavior and convergence trends under identical training conditions.
+Figures \ref{fig:base_loss}, \ref{fig:small_loss} and \ref{fig:large_loss} illustrate the evolution of the loss value fro 250 epochs, where the x-axis represents the number of training epochs and the y-axis corresponds to the loss magnitude. For each model size, training and validation loss are displayed side by side, and each plot includes curves for both the baseline configuration and the model with modifications in the classification head. Plotting both configurations within the same chart enables a direct comparison of their optimization behavior and convergence trends under identical training conditions.
 
 % Base Loss Curves
 \begin{figure}[H]
@@ -145,12 +145,14 @@ Figures \ref{fig:base_loss}, \ref{fig:small_loss} and \ref{fig:large_loss} illus
         \centering
         \includegraphics[width=\textwidth]{../images/small_train_loss.png}
         \caption{Training loss}
+        \label{fig:small_train_loss}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../images/small_validation_loss.png}
         \caption{Validation loss}
+        \label{fig:small_val_loss}
     \end{subfigure}
     \caption{Training and validation loss for the Small POSTER model}
      \label{fig:small_loss}
@@ -164,12 +166,14 @@ Figures \ref{fig:base_loss}, \ref{fig:small_loss} and \ref{fig:large_loss} illus
         \centering
         \includegraphics[width=\textwidth]{../images/large_train_loss.png}
         \caption{Training loss}
+        \label{fig:large_train_loss}
     \end{subfigure}
     \hfill
     \begin{subfigure}[t]{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../images/large_validation_loss.png}
         \caption{Validation loss}
+         \label{fig:large_val_loss}
     \end{subfigure}
     \caption{Training and validation loss for the Large POSTER model}
     \label{fig:large_loss}
