@@ -1,16 +1,14 @@
 \iftoggle{paper}
 {
 Facial Expression Recognition (FER) is a critical area of affective computing, aiming
-to automatically identify emotions from facial images. With the advent of deep
-learning, transformer-based models have demonstrated remarkable performance in
-FER by capturing global dependencies in facial features. This research focuses on
-enhancing the performance of POSTER: A Pyramid Cross-Fusion Transformer
-Network for Facial Expression Recognition, a state-of-the-art visual transformer for
-FER. Specifically, modifications to the ViT's head architecture are investigated, incorporating
-dropout strategies, layer normalization, and adaptive activation functions to improve
-robustness and generalization. These modifications are evaluated across benchmark
-datasets such as RAF-DB to assess their impact on classification accuracy and model
-reliability.
+to automatically identify emotions from facial images. With the advent of deep learning, transformer-based models have demonstrated remarkable performance in FER by capturing global dependencies in facial features. This research focuses on
+enhancing the performance of POSTER: A Pyramid Cross-Fusion Transformer Network for Facial Expression Recognition, a state-of-the-art visual transformer for FER. Specifically, modifications to the ViT's head architecture are investigated, incorporating
+dropout strategies, layer normalization, and adaptive activation functions to improve robustness and generalization. These modifications are evaluated across benchmark datasets such as RAF-DB to assess their impact on classification accuracy and model
+
+
+This thesis investigates how architectural changes in the Multi-Layer Perceptron (MLP) classification head of POSTER affect FER performance on the RAF-DB dataset. Building on the original implementation, an enhanced head is proposed. The study evaluates three POSTER model sizes (Small, Base, and Large), each trained with the original and enhanced head, yielding six configurations in a two-factor experimental design. Performance is assessed using accuracy, macro-averaged F1-Score, precision, recall, confusion matrices, and training/validation loss and accuracy curves.
+
+The results show that top-1 accuracy remains tightly clustered across all configurations (approximately $92.3\%$–$92.8\%$), indicating that head modifications do not significantly affect global accuracy. However, macro-F1 and per-class metrics reveal that the enhanced head improves performance on challenging and underrepresented emotions, particularly FEAR with gains of about $3\%$–$\%4$ percentage points in F1-Score for the Small and Base models. At the same time, the Small and Base variants achieve comparable performance to the Large model while reducing training time by roughly $23\%$ and $11\%$, respectively, over 250 epochs. These findings suggest that, for In-The-Wild FER, carefully designed classification heads can enhance minority-class recognition and efficiency without increasing backbone complexity. The study is limited to static images, seven discrete emotion categories, and a single dataset, but it highlights the importance of head architecture as a controllable and computationally efficient lever for improving transformer-based FER systems reliability.
 
  
 }%
