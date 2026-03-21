@@ -12,10 +12,19 @@ This chapter presents the analysis and discussion of the results shown in chapte
 Table \ref{tab:testing_model_global_metrics} shows that across all six configurations spanning three model sizes (Small/Base/Large) and the two heads (with vs. without changes), top‑1 accuracy remained tightly clustered between $0.923$ and $0.928$, indicating that head choice does not materially affect overall accuracy at the dataset level. However, macro‑F1 and per‑class scores reveal important differences. The enhanced head improves macro F1-Score for the Small model ($+0.0048$) while slightly reducing it for the Base ($-0.0016$) and Large ($-0.0035$) models. 
 
 At the class level, as shown in tables \ref{tab:class_base_model_comparison} and 
-\ref{tab:class_small_model_comparison} the enhanced head provides consistent gains for Fear emotion class on the F1-Score metric for the Base ($+0.0368$) and Small ($+0.0331$) models's sizes, something similar occurs for Happy emotion class where there is a visible improvement across all sizes. 
+\ref{tab:class_small_model_comparison} the enhanced head provides consistent gains for Fear emotion class on the F1-Score metric for the Base ($+0.0368$) and Small ($+0.0331$) models' sizes, something similar occurs for Happy emotion class where there is a visible improvement across all sizes. 
 
 The head changes also introduces small regressions for certain majority or easier classes (e.g., Neutral, Angry in Base/Large model sises). These results suggest the enhanced head is most beneficial when backbone capacity is limited (Small/Base)  and less so when the fused backbone representation is already rich, which is the case for the Large model, as reported in table \ref{tab:class_large_model_comparison}.
 
+As shown in the training and validation loss curves for the three model sizes Small and Large  \ref{fig:small_train_loss}, \ref{fig:small_val_loss}, \ref{fig:large_train_loss} and \ref{fig:large_val_loss} both the baseline and enhanced head variants exhibit stable and monotonic convergence throughout training, with no evidence of optimization instability or overfitting. In these two configurations, the validation loss closely follows the training loss, and the curves remain aligned across the 250 epochs, indicating consistent generalization behavior regardless of the head architecture changes. 
+
+In contrast, the Base model figures \ref{fig:base_train_loss}, \ref{fig:base_val_loss} display greater separation between its training and validation curves, with slightly larger oscillations and less overlap between configurations. This suggests that the Base model sits at an intermediate capacity level. We can suggest this model size  is more sensitive to architectural changes in the head, resulting in the small but visible differences observed in validation trajectories.
+
+
+A complementary observation arises from the accuracy curves reported for all three POSTER model sizes (Figures~\ref{fig:small_train_acc}, 
+\ref{fig:small_val_acc}, \ref{fig:base_train_acc}, \ref{fig:base_val_acc}, \ref{fig:large_train_acc}, and \ref{fig:large_val_acc}). In contrast to the behavior observed in the loss curves, the accuracy trajectories for the Small, Base, and Large models all exhibit smooth and well-aligned training and validation curves. Both the baseline and enhanced head variants follow nearly identical accuracy profiles across the full $250$ epochs, with no significant fluctuations, divergence, or instability in any of the model sizes. This consistent behavior indicates that the head modifications do 
+not negatively affect the learning dynamics or the generalization patterns of the model, and that all three sizes converge toward similar accuracy levels at comparable 
+rates.
 
 \section{Error patterns and class imbalance}
 
@@ -35,7 +44,7 @@ The observed improvements for minority emotions such as Fear are consistent with
 
 As shown in  Table~\ref{tab:testing_model_global_metrics}, the Small and Base POSTER models achieve almost the same accuracy and macro-F1 as the Large model (all accuracies lie within $0.923$--$0.925$). Because performance remains essentially unchanged across sizes, the main practical difference comes from training efficiency. 
 
-In addition to the class-wise behavior, the results shown on Table~\ref{tab:training_time_experiments} also highlight substantial differences in training efficiency across model sizes. Using the Large with the head changes POSTER model (2.75 min per epoch) as the reference point, the Base with the head changes POSTER configuration (2.46 min per epoch) achieves a reduction in training time of:
+In addition to the class-wise behavior, the results shown on Table~\ref{tab:training_time_experiments} also highlight substantial differences in training time efficiency across model sizes. Using the Large with the head changes POSTER model (2.75 min per epoch) as the reference point, the Base with the head changes POSTER configuration (2.46 min per epoch) achieves a reduction in training time of:
 
 $$
 \frac{2.75 - 2.46}{2.75} \times 100 = 10.55\% .
