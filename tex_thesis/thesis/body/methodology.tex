@@ -16,9 +16,9 @@ This section presents a brief introduction to the statistical tools used in the 
 The experiment consisted of 6 unique configurations derived from the combination of  two factors. Factor  $A$ corresponds to original model vs changes made in the head. Factor $B$ corresponds to the model size large/base/small. In  \cite{zheng_poster_2022} the feature pyramid structure has features with embedding dim $DH = 512$, $DM = 256$, and $DL = 128$, respectively. For factor $A, s_a =2$ and Factor $B, s_b=3$, where $s$ is number of levels on each factor, we have a two-way factorial design $s_a \times s_b = 2 \times 3 = 6$. Each combination (cell) is a $\text{Head} \times \text{Size}$ pair (6 cells total).
 
 
-For each configuration, the POSTER Visual Transformer was trained using a facial expression dataset RAF-DB, and the performance was evaluated based on a chosen metric, such as classification accuracy Section \ref{sub:accuracy} and F1-score Section \ref{sub:f1-score}.
+For each configuration, the POSTER Visual Transformer was trained using a facial expression dataset RAF-DB, and the performance was evaluated based on a chosen metric, such as classification accuracy Section \ref{sub:accuracy} and F1-score Section \ref{sub:f1-score}, Recall \ref{sub:recall}, Precision \ref{sub:recall}, Confusion Matrices \ref{sub:confusion-matrix} and training/validation loss \ref{sub:loss-curves} and accuracy \ref{sub:accuracy} curves.
 
-The models were trained in a controlled environment, where the only variations between runs are the levels of the factors being tested. This allowed for a rigorous comparison of how  model size, learning rate and head modifications influence the transformer's performance in FER tasks using \gls{in-the-wild} datasets.
+The models were trained in a controlled environment, where the only variations between runs are the levels of the factors being tested. This allowed for a rigorous comparison of how  model size, learning rate and head modifications influence the transformer's performance in \gls{FER} tasks using \gls{in-the-wild} datasets.
 
 
 %\section{Factors and Levels (if needed):}
@@ -107,7 +107,8 @@ For the next sections the following concepts are defined:
     \item $FN_i$ (False Negatives) — number of samples from class $i$ incorrectly predicted as other classes.
 \end{itemize}
 
-\subsection{Accuracy} \label{sub:accurracy}
+\subsection{Accuracy} 
+\label{sub:accuracy}
 
 
 The standard or top-1 accuracy was used as the main metric for reviewing performance and robustness comparison between models. The metric corresponds to a simple calculation taking the correctly classified samples and dividing it by the total number of samples. Equation \ref{eq:accuracy} shows how accuracy is calculated. 
@@ -124,7 +125,7 @@ For multi-class classification, Accuracy represents the ratio of correctly predi
 
 
 \begin{equation}
-\label{eq:accurracy}
+\label{eq:accuracy}
 \text { Accuracy }=\frac{\sum_{i=1}^C T P_i}{N}
 \end{equation}
 
@@ -154,7 +155,8 @@ where the f1-score for each class $i$ is given by:
 
 %Precision \ref{eq:precision-class} recall \ref{eq:recall-class} for each class $i$ are defined as follows:
 
-\subsection{Precision} \label{sub:precision}
+\subsection{Precision} 
+\label{sub:precision}
 
 Precision is an evaluation metric that measures the accuracy of the model’s positive predictions, equation \ref{eq:precision-class}. In Facial Expression Recognition (FER), precision quantifies how many of the samples predicted as a specific emotion truly belong to that emotion class.
 
@@ -166,7 +168,8 @@ Precision is an evaluation metric that measures the accuracy of the model’s po
 A high precision score indicates that the model produces fewer false positives, meaning it is less likely to incorrectly assign an emotion label to a facial expression that does not belong to that category. This is particularly important in FER tasks where certain emotions share visual similarities, leading to potential misclassification (e.g., happiness vs. surprise). In this research, precision is computed on a per-class basis and aggregated to evaluate the reliability of the modified visual transformer’s predictions. 
 
 
-\subsection{Recall} \label{sub:recall}
+\subsection{Recall} 
+\label{sub:recall}
 
 Recall is a fundamental evaluation metric used to measure the model’s ability to correctly identify instances of a given class, formally the equation \ref{eq:recall-class}. In the context of Facial Expression Recognition (FER), recall quantifies how effectively the proposed model detects each facial expression among all samples that truly belong to that expression class.
 
@@ -182,9 +185,9 @@ A higher value of \ref{eq:f1-macro-avg} indicates better overall balance between
 
 \subsection{Confusion Matrix} \label{sub:confusion-matrix}
 
-To further analyze the classification behavior of the model, confusion matrices are employed. A confusion matrix provides a detailed breakdown of predicted versus actual class labels,\ref{fig:confusion-matrix-poster} enabling a comprehensive assessment of both correct and incorrect predictions across all emotion categories.
+To further analyze the classification behavior of the model, confusion matrices are employed. A confusion matrix provides a detailed breakdown of predicted versus actual class labels, a shown on image \ref{fig:confusion-matrix-poster}, this chart provides a comprehensive assessment of both correct and incorrect predictions across all emotion categories.
 
-Each row of the confusion matrix corresponds to the true class labels, while each column represents the predicted labels. Diagonal elements indicate correct classifications, whereas off-diagonal elements highlight specific misclassification patterns between emotion classes.
+Each row of the confusion matrix corresponds to the true class labels, while each column represents the predicted labels. Diagonal elements indicate correct classifications, whereas off-diagonal elements highlight specific mis-classification patterns between emotion classes.
 
 
 
