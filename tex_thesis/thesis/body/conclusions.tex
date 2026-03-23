@@ -12,7 +12,7 @@ This chapter presents the final conclusions obtained through the research effort
 
 This project focused on the evaluation of the impact of modifying the MLP head in a Visual Transformer-based Facial Expression Recognition model specifically using a challenging or \gls{in-the-wild} based on the \cite{zheng_poster_2022}. This allows to have a different perspective regarding how the Visual Transformers can help achieve a better performance when using an enhanced version of the classified head for \gls{in-the-wild} Facial Expression Recognition. 
 
-Thought the work developed in the thesis, a new version of the head is presented as an opportunity to explore on how the final classification can help improve model predictability or, also achieve better results on specific classes or challenging classes. The head was integrated into the code with parameters but using the base of hyperarameters  that helps run systematic experiments adding different sizes of the model. 
+Thought the work developed in the thesis, a new version of the head is presented as an opportunity to explore on how the final classification can help improve model predictability or, also achieve better results on specific classes or challenging classes. The head was integrated into the code with parameters but using the base of hyperparameters  that helps run systematic experiments adding different sizes of the model. 
 
 %
 %\begin{itemize}
@@ -48,9 +48,9 @@ The project allows to have a lot opportunities to outperform the Poster research
 
 
 \begin{itemize}
-\item A usage of a Multi-dataset for validation is recommended to allow review and review head changes performance on the proposed  head. This allow for a more valid experiment, an alternative datasetAffecnet\footnote{\url{https://www.mohammadmahoor.com/pages/databases/affectnet/}} \footnote{\url{https://www.kaggle.com/datasets/fatihkgg/affectnet-yolo-format}} is used on the baseline architecture paper \cite{zheng_poster_2022}. 
+\item A usage of a Multi-dataset for validation is recommended to allow review head changes performance on the proposed  head. This permits to have a more valid experiment, an alternative datasetAffecnet\footnote{\url{https://www.mohammadmahoor.com/pages/databases/affectnet/}} \footnote{\url{https://www.kaggle.com/datasets/fatihkgg/affectnet-yolo-format}} is used on the baseline architecture paper \cite{zheng_poster_2022}. 
 
-Although RAF-DB was selected as the primary dataset for the thesis work due to its balanced annotations and widespread adoption in transformer-based FER research and state of the art papers, other commonly used datasets include FER2013\footnote{\url{https://www.kaggle.com/datasets/msambare/fer2013}} \cite{khaireddin_facial_2021} and AffectNet, which are often employed for large-scale or cross-dataset generalization studies.
+Although RAF-DB was selected as the primary dataset for the thesis work due to its balanced annotations and widespread adoption in transformer-based FER researches and state of the art papers, other commonly used datasets include FER2013\footnote{\url{https://www.kaggle.com/datasets/msambare/fer2013}} \cite{khaireddin_facial_2021} and AffectNet, which are often employed for large-scale or cross-dataset generalization studies.
 
 \item  The enhanced head architecture explored in this work represents only one point in a broader design space. Future work could investigate deeper or multi‑branch heads, gated or adaptive activation functions (e.g., GLU‑based layers), residual MLP blocks, or attention‑augmented classification heads. Systematic ablation studies comparing these variants would help isolate which components (normalization, dropout, depth, activation type) most strongly contribute to performance gains on difficult emotion classes.
 
