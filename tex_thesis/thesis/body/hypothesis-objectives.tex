@@ -20,7 +20,9 @@ The hypothesis for this research effort reads as follows:
 %''By systematically exploring and evaluating various modifications to the model's head architecture of a Visual Transformer for Facial Expression
 %Recognition (FER), it is possible to surpass the current state-of-the-art performance achieved by the POSTER model on the RAF-DB dataset. Specifically, this study aims to improve the accuracy from POSTER’s reported 92.05\% to at least 93.00\%''
 
-By systematically exploring and evaluating various modifications to the classification head architecture of a Visual Transformer for Facial Expression Recognition, it is possible to achieve performance improvements using RAF-DB data set, particularly for challenging emotion classes. These improvements are expected to be reflected in increased class-wise precision, recall, and f1-score for under performing categories, while maintaining or improving overall model performance. 
+%By systematically exploring and evaluating various modifications to the classification head architecture of a Visual Transformer for Facial Expression Recognition, it is possible to achieve performance improvements using RAF-DB data set, particularly for challenging emotion classes. These improvements are expected to be reflected in increased class-wise precision, recall, and f1-score for under performing categories, while maintaining or improving overall model performance. 
+
+Under a controlled experimental design, modifications to the classification head of a Visual Transformer based Facial Expression Recognition (\gls{FER}) model can produce measurable improvements in class-wise performance metrics (macro‑averaged F1‑score, precision, and recall) on the RAF‑DB dataset, particularly for underrepresented emotion classes, when compared to the original classification head, while maintaining comparable overall accuracy.
 
 \section{Objectives}
 \label{section:objectives}
@@ -31,7 +33,7 @@ The current research established the following objectives:
 \label{objective:main}
 %Main Objective Text.
 
-Examine the performance of the POSTER (Pyramid Cross-Fusion Transformer) architecture for Facial Expression Recognition (FER) \gls{in-the-wild} by introducing novel modifications to its classification head. This involves redesigning the head architecture using alternative layer structures, varied dropout strategies, and increased network depth, and evaluating the impact of these modifications using metrics such as accuracy, loss, recall, and F1-score on the Real-World Affective Faces Database (RAF-DB).
+To analyze how the design of the classification head in a Visual Transformer based Facial Expression Recognition (\gls{FER}) model influences class discrimination performance in \gls{in-the-wild} conditions, through a controlled experimental study on the RAF‑DB dataset.
 
 \subsection{Specific Objectives}
 \label{section:specific-objectives}
@@ -46,11 +48,19 @@ Examine the performance of the POSTER (Pyramid Cross-Fusion Transformer) archite
 
 \begin{enumerate}
 
-\item Evaluate how the proposed modifications to the  head architecture delivers insightful feature representations that explain the model's decision-making process in \gls{FER}.
-	
-\item Investigate the robustness of the modified Visual Transformer model under adversarial and challenging image conditions, including noise and data perturbations such as occlusions, illumination variations, and subtle facial deformations, as well as fairness-related aspects involving demographic biases (e.g., age, gender, and ethnicity), using the RAF-DB data set to represent \gls{in-the-wild} conditions.
-	
-\item Explore how the new MLP head architecture improve the model's resilience to an \gls{in-the-wild} data set by employing standard \gls{FER} evaluation metrics like accuracy, f1-score, recall, confusion matrices, accuracy and loss function curves. 
+\item Design and implement an enhanced classification head for the POSTER Visual Transformer architecture that incorporates normalization, regularization, and non‑linear transformations, while keeping the backbone unchanged.
+
+
+\item Evaluate the impact of classification head modifications using a two factor factorial experimental design, comparing models with and without head modifications across three POSTER architecture sizes (Small, Base, and Large).
+
+
+\item Analyze performance differences between the original and modified classification heads using global metrics (accuracy) and class‑wise oriented metrics  (macro‑averaged F1‑score, precision, and recall).
+
+
+\item Examine the behavior of the modified classification head on class imbalanced emotion categories in RAF‑DB, with specific attention to underrepresented and difficult expressions.
+
+
+\item Compare computational efficiency and performance trade‑offs among the evaluated configurations, analyzing the balance between accuracy, macro-avaraged F1-score  and training time using the original and modified classification heads.
 
 \end{enumerate}
 
