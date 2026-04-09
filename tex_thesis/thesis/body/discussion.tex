@@ -9,7 +9,7 @@ This chapter presents the analysis and discussion of the results shown in chapte
 
 \section{Summary of Findings}
 
-Table \ref{tab:testing_model_global_metrics} shows that across all six configurations spanning three model sizes (Small/Base/Large) and the two heads (with vs. without changes), top‑1 accuracy remained tightly clustered between $0.923$ and $0.928$, indicating that head choice does not materially affect overall accuracy at the dataset level. However, macro‑F1 and per‑class scores reveal important differences. The enhanced head improves macro F1-Score for the Small model ($+0.0048$) while slightly reducing it for the Base ($-0.0016$) and Large ($-0.0035$) models. 
+Table \ref{tab:testing_model_global_metrics} shows that across all six configurations spanning three model sizes (Base/Small/Large) and the two heads (with vs. without changes), top‑1 accuracy remained tightly clustered between $0.923$ and $0.928$, indicating that head choice does not materially affect overall accuracy at the dataset level. However, macro‑F1 and per‑class scores reveal important differences. The enhanced head improves macro F1-Score for the Small model ($+0.0048$) while slightly reducing it for the Base ($-0.0016$) and Large ($-0.0035$) models. 
 
 At the class level, as shown in tables \ref{tab:class_base_model_comparison} and 
 \ref{tab:class_small_model_comparison} the enhanced head provides consistent gains for Fear emotion class on the F1-Score metric for the Base ($+0.0368$) and Small ($+0.0331$) models' sizes, something similar occurs for Happy emotion class where there is a visible improvement across all sizes. 
