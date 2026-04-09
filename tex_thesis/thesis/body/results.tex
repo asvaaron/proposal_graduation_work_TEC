@@ -10,7 +10,101 @@ This chapter presents the results obtained while evaluating the proposed algorit
  
 \section{Statistical Tool Assumptions Tests}
 
-The evaluation of the assumptions of the statistical tool used should be reported.
+The evaluation of the assumptions of the statistical tool used are reported bellow:
+
+\subsection{Main McNemar Results}
+
+Table \ref{tab:mcnemar_overall_pairs} show the pairwise test for the model with and without head changes for (Base/Small/Large) sizes. 
+
+Where: 
+
+\begin{itemize}
+\item $n_{01}$: samples missclassified by model A but correctly classified by Model B
+\item $n_{10}$: samples correctly classified by Model A but misclassified by Model B
+\item $\chi^2=\frac{\left(n_{01}-n_{10}\right)^2}{n_{01}+n_{10}}$
+\end{itemize}
+
+
+\begin{table}[h]
+\centering
+\caption{Overall Accuracy McNemar's Test Results for  Changes vs No Changes in the Classification Heads on RAF-DB}
+\label{tab:mcnemar_overall_pairs}
+\begin{tabular}{lccccccc}
+\hline
+\textbf{Model A} & \textbf{Model B} & $\textbf{Acc}_A$ & $\textbf{Acc}_B$ & $n_{01}$ & $n_{10}$ & $\chi^2$ & \textbf{p-value} \\
+\hline
+Small (No Changes) & Small (Changes) & 0.9237 & 0.9234 & 50 & 49 & 0.0000 & 1.0000 \\
+Base (No Changes)  & Base (Changes)  & 0.9276 & 0.9247 & 46 & 37 & 0.7711 & 0.3799 \\
+Large (No Changes) & Large (Changes) & 0.9250 & 0.9254 & 43 & 44 & 0.0000 & 1.0000 \\
+\end{tabular}
+\end{table}
+
+
+For all comparisons on table \ref{tab:mcnemar_overall_pairs} the obtained p-values are greater than the significance threshold of $0.05$, indicating no statistically significant differences in overall accuracy between the baseline and enhanced head configurations.
+
+
+The similar values of $n_{01}$ and $n_{10}$ across all model sizes suggest that the enhanced classification heads neither systematically improve nor degrade global prediction accuracy. These results confirm that the proposed head modifications preserve the overall error distribution of the models, supporting subsequent analyses focused on class-level performance, macro-averaged F1-score, and efficiency trade-offs.
+
+
+\subsection{Class-Level McNemar's Test Analysis}
+
+
+\begin{table}[H]
+\centering
+\caption{Class-level McNemar test: Base (No Changes) vs Base(Changes)}
+\label{tab:mcnemar_class_pairs_base}
+\begin{tabular}{lcccccc}
+\hline
+Class & $N$ & Acc$_A$ & Acc$_B$ & $n_{01}$ & $n_{10}$ & p-value \\
+\hline
+Angry    & 329  & 0.9362 & 0.9301 & 6  & 4  & 0.7539 \\
+Disgust  & 74   & 0.6216 & 0.6892 & 1  & 6  & 0.1250 \\
+Fear     & 160  & 0.7812 & 0.7625 & 5  & 2  & 0.4531 \\
+Happy    & 1185 & 0.9730 & 0.9705 & 7  & 4  & 0.5488 \\
+Neutral  & 478  & 0.9226 & 0.9205 & 11 & 10 & 1.0000 \\
+Sad      & 162  & 0.8765 & 0.8765 & 4  & 4  & 1.0000 \\
+Surprise & 680  & 0.9279 & 0.9206 & 12 & 7  & 0.3593 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Class-level McNemar test: Small (No Changes) vs Small(Changes)}
+\label{tab:mcnemar_class_pairs_small}
+\begin{tabular}{lcccccc}
+\hline
+Class & $N$ & Acc$_A$ & Acc$_B$ & $n_{01}$ & $n_{10}$ & p-value \\
+\hline
+Angry    & 329  & 0.9392 & 0.9179 & 9  & 2  & 0.0654 \\
+Disgust  & 74   & 0.6216 & 0.6757 & 1  & 5  & 0.2188 \\
+Fear     & 160  & 0.7438 & 0.7625 & 7  & 10 & 0.6291 \\
+Happy    & 1185 & 0.9705 & 0.9688 & 6  & 4  & 0.7539 \\
+Neutral  & 478  & 0.9079 & 0.9247 & 7  & 15 & 0.1338 \\
+Sad      & 162  & 0.8704 & 0.8889 & 3  & 6  & 0.5078 \\
+Surprise & 680  & 0.9338 & 0.9191 & 17 & 7  & 0.0639 \\
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Class-level McNemar test: Large (No Changes) vs Small(Changes)}
+\label{tab:mcnemar_class_pairs_large}
+\begin{tabular}{lcccccc}
+\toprule
+Class & $N$ & Acc$_A$ & Acc$_B$ & $n_{01}$ & $n_{10}$ & p-value \\
+\midrule
+Angry    & 329  & 0.9301 & 0.9422 & 5  & 9  & 0.4240 \\
+Disgust  & 74   & 0.6622 & 0.6486 & 4  & 3  & 1.0000 \\
+Fear     & 160  & 0.7438 & 0.7250 & 7  & 4  & 0.5488 \\
+Happy    & 1185 & 0.9688 & 0.9713 & 2  & 5  & 0.4531 \\
+Neutral  & 478  & 0.9059 & 0.9226 & 8  & 16 & 0.1516 \\
+Sad      & 162  & 0.9012 & 0.8889 & 4  & 2  & 0.6875 \\
+Surprise & 680  & 0.9368 & 0.9250 & 13 & 5  & 0.0963 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 
 
 
