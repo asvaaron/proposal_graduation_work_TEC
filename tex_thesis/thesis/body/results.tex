@@ -16,6 +16,14 @@ The evaluation of the assumptions of the statistical tool used are reported bell
 
 Table \ref{tab:mcnemar_overall_pairs} show the pairwise test for the model with and without head changes for (Base/Small/Large) sizes. 
 
+Consider the following null and alterative hypotheses:
+
+\begin{itemize}
+\item  $H_0$: P(A correct, B wrong) = P(A wrong, B correct)  $[n_{01} = n_{10}]$
+  
+\item $H_1$: Models make errors on systematically different samples
+\end{itemize}
+ 
 Where: 
 
 \begin{itemize}
@@ -48,12 +56,12 @@ The similar values of $n_{01}$ and $n_{10}$ across all model sizes suggest that 
 
 \subsection{Class-Level McNemar's Test Analysis}
  
+Consider the following null and alterative hypotheses:
+
 \begin{itemize}
-\item  $H_0$: P(A correct, B wrong) = P(A wrong, B correct)  $[n_{01} = n_{10}]$
-  
-\item $H_1$: Models make errors on systematically different samples
+\item $H_0$: No difference in per-class error rates between models
+\item $H_1$: One model is significantly better/worse on a specific emotion
 \end{itemize}
- 
 
 \begin{table}[H]
 \centering

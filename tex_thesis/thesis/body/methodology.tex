@@ -392,12 +392,12 @@ This formulation tests whether the two models commit errors on the same samples 
 
 When performing statistical comparisons at the class level, multiple hypothesis tests are conducted simultaneously for each emotion category. In the context of Facial Expression Recognition (\gls{FER}), this typically involves testing whether two models differ significantly in their error rates for each emotion class. Conducting multiple tests increases the probability of observing false positives (Type I errors), even if the null hypothesis is true for all classes.
 
-To mitigate this issue, a Bonferroni correction is applied. The Bonferroni correction is a conservative multiple‑comparison adjustment that controls the family‑wise error rate (FWER), defined as the probability of making at least one false positive across a family of hypothesis tests.
+To mitigate this issue, a Bonferroni correction is applied. The Bonferroni correction is a conservative multiple‑comparison adjustment that controls the family‑wise error rate (FWER), defined as the probability of making at least one false positive across a family of hypothesis tests. Formally, given an overall significance level $\alpha$ and $m$ representing the number of classes represented in the independent hypothesis tests, the Bonferroni‑adjusted significance threshold is defined as:
 
-Formally, given an overall significance level $\alpha$ and $m$ independent hypothesis tests, the Bonferroni‑adjusted significance threshold is defined as:
 $$\alpha^* = \frac{\alpha}{m}$$
 
 In this study, class‑level McNemar’s tests are performed across the seven emotion categories in RAF‑DB. Accordingly, with a conventional significance level of $\alpha = 0.05 $ and $m=7$, the adjusted threshold becomes:
+
 $$\alpha^* = \frac{0.05}{7} \approx 0.0071$$
 
 Under this correction, a class‑level result is considered statistically significant only if its p‑value is smaller than $\alpha^*$.
