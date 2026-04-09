@@ -14,7 +14,7 @@ The evaluation of the assumptions of the statistical tool used are reported bell
 
 \subsection{Main McNemar Results}
 
-Table \ref{tab:mcnemar_overall_pairs} show the pairwise test for the model with and without head changes for (Base/Small/Large) sizes. 
+Table~\ref{tab:mcnemar_overall_pairs} show the pairwise test for the model with and without head changes for (Base/Small/Large) sizes. 
 
 Where: 
 
@@ -40,7 +40,7 @@ Large (No Changes) & Large (Changes) & 0.9250 & 0.9254 & 43 & 44 & 0.0000 & 1.00
 \end{table}
 
 
-For all comparisons on table \ref{tab:mcnemar_overall_pairs} the obtained p-values are greater than the significance threshold of $0.05$, indicating no statistically significant differences in overall accuracy between the baseline and enhanced head configurations.
+For all comparisons on table~\ref{tab:mcnemar_overall_pairs} the obtained p-values are greater than the significance threshold of $0.05$, indicating no statistically significant differences in overall accuracy between the baseline and enhanced head configurations.
 
 
 The similar values of $n_{01}$ and $n_{10}$ across all model sizes suggest that the enhanced classification heads neither systematically improve nor degrade global prediction accuracy. These results confirm that the proposed head modifications preserve the overall error distribution of the models, supporting subsequent analyses focused on class-level performance, macro-averaged F1-score, and efficiency trade-offs.
@@ -91,9 +91,9 @@ Surprise & 680  & 0.9338 & 0.9191 & 17 & 7  & 0.0639 \\
 \caption{Class-level McNemar test: Large (No Changes) vs Large(Changes)}
 \label{tab:mcnemar_class_pairs_large}
 \begin{tabular}{lcccccc}
-\toprule
+\hline
 Class & $N$ & Acc$_A$ & Acc$_B$ & $n_{01}$ & $n_{10}$ & p-value \\
-\midrule
+\hline
 Angry    & 329  & 0.9301 & 0.9422 & 5  & 9  & 0.4240 \\
 Disgust  & 74   & 0.6622 & 0.6486 & 4  & 3  & 1.0000 \\
 Fear     & 160  & 0.7438 & 0.7250 & 7  & 4  & 0.5488 \\
@@ -106,11 +106,91 @@ Surprise & 680  & 0.9368 & 0.9250 & 13 & 5  & 0.0963 \\
 \end{table}
 
 
-For tables \ref{tab:mcnemar_class_pairs_base}, \ref{tab:mcnemar_class_pairs_small} and \ref{tab:mcnemar_class_pairs_large} all p-values exceed the Bonferroni-corrected threshold ($\alpha^* = 0.0071$), indicating no statistically significant differences between (Base/Small/Large) Changes and No Changes models.
+For tables~\ref{tab:mcnemar_class_pairs_base},~\ref{tab:mcnemar_class_pairs_small} and~\ref{tab:mcnemar_class_pairs_large} all p-values exceed the Bonferroni-corrected threshold ($\alpha^* = 0.0071$), indicating no statistically significant differences between (Base/Small/Large) Changes and No Changes models.
+
+\subsection{Bootstrap F1 Score Test Analysis}
+
+\begin{table}[H]
+\centering
+\caption{Bootstrap Macro-F1 comparison across model sizes (No Changes vs Changes)}
+\label{tab:bootstrap_f1_macro}
+\begin{tabular}{lccccc}
+\hline
+Comparison & Macro-F1$_A$ & Macro-F1$_B$ & $\Delta$ & 95\% CI & p-value \\
+\hline
+Small (No Changes vs Changes) 
+& 0.8731 & 0.8779 & +0.0048 & [-0.0072, 0.0173] & 0.5612 \\
+
+Base (No Changes vs Changes)  
+& 0.8794 & 0.8778 & -0.0016 & [-0.0128, 0.0104] & 0.7956 \\
+
+Large (No Changes vs Changes) 
+& 0.8769 & 0.8734 & -0.0035 & [-0.0158, 0.0084] & 0.6273 \\
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Bootstrap F1 test: Small(No Changes) vs Small(Changes)}
+\label{tab:bootstrap_f1_class_pairs_small}
+\begin{tabular}{lccccc}
+\hline
+Class & F1$_A$ & F1$_B$ & $\Delta$ & p-value & Sig ($\alpha^*$) \\
+\hline
+Angry    & 0.9169 & 0.9055 & -0.0114 & 0.4985 & No \\
+Disgust  & 0.7132 & 0.7463 & +0.0331 & 0.4948 & No \\
+Fear     & 0.8068 & 0.8053 & -0.0015 & 0.9334 & No \\
+Happy    & 0.9680 & 0.9729 & +0.0049 & 0.4979 & No \\
+Neutral  & 0.9042 & 0.9011 & -0.0030 & 0.7119 & No \\
+Sad      & 0.8840 & 0.9028 & +0.0188 & 0.5010 & No \\
+Surprise & 0.9183 & 0.9111 & -0.0072 & 0.4978 & No \\
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[H]
+\centering
+\caption{Bootstrap F1 test: Base(No Changes) vs Base(Changes)}
+\label{tab:bootstrap_f1_class_pairs_base}
+\begin{tabular}{lccccc}
+\hline
+Class & F1$_A$ & F1$_B$ & $\Delta$ & p-value & Sig ($\alpha^*$) \\
+\hline
+Angry    & 0.9167 & 0.9175 & +0.0009 & 0.8997 & No \\
+Disgust  & 0.7077 & 0.7445 & +0.0368 & 0.4970 & No \\
+Fear     & 0.8361 & 0.8026 & -0.0335 & 0.4873 & No \\
+Happy    & 0.9697 & 0.9709 & +0.0012 & 0.6446 & No \\
+Neutral  & 0.9130 & 0.9063 & -0.0068 & 0.5173 & No \\
+Sad      & 0.8931 & 0.8875 & -0.0056 & 0.6880 & No \\
+Surprise & 0.9192 & 0.9152 & -0.0040 & 0.5487 & No \\
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Bootstrap F1 test: Large(No Changes) vs Large(Changes)}
+\label{tab:bootstrap_f1_class_pairs_large}
+\begin{tabular}{lccccc}
+\hline
+Class & F1$_A$ & F1$_B$ & $\Delta$ & p-value & Sig ($\alpha^*$) \\
+\hline
+Angry    & 0.9148 & 0.9131 & -0.0017 & 0.8195 & No \\
+Disgust  & 0.7313 & 0.7111 & -0.0202 & 0.5825 & No \\
+Fear     & 0.7933 & 0.8000 & +0.0067 & 0.7248 & No \\
+Happy    & 0.9684 & 0.9725 & +0.0042 & 0.4964 & No \\
+Neutral  & 0.9049 & 0.9065 & +0.0016 & 0.8246 & No \\
+Sad      & 0.9040 & 0.8916 & -0.0124 & 0.5167 & No \\
+Surprise & 0.9219 & 0.9189 & -0.0029 & 0.6206 & No \\
+\end{tabular}
+\end{table}
+\noindent
+As shown on table~\ref{tab:bootstrap_f1_macro}
+none of all confidence intervals include zero and all p-values exceed $0.05$, indicating that no statistically significant differences in Macro-F1 were observed across model scales. Similarly, all per-class comparisons shown on tables~\ref{tab:bootstrap_f1_class_pairs_base},~\ref{tab:bootstrap_f1_class_pairs_small} and~\ref{tab:bootstrap_f1_class_pairs_large} resulted in non-significant differences under the Bonferroni-corrected threshold ($\alpha^* = 0.0071$) indicating that observed performance differences are not statistically significant.
 
 \section{Statistical Tool Results}
 
-The results of the statistical tool used are presented in this section. Table \ref{tab:testing_model_global_metrics} shows the global metrics for each of the experiments performed, each of the combination are aligned with the  \nameref{sec:factors_and_levels} section. Results are also aligned with the response variables presented on section \nameref{sec:response_variables}, for example  \nameref{sub:accuracy}, \nameref{sub:f1-score}, \nameref{sub:precision} and \nameref{sub:recall}.
+The results of the statistical tool used are presented in this section. Table~\ref{tab:testing_model_global_metrics} shows the global metrics for each of the experiments performed, each of the combination are aligned with the  \nameref{sec:factors_and_levels} section. Results are also aligned with the response variables presented on section \nameref{sec:response_variables}, for example  \nameref{sub:accuracy}, \nameref{sub:f1-score}, \nameref{sub:precision} and \nameref{sub:recall}.
 
 
 
@@ -134,9 +214,9 @@ Large               & Yes       & 0.9254            & 0.8910             & 0.860
 
 \subsection{Confusion Matrices}
 
-Figures \ref{fig:cm_base}, \ref{fig:cm_small} and  \ref{fig:cm_large} present a pair of confusion matrices corresponding to the three model configuration sizes evaluated with and without modifications to the head classification module. The matrices are displayed side by side to facilitate direct visual comparison under identical evaluation conditions, also a total of 250 epochs were used for displaying the curves. 
+Figures~\ref{fig:cm_base},~\ref{fig:cm_small} and~\ref{fig:cm_large} present a pair of confusion matrices corresponding to the three model configuration sizes evaluated with and without modifications to the head classification module. The matrices are displayed side by side to facilitate direct visual comparison under identical evaluation conditions, also a total of 250 epochs were used for displaying the curves. 
 
-In all confusion matrices, the vertical axis (y-axis) represents the ground-truth or target class labels, while the horizontal axis (x-axis) corresponds to the predicted class labels. Each cell indicates the number of samples belonging to a given true class that are assigned to a particular predicted class.Correct classifications are represented along the main diagonal of the matrix, where the predicted label matches the true label. Off-diagonal cells correspond to misclassifications, indicating confusion between emotion categories. Emotions mapping abbreviation can be found in this table \ref{tab:emotion_classes}.
+In all confusion matrices, the vertical axis (y-axis) represents the ground-truth or target class labels, while the horizontal axis (x-axis) corresponds to the predicted class labels. Each cell indicates the number of samples belonging to a given true class that are assigned to a particular predicted class.Correct classifications are represented along the main diagonal of the matrix, where the predicted label matches the true label. Off-diagonal cells correspond to misclassifications, indicating confusion between emotion categories. Emotions mapping abbreviation can be found in this table~\ref{tab:emotion_classes}.
 
 
 % Base confusion matrices
@@ -210,7 +290,7 @@ In all confusion matrices, the vertical axis (y-axis) represents the ground-trut
 
 \subsection{Loss Curves}
 
-Figures \ref{fig:base_loss}, \ref{fig:small_loss} and \ref{fig:large_loss} illustrate the evolution of the loss value for 250 epochs, where the x-axis represents the number of training epochs and the y-axis corresponds to the loss magnitude. For each model size, training and validation loss are displayed side by side, and each plot includes curves for both the baseline configuration and the model with modifications in the classification head. Plotting both configurations within the same chart enables a direct comparison of their optimization behavior and convergence trends under identical training conditions.
+Figures~\ref{fig:base_loss},~\ref{fig:small_loss} and~\ref{fig:large_loss} illustrate the evolution of the loss value for 250 epochs, where the x-axis represents the number of training epochs and the y-axis corresponds to the loss magnitude. For each model size, training and validation loss are displayed side by side, and each plot includes curves for both the baseline configuration and the model with modifications in the classification head. Plotting both configurations within the same chart enables a direct comparison of their optimization behavior and convergence trends under identical training conditions.
 
 % Base Loss Curves
 \begin{figure}[H]
@@ -276,7 +356,7 @@ Figures \ref{fig:base_loss}, \ref{fig:small_loss} and \ref{fig:large_loss} illus
 
 \subsection{Accuracy Curves}
 
-The accuracy figures \ref{fig:base_accuracy}, \ref{fig:small_acurracy} and \ref{fig:large_acurracy} depict the classification accuracy per epoch, with the x-axis indicating the number of training epochs and the y-axis representing accuracy values. Training and validation accuracy are shown side by side for each model size, and curves corresponding to the models with and without changes in the classification head are overlaid within each plot. This unified representation provides a consistent basis for comparing learning progression and generalization behavior across model configurations.
+The accuracy figures~\ref{fig:base_accuracy},~\ref{fig:small_acurracy} and~\ref{fig:large_acurracy} depict the classification accuracy per epoch, with the x-axis indicating the number of training epochs and the y-axis representing accuracy values. Training and validation accuracy are shown side by side for each model size, and curves corresponding to the models with and without changes in the classification head are overlaid within each plot. This unified representation provides a consistent basis for comparing learning progression and generalization behavior across model configurations.
 
 % Base Accurracy Curves
 \begin{figure}[H]
@@ -342,7 +422,7 @@ The accuracy figures \ref{fig:base_accuracy}, \ref{fig:small_acurracy} and \ref{
 
 
 \section{Obtained Metrics}
-Additional metrics obtained during the development of the research are presented in this section. Table \ref{tab:training_time_experiments} shows each of the experiments training average times, calculated based on the mean of all the $250$ epochs used to train all the models. 
+Additional metrics obtained during the development of the research are presented in this section. Table~\ref{tab:training_time_experiments} shows each of the experiments training average times, calculated based on the mean of all the $250$ epochs used to train all the models. 
 
 \begin{table}[H]
 \centering
@@ -362,8 +442,8 @@ Large               & No                    & 2.74 min
 
 
 
-Tables \ref{tab:class_base_model_comparison}, \ref{tab:class_large_model_comparison}, and 
-\ref{tab:class_small_model_comparison} present the class-wise classification performance of the Base, Small, and Large model variants, respectively, evaluated on the FER dataset. For each model size, results are reported with and without modifications to the classification head, using precision, recall, and f1-score as evaluation metrics.
+Tables~\ref{tab:class_base_model_comparison},~\ref{tab:class_large_model_comparison}, and 
+~\ref{tab:class_small_model_comparison} present the class-wise classification performance of the Base, Small, and Large model variants, respectively, evaluated on the FER dataset. For each model size, results are reported with and without modifications to the classification head, using precision, recall, and f1-score as evaluation metrics.
 
 
 % Base Model Comparison
