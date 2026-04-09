@@ -371,9 +371,51 @@ RAF-DB has been instrumental in multiple benchmarking state-of-the-art models li
 
 %Include a section briefly explaining the statistical tool used to analyze the data from the experiments.
 
+\subsection{Evaluation Metrics}
+
 To evaluate the impact of the proposed classification head modifications, a statistical analysis was conducted using aggregated performance metrics obtained from multiple experimental runs. For each model configuration, the average values and standard deviation of accuracy, macro averaged f1-score, precision, recall. Using averaged metrics reduces the effect of stochastic variation introduced by random initialization and optimization dynamics, enabling a more stable and reliable comparison between configurations. 
 
 In addition to aggregated metrics, training and validation loss and accuracy curves were plotted for each model configuration in order to analyze convergence behavior and training stability. Furthermore, per-class precision and recall values were computed and visualized, and a confusion matrix was generated for each model to provide a detailed analysis of class-wise performance and misclassification patterns across the seven emotion categories.
+
+\subsection{Paired Model Comparison Using McNemar’s Test}
+
+To assess whether differences in predictive performance between model configurations are statistically significant, this study employs McNemar’s test, a non‑parametric statistical test designed for paired nominal data. McNemar’s test is particularly appropriate for comparing two classification models evaluated on the same test samples, as it directly analyzes disagreements in prediction outcomes rather than relying on aggregate accuracy metrics \cite{zhang_leave_2023}.
+
+Given two models $A$ and $B$, McNemar’s null hypothesis is defined as:
+
+
+$$H_0:P(A correct,B wrong)=P(A_{wrong},B_{correct})$$
+
+This formulation tests whether the two models commit errors on the same samples at similar rates, effectively controlling for dataset‑level variability. Unlike standard accuracy comparisons, McNemar’s test is insensitive to class distribution and does not assume independence between predictions, making it especially suitable for imbalanced classification tasks such as Facial Expression Recognition (\gls{FER}).
+
+\subsubsection{Bonferroni Correction for Class‑Level Statistical Analysis}
+
+When performing statistical comparisons at the class level, multiple hypothesis tests are conducted simultaneously for each emotion category. In the context of Facial Expression Recognition (\gls{FER}), this typically involves testing whether two models differ significantly in their error rates for each emotion class. Conducting multiple tests increases the probability of observing false positives (Type I errors), even if the null hypothesis is true for all classes.
+
+To mitigate this issue, a Bonferroni correction is applied. The Bonferroni correction is a conservative multiple‑comparison adjustment that controls the family‑wise error rate (FWER), defined as the probability of making at least one false positive across a family of hypothesis tests.
+
+Formally, given an overall significance level $\alpha$ and $m$ independent hypothesis tests, the Bonferroni‑adjusted significance threshold is defined as:
+$$\alpha^* = \frac{\alpha}{m}$$
+
+In this study, class‑level McNemar’s tests are performed across the seven emotion categories in RAF‑DB. Accordingly, with a conventional significance level of $\alpha = 0.05 $ and $m=7$, the adjusted threshold becomes:
+$$\alpha^* = \frac{0.05}{7} \approx 0.0071$$
+
+Under this correction, a class‑level result is considered statistically significant only if its p‑value is smaller than $\alpha^*$.
+
+\subsection{Bootstrap Analysis of Macro‑Averaged F1‑Score}
+
+In Facial Expression Recognition, overall accuracy is often dominated by majority classes. For this reason, this study focuses on macro‑averaged F1‑score, which gives equal importance to all emotion categories and is therefore more sensitive to minority‑class behavior \cite{zhang_leave_2023}.
+
+
+To assess whether observed differences in macro‑F1 between two models are reliable or may simply be due to randomness in the validation set, bootstrap resampling is employed. Bootstrap analysis is a non‑parametric statistical technique that estimates the variability of an evaluation metric by repeatedly resampling the available data with replacement and recomputing the metric on each resampled dataset . Unlike parametric tests, bootstrap analysis does not assume any particular distribution of the metric and is therefore well suited for imbalanced datasets, complex metrics such as F1‑score and scenarios where only a single validation set is available \cite{garcia_advanced_2010, graczyk_nonparametric_2010}.
+
+The null hypothesis is defined as:
+
+$$ H_0:
+\Delta = F1_B - F1_A = 0 $$
+
+If the confidence interval includes zero, the observed difference in macro‑F1 cannot be considered statistically reliable at the chosen confidence level. If the interval does not include zero, the difference is interpreted as statistically significant.
+
 
 %
 %\subsection{Hypothesis of the statistical tool used}
