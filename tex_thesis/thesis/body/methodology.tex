@@ -229,9 +229,9 @@ A consistent decrease in training and validation loss indicates effective learni
 
 The experimental setup was designed to ensure reproducibility, fairness, and controlled comparison across all evaluated configurations. All models were trained using the same data splits, preprocessing pipeline, optimization strategy, and training schedule, with the only variations being the classification head architecture and the feature pyramid size of the POSTER model. This includes the three model sizes shown in Table \ref{tab:factors_and_levels}.
 
-Training was performed using NVIDIA GPUs with CUDA acceleration. Both local and cloud-based environments were used, including a desktop workstation equipped with two NVIDIA GeForce RTX 3060 GPUs and Google Colab Pro Plus instances with dynamically allocated NVIDIA GPUs. All experiments were executed using PyTorch, and deterministic CUDA behavior was enforced by fixing random seeds for Python, NumPy, and PyTorch.
+Training was performed using NVIDIA GPUs with CUDA acceleration. Both local and cloud-based environments were used, including a desktop workstation equipped with two NVIDIA GeForce RTX 3060 GPUs and Google Colab Pro Plus instances with dynamically allocated NVIDIA GPUs. All experiments were executed using \gls{PyTorch}, and deterministic CUDA behavior was enforced by fixing random seeds for Python, NumPy, and \gls{PyTorch}.
 
-Each model configuration was trained for 250 epochs under identical hyper parameter settings, including a training batch size of 120, a validation batch size of 30, the Adam optimizer, and a learning rate of $4 \times 10^{-4}$. Early stopping was not applied in order to ensure consistent training dynamics across all experimental runs. Model checkpoints and training logs were stored for post hoc analysis and metric aggregation.
+Each model configuration was trained for 250 epochs under identical hyper parameter settings, including a training batch size of 120, a validation batch size of 30, the Adam optimizer, and a learning rate of $4 \times 10^{-4}$. Early stopping was not applied in order to ensure consistent training dynamics across all experimental runs. Model checkpoints and training logs were stored for post-hoc analysis and metric aggregation.
 
 
 
@@ -377,18 +377,20 @@ To evaluate the impact of the proposed classification head modifications, a stat
 
 In addition to aggregated metrics, training and validation loss and accuracy curves were plotted for each model configuration in order to analyze convergence behavior and training stability. Furthermore, per-class precision and recall values were computed and visualized, and a confusion matrix was generated for each model to provide a detailed analysis of class-wise performance and misclassification patterns across the seven emotion categories.
 
-\subsection{Paired Model Comparison Using McNemar’s Test}
+\subsection{Paired Model Comparison Using McNemar’s Test}\label{sub:mcnemar_test}
 
 To assess whether differences in predictive performance between model configurations are statistically significant, this study employs McNemar’s test, a non‑parametric statistical test designed for paired nominal data. McNemar’s test is particularly appropriate for comparing two classification models evaluated on the same test samples, as it directly analyzes disagreements in prediction outcomes rather than relying on aggregate accuracy metrics \cite{zhang_leave_2023}.
 
 Given two models $A$ and $B$, McNemar’s null hypothesis is defined as:
 
 
-$$H_0:P(A correct,B wrong)=P(A_{wrong},B_{correct})$$
+
+$$
+H_0:P(A_{correct},B_{wrong})=P(A_{wrong},B_{correct})$$
 
 This formulation tests whether the two models commit errors on the same samples at similar rates, effectively controlling for dataset‑level variability. Unlike standard accuracy comparisons, McNemar’s test is insensitive to class distribution and does not assume independence between predictions, making it especially suitable for imbalanced classification tasks such as Facial Expression Recognition (\gls{FER}).
 
-\subsubsection{Bonferroni Correction for Class‑Level Statistical Analysis}
+\subsubsection{Bonferroni Correction for Class‑Level Statistical Analysis}\label{subsub:bonferroni_correction}
 
 When performing statistical comparisons at the class level, multiple hypothesis tests are conducted simultaneously for each emotion category. In the context of Facial Expression Recognition (\gls{FER}), this typically involves testing whether two models differ significantly in their error rates for each emotion class. Conducting multiple tests increases the probability of observing false positives (Type I errors), even if the null hypothesis is true for all classes.
 
@@ -407,7 +409,7 @@ Under this correction, a class‑level result is considered statistically signif
 In Facial Expression Recognition, overall accuracy is often dominated by majority classes. For this reason, this study focuses on macro‑averaged F1‑score, which gives equal importance to all emotion categories and is therefore more sensitive to minority‑class behavior \cite{zhang_leave_2023}.
 
 
-To assess whether observed differences in macro‑F1 between two models are reliable or may simply be due to randomness in the validation set, bootstrap resampling is employed. Bootstrap analysis is a non‑parametric statistical technique that estimates the variability of an evaluation metric by repeatedly resampling the available data with replacement and recomputing the metric on each resampled dataset . Unlike parametric tests, bootstrap analysis does not assume any particular distribution of the metric and is therefore well suited for imbalanced datasets, complex metrics such as F1‑score and scenarios where only a single validation set is available \cite{garcia_advanced_2010, graczyk_nonparametric_2010}.
+To assess whether observed differences in macro‑F1 between two models are reliable or may simply be due to randomness in the validation set, bootstrap resampling is employed. Bootstrap analysis is a non‑parametric statistical technique that estimates the variability of an evaluation metric by repeatedly resampling the available data with replacement and recomputing the metric on each resampled dataset . Unlike parametric tests, bootstrap analysis does not assume any particular distribution of the metric and is therefore well suited for imbalanced datasets, complex metrics such as F1‑score and scenarios where only a single validation set is available \cite{garcia_advanced_2010, graczyk_nonparametric_2010}. A similar \nameref{subsub:bonferroni_correction} is applied when multiple classes are tested simultaneously. 
 
 The null hypothesis is defined as:
 
