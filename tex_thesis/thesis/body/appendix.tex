@@ -27,6 +27,59 @@ Table \ref{tab:emotion_classes} presents the mapping between class numbers, emot
 \end{tabular}
 \end{table}
 
+Table \ref{tab:training_hyperparameters} shows the fixed hyperparameters used for all the experiments. 
+
+\begin{table}[h]
+\centering
+\caption{Training Hyperparameters and Experimental Configuration}
+\label{tab:training_hyperparameters}
+\begin{tabular}{lll}
+\hline
+\textbf{Category} & \textbf{Parameter} & \textbf{Value} \\
+\hline
+
+\textbf{Input} & Image resolution & $224 \times 224$ \\
+ & Normalization & ImageNet mean/std \\
+ & Augmentation & Flip and Random Erasing \\
+Model & Architecture & POSTER \\
+ & Model sizes & Small / Base / Large \\
+ & Head type & Simple / Enhanced \\
+\textbf{Optimizer} & Optimizer & Adam + SAM \\
+ & Learning rate & $4 \times 10^{-5}$ \\
+ & SAM $\rho$ & 0.05 \\
+\textbf{Loss} & Loss function & $2\cdot$LSCE + CE \\
+ & Label smoothing & 0.2 \\
+\textbf{Training} & Epochs & 250 \\
+ & Train batch size & 200 \\
+ & Validation batch size & 32 \\
+\textbf{Scheduler} & LR scheduler & ExponentialLR ($\gamma=0.98$) \\
+\textbf{Reproducibility} & Random seed & 123 \\
+\hline
+\end{tabular}
+\end{table}
+
+The computational resources used for all experiments, including both local machines and cloud environments, are summarized in Table~\ref{tab:hardware_used}.
+
+\begin{table}[h]
+\centering
+\caption{Computational resources used in the experimental setup}
+\label{tab:hardware_used}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+\textbf{Environment} & \textbf{Component} & \textbf{Specs} \\
+\midrule
+\multirow{2}{*}{Local}
+ & GPU Setup & 2 × NVIDIA GeForce RTX 3060 \\
+ & Machine Type & Desktop workstation \\
+\midrule
+\multirow{2}{*}{Cloud}
+ & Platform & Google Colab Pro+ \\
+ & GPU & NVIDIA GPU (variable allocation) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 
 \section{Source Code}
 \label{deliverable:source-code}

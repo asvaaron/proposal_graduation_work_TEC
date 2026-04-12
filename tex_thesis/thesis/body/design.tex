@@ -232,55 +232,6 @@ The modified version for this thesis work can be found in the following reposito
 
 Table \ref{tab:training_hyperparameters} summarizes the hyperparameters and training configuration used in all experiments. To ensure a controlled and fair comparison, all hyperparameters, data augmentation strategies, and optimization settings were kept fixed across model sizes and classification head variants. The only experimental factors varied in this study were the \gls{POSTER} architecture size and the classification head design, allowing the observed differences in performance to be directly attributed to head-related modifications. Additionally, the project directory structure can be found in this example \ref{lst:poster_custom_structure}.
 
-\begin{table}[h]
-\centering
-\caption{Training Hyperparameters and Experimental Configuration}
-\label{tab:training_hyperparameters}
-\begin{tabular}{lll}
-\hline
-\textbf{Category} & \textbf{Parameter} & \textbf{Value} \\
-\hline
-
-\textbf{Input} & Image resolution & $224 \times 224$ \\
- & Normalization & ImageNet mean/std \\
- & Augmentation & Flip and Random Erasing \\
-Model & Architecture & POSTER \\
- & Model sizes & Small / Base / Large \\
- & Head type & Simple / Enhanced \\
-\textbf{Optimizer} & Optimizer & Adam + SAM \\
- & Learning rate & $4 \times 10^{-5}$ \\
- & SAM $\rho$ & 0.05 \\
-\textbf{Loss} & Loss function & $2\cdot$LSCE + CE \\
- & Label smoothing & 0.2 \\
-\textbf{Training} & Epochs & 250 \\
- & Train batch size & 200 \\
- & Validation batch size & 32 \\
-\textbf{Scheduler} & LR scheduler & ExponentialLR ($\gamma=0.98$) \\
-\textbf{Reproducibility} & Random seed & 123 \\
-\hline
-\end{tabular}
-\end{table}
-
-\begin{table}[h]
-\centering
-\caption{Computational resources used in the experimental setup}
-\label{tab:hardware_used}
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{@{}l l l@{}}
-\toprule
-\textbf{Environment} & \textbf{Component} & \textbf{Specs} \\
-\midrule
-\multirow{2}{*}{Local}
- & GPU Setup & 2 × NVIDIA GeForce RTX 3060 \\
- & Machine Type & Desktop workstation \\
-\midrule
-\multirow{2}{*}{Cloud}
- & Platform & Google Colab Pro+ \\
- & GPU & NVIDIA GPU (variable allocation) \\
-\bottomrule
-\end{tabular}
-\end{table}
-
 
 \begin{lstlisting}[caption={Project directory structure of the POSTER implementation}, label={lst:poster_custom_structure},
 %frame=none,
