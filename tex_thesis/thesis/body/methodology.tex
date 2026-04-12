@@ -16,10 +16,9 @@ This section presents a brief introduction to the statistical tools used in the 
 The experiment consisted of 6 unique configurations derived from the combination of  two factors. Factor  $A$ corresponds to original model vs changes made in the head. Factor $B$ corresponds to the model size (Base/Small/Large). In  \cite{zheng_poster_2022} the feature pyramid structure has features with embedding dim $DH = 512$, $DM = 256$, and $DL = 128$, respectively. For factor $A, s_a =2$ and Factor $B, s_b=3$, where $s$ is number of levels on each factor, we have a two-way factorial design $s_a \times s_b = 2 \times 3 = 6$. Each combination (cell) is a $\text{Head} \times \text{Size}$ pair (6 cells total).
 
 
-For each configuration, the \gls{POSTER} Visual Transformer was trained using a facial expression dataset RAF-DB, and the performance was evaluated based on a chosen metric, such as classification accuracy Section \nameref{sub:accuracy} and Section \nameref{sub:f1-score},  \nameref{sub:recall},  \nameref{sub:precision},  \nameref{sub:confusion-matrix}. Also an individual section with charts for testing/training validation loss \nameref{sub:loss-curves} and \nameref{sub:confusion-matrix}.
+For each configuration, the \gls{POSTER} Visual Transformer was trained using  the \gls{FER} dataset RAF-DB, and the performance was evaluated based on a set of chosen metrics, such \nameref{sub:accuracy}, \nameref{sub:f1-score},  \nameref{sub:recall},  \nameref{sub:precision},  \nameref{sub:confusion-matrix}. Also an individual section with charts for testing/training validation loss \nameref{sub:loss-curves} and \nameref{sub:confusion-matrix}.
 
-The models were trained in a controlled environment, where the only variations between runs are the levels of the factors being tested. This allowed for a rigorous comparison of how  model size and head modifications influence the transformer's performance in \gls{FER} tasks using an \gls{in-the-wild} dataset like RAF-DB.
-
+The models were trained in a controlled environment, where the only variations between runs are the levels of the factors being tested. This allowed for a rigorous comparison of how  model size and head modifications influence the transformer's performance in \gls{FER} tasks.
 
 %\section{Factors and Levels (if needed):}
 
