@@ -17,7 +17,7 @@ This chapter describes the experimental design adopted in this research, includi
 
 \section{Description of the \gls{POSTER}implementation with no head modifications}
 
-Section \nameref{section:hypothesis} outlines the hypothesis, which proposes evaluating the model using the baseline head architecture introduced in Zheng et al.\cite{zheng_poster_2022}. An example of the original implementation of the classification head is shown on \ref{cod:base_classification_head}
+Section \nameref{section:hypothesis} outlines the hypothesis, which proposes evaluating the model using the baseline head architecture introduced in Zheng et al.\cite{zheng_poster_2022}. An example of the original implementation diagram of the classification head is shown in \ref{cod:base_classification_head}
 
 \begin{lstlisting}[language=Python, caption={Base classification head}, label={cod:base_classification_head}]
 
@@ -34,7 +34,7 @@ class ClassificationHead(nn.Module):
 \end{lstlisting}
 
 
-The baseline head consists of a \gls{PyTorch} nn.Module class that takes the 512-dimensional feature vector produced by the backbone and directly maps it to the seven emotion classes using a single linear layer. An example  of the basic MLP architecture flow is shown in figure \ref{fig:poster_classification_head_base}.
+The baseline head consists of a \gls{PyTorch} nn.Module class that takes the 512-dimensional feature vector produced by the backbone and directly maps it to the seven emotion classes using a single linear layer. An example  of the basic MLP architecture flow is summarized in figure \ref{fig:poster_classification_head_base}.
 
 \begin{figure}[H]
 \centering
@@ -213,7 +213,7 @@ exclusively to the classification head of the \gls{POSTER} architecture. As a re
 
 \subsubsection{Computational Constraints}
 
-The extent of architectural experimentation and hyperparameter exploration, table \ref{tab:hardware_used}, is further constrained by available computational resources. Training and evaluation are conducted under fixed hardware as shown on table \ref{tab:training_hyperparameters}  which restrict the feasibility of testing extremely deep or computationally intensive classification head designs. These constraints demand a balance between experimental depth and practical feasibility, potentially limiting the exploration of more resource-demanding configurations.
+The extent of architectural experimentation and hyperparameter exploration, table \ref{tab:hardware_used}, is further constrained by available computational resources. Training and evaluation are conducted under fixed hardware as shown in table \ref{tab:training_hyperparameters}  which restrict the feasibility of testing extremely deep or computationally intensive classification head designs. These constraints demand a balance between experimental depth and practical feasibility, potentially limiting the exploration of more resource-demanding configurations.
 
 
 %Fairness Analysis Limitations

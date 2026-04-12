@@ -48,7 +48,7 @@ Large (No Changes) & Large (Changes) & 0.9250 & 0.9254 & 43 & 44 & 0.0000 & 1.00
 \end{table}
 
 
-For all comparisons on table \ref{tab:mcnemar_overall_pairs} the obtained p-values are greater than the significance threshold of $0.05$, indicating no statistically significant differences in overall accuracy between the baseline and enhanced head configurations.
+For all model sizes comparisons shown in table \ref{tab:mcnemar_overall_pairs}, the McNemar’s test resulted in p-values greater than $0.05$, indicating that the enhanced classification head does not introduce statistically significant changes in overall error patterns or overfitted results. This confirms that the proposed modifications preserve global predictive behavior.
 
 
 The similar values of $n_{01}$ and $n_{10}$ across all model sizes suggest that the enhanced classification heads neither systematically improve nor degrade global prediction accuracy. These results confirm that the proposed head modifications preserve the overall error distribution of the models, supporting subsequent analyses focused on class-level performance, macro-averaged F1-score, and efficiency trade-offs.
@@ -206,8 +206,8 @@ Surprise & 0.9219 & 0.9189 & -0.0029 & 0.6206 & No \\
 \end{tabular}
 \end{table}
 \noindent
-As shown on table \ref{tab:bootstrap_f1_macro}
-none of all confidence intervals include zero and all p-values exceed $0.05$, indicating that no statistically significant differences in Macro-F1 were observed across model scales. Similarly, all per-class comparisons shown on tables \ref{tab:bootstrap_f1_class_pairs_base}, \ref{tab:bootstrap_f1_class_pairs_small} and \ref{tab:bootstrap_f1_class_pairs_large} resulted in non-significant differences under the Bonferroni-corrected threshold ($\alpha^* = 0.0071$) indicating that observed performance differences are not statistically significant.
+As shown in table \ref{tab:bootstrap_f1_macro}
+none of all confidence intervals include zero and all p-values exceed $0.05$, indicating that no statistically significant differences in Macro-F1 were observed across model scales. Similarly, all per-class comparisons shown in tables \ref{tab:bootstrap_f1_class_pairs_base}, \ref{tab:bootstrap_f1_class_pairs_small} and \ref{tab:bootstrap_f1_class_pairs_large} resulted in non-significant differences under the Bonferroni-corrected threshold ($\alpha^* = 0.0071$) indicating that observed performance differences are not statistically significant.
 
 \section{Statistical Tool Results}
 

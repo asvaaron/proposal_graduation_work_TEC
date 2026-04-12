@@ -112,7 +112,7 @@ For the next sections the following concepts are defined:
 
 The standard or top-1 accuracy was used as the main metric for reviewing performance and robustness comparison between models. The metric corresponds to a simple calculation taking the correctly classified samples and dividing it by the total number of samples. Equation \ref{eq:accuracy} shows how accuracy is calculated. 
 
-For multi-class classification, Accuracy represents the ratio of correctly predicted samples to the total number of samples across all emotion classes. Additionally, both training and validation accuracy were monitored throughout the learning process to assess the model's generalization capability and detect potential overfitting, an example of the curves comparison is shown on image \ref{fig:training-validation-acurracy-example}.
+For multi-class classification, Accuracy represents the ratio of correctly predicted samples to the total number of samples across all emotion classes. Additionally, both training and validation accuracy were monitored throughout the learning process to assess the model's generalization capability and detect potential overfitting, an example of the curves comparison is shown in image \ref{fig:training-validation-acurracy-example}.
 
 \begin{figure}[H]
 \centering
@@ -184,7 +184,7 @@ A higher value of \ref{eq:f1-macro-avg} indicates better overall balance between
 
 \subsection{Confusion Matrix} \label{sub:confusion-matrix}
 
-To further analyze the classification behavior of the model, confusion matrices are employed. A confusion matrix provides a detailed breakdown of predicted versus actual class labels, a shown on image \ref{fig:confusion-matrix-poster}, this chart provides a comprehensive assessment of both correct and incorrect predictions across all emotion categories.
+To further analyze the classification behavior of the model, confusion matrices are employed. A confusion matrix provides a detailed breakdown of predicted versus actual class labels, a shown in image \ref{fig:confusion-matrix-poster}, this chart provides a comprehensive assessment of both correct and incorrect predictions across all emotion categories.
 
 Each row of the confusion matrix corresponds to the true class labels, while each column represents the predicted labels. Diagonal elements indicate correct classifications, whereas off-diagonal elements highlight specific mis-classification patterns between emotion classes.
 
@@ -230,7 +230,7 @@ The experimental setup was designed to ensure reproducibility, fairness, and con
 
 Training was performed using NVIDIA GPUs with CUDA acceleration. Both local and cloud-based environments were used, including a desktop workstation equipped with two NVIDIA GeForce RTX 3060 GPUs and Google Colab Pro Plus instances with dynamically allocated NVIDIA GPUs. All experiments were executed using \gls{PyTorch}, and deterministic CUDA behavior was enforced by fixing random seeds for Python, NumPy, and \gls{PyTorch}.
 
-Each model configuration was trained for 250 epochs under identical hyper parameter settings, including a training batch size of 120, a validation batch size of 30, the Adam optimizer, and a learning rate of $4 \times 10^{-4}$. Early stopping was not applied in order to ensure consistent training dynamics across all experimental runs. Model checkpoints and training logs were stored for post-hoc analysis and metric aggregation.
+Each model configuration was trained for 250 epochs under identical hyperparameter settings, including a training batch size of 120, a validation batch size of 30, the Adam optimizer, and a learning rate of $4 \times 10^{-4}$. Early stopping was not applied in order to ensure consistent training dynamics across all experimental runs. Model checkpoints and training logs were stored for post-hoc analysis and metric aggregation.
 
 
 
@@ -286,7 +286,7 @@ This section shows a brief description of the data recollection process.
 
 \subsection{RAF-DB}
 
-For conducting all of the experiments the dataset Real-world Affective Faces Database (RAF-DB)\footnote{\url{https://www.kaggle.com/datasets/shuvoalok/raf-db-dataset}}\footnote{\url{http://www.whdeng.cn/RAF/model1.html}} was be used. This corresponds to a widely used dataset in the field of Facial Expression Recognition (FER).
+For conducting all of the experiments the dataset Real-world Affective Faces Database (RAF-DB)\footnote{\url{https://www.kaggle.com/datasets/shuvoalok/raf-db-dataset}}\footnote{\url{http://www.whdeng.cn/RAF/model1.html}} was used. This dataset is widely used in the field of Facial Expression Recognition (\gls{FER}).
 
 The images, collected from the Internet, are representative of diverse real-world conditions, including variations in ethnicity, age, gender, lighting, and occlusions (e.g. glasses, facial hair or self-occlusion), post-processing operations (e.g. various filters and special effects), etc. These particular features make RAF-DB a challenging dataset, ideal for evaluating FER models under realistic settings.
 
