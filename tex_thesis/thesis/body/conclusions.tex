@@ -10,9 +10,9 @@ This chapter presents the final conclusions obtained through the research effort
 
 \section{Conclusions}
 
-This project focused on evaluating the impact of modifying the MLP head in a Visual Transformer-based Facial Expression Recognition model specifically using a challenging or \gls{in-the-wild} based Datased and using \gls{POSTER} as the baseline architecture without changes in the MLP classification head \cite{zheng_poster_2022}. This allows to have a different perspective regarding how the Visual Transformers can help achieve a better performance when using an enhanced version of the classified head for \gls{in-the-wild} Facial Expression Recognition (\gls{FER}). 
+This project focused on evaluating the impact of modifying the MLP head in a Visual Transformer-based Facial Expression Recognition model specifically using a challenging or \gls{in-the-wild} based Dataset and using \gls{POSTER} as the baseline architecture without changes in the MLP classification head \cite{zheng_poster_2022}. This allows to have a different perspective regarding how the Visual Transformers can help achieve a better performance when using an enhanced version of the classified head for \gls{in-the-wild} Facial Expression Recognition (\gls{FER}). 
 
-Thought the work developed in the thesis, a new version of the head is presented as an opportunity to explore how the final classification can help improve model predictability or also achieve better results on challenging classes without modifying the visual transformer's backbone. The new head was integrated into the code  using the same hyperparameters as the baseline and tested with three transformer's sizes (Base/Small/Large).
+Throughout the work developed in the thesis, a new version of the head is presented as an opportunity to explore how the final classification can help improve model predictability or also achieve better results on challenging classes without modifying the visual transformer's backbone. The new head was integrated into the code  using the same hyperparameters as the baseline and tested with three transformer's sizes (Base/Small/Large).
 
 %
 %\begin{itemize}
@@ -29,7 +29,7 @@ Thought the work developed in the thesis, a new version of the head is presented
 \textbf{Conclusion 1 - Head modifications can improve FER performance in a nuanced way.}
 
 
-The experimental results partially confirm the research hypothesis. Across all six configurations, overall top‑1 accuracy remained stable $(\approx 0.923–0.928)$, indicating that the choice of head architecture does not drastically affect dataset-level accuracy. However, macro‑F1 and per-class metrics reveal that the enhanced head delivers consistent gains for specific emotions, especially in the Small and Base \gls{POSTER} variants. Thus, while global accuracy is largely preserved, the modified head improves the quality of predictions at a finer granularity, particularly for less represented or more ambiguous emotion classes (e.g. Fear, Sad and Disgust)~\cite{kollias_affect_2021, zhang_leave_2023, wang_survey_2024}.
+The experimental results partially confirm the research hypothesis. Across all six configurations, overall top‑1 accuracy remained stable $(\approx 0.923–0.928)$, indicating that the choice of head architecture does not drastically affect dataset-level accuracy. However, macro‑F1 and per-class metrics reveal that the enhanced head delivers consistent gains for specific emotions, especially in the Small and Base \gls{POSTER} variants. Thus, while global accuracy is largely preserved, the modified head improves the quality of predictions at a finer granularity, particularly for  underrepresented or more ambiguous emotion classes (e.g. Fear, Sad and Disgust)~\cite{kollias_affect_2021, zhang_leave_2023, wang_survey_2024}.
 
 \textbf{Conclusion 2 - The enhanced head benefits minority and difficult emotion classes.}
 
