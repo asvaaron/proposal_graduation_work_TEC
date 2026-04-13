@@ -10,24 +10,23 @@ This chapter presents the results obtained while evaluating the proposed algorit
  
 \section{Statistical Tool Assumptions Tests}
 
-The evaluation of the assumptions of the statistical tool used are reported bellow:
+The evaluation of the assumptions of the statistical tool used are reported below:
 
 \subsection{Main McNemar Results}
 
-Table \ref{tab:mcnemar_overall_pairs} show the pairwise test for the model with and without head changes for (Base/Small/Large) sizes. 
+Table \ref{tab:mcnemar_overall_pairs} shows the pairwise test for the model with and without head changes for (Base/Small/Large) sizes.  
 
 Consider the following null and alterative hypotheses:
 
 \begin{itemize}
-\item  $H_0$: P(A correct, B wrong) = P(A wrong, B correct)  $[n_{01} = n_{10}]$
-  
+\item  $H_0$: $P(A_{correct}, B_{wrong}) = P(A_{wrong}, B_{correct})$ and $[n_{01} = n_{10}]$
 \item $H_1$: Models make errors on systematically different samples
 \end{itemize}
  
 Where: 
 
 \begin{itemize}
-\item $n_{01}$: samples missclassified by model A but correctly classified by Model B
+\item $n_{01}$: samples misclassified by model A but correctly classified by Model B
 \item $n_{10}$: samples correctly classified by Model A but misclassified by Model B
 \item $\chi^2=\frac{\left(n_{01}-n_{10}\right)^2}{n_{01}+n_{10}}$
 \end{itemize}
@@ -51,12 +50,12 @@ Large (No Changes) & Large (Changes) & 0.9250 & 0.9254 & 43 & 44 & 0.0000 & 1.00
 For all model sizes comparisons shown in table \ref{tab:mcnemar_overall_pairs}, the McNemar’s test resulted in p-values greater than $0.05$, indicating that the enhanced classification head does not introduce statistically significant changes in overall error patterns or overfitted results. This confirms that the proposed modifications preserve global predictive behavior.
 
 
-The similar values of $n_{01}$ and $n_{10}$ across all model sizes suggest that the enhanced classification heads neither systematically improve nor degrade global prediction accuracy. These results confirm that the proposed head modifications preserve the overall error distribution of the models, supporting subsequent analyses focused on class-level performance, macro-averaged F1-score, and efficiency trade-offs.
+The similar values of $n_{01}$ and $n_{10}$ across all model sizes suggest that the enhanced classification heads neither systematically improve nor degrade global prediction accuracy. These results confirm that the proposed head modifications preserves the overall error distribution of the models, supporting subsequent analyses focused on class-level performance, macro-averaged F1-score, and efficiency trade-offs.
 
 
 \subsection{Class-Level McNemar's Test Analysis}
  
-Consider the following null and alterative hypotheses:
+Consider the following null $H_0$ and alternative hypotheses $H_1$:
 
 \begin{itemize}
 \item $H_0$: No difference in per-class error rates between models
@@ -127,7 +126,7 @@ For tables \ref{tab:mcnemar_class_pairs_base}, \ref{tab:mcnemar_class_pairs_smal
 
 \begin{itemize}
 \item  $H_0$: True macro-F1 difference $\Delta = F1(B) - F1(A) = 0$
-\item $H_1$: The F1 difference is real and not due to sampling variation
+\item $H_1$: The  macro-F1 difference is real and not due to sampling variation
 \end{itemize}
  
 
@@ -207,7 +206,7 @@ Surprise & 0.9219 & 0.9189 & -0.0029 & 0.6206 & No \\
 \end{table}
 \noindent
 As shown in table \ref{tab:bootstrap_f1_macro}
-none of all confidence intervals include zero and all p-values exceed $0.05$, indicating that no statistically significant differences in Macro-F1 were observed across model scales. Similarly, all per-class comparisons shown in tables \ref{tab:bootstrap_f1_class_pairs_base}, \ref{tab:bootstrap_f1_class_pairs_small} and \ref{tab:bootstrap_f1_class_pairs_large} resulted in non-significant differences under the Bonferroni-corrected threshold ($\alpha^* = 0.0071$) indicating that observed performance differences are not statistically significant.
+all confidence intervals include zero and all p-values exceed $0.05$, indicating that no statistically significant differences in Macro-F1 were observed across model scales. Similarly, all per-class comparisons shown in tables \ref{tab:bootstrap_f1_class_pairs_base}, \ref{tab:bootstrap_f1_class_pairs_small} and \ref{tab:bootstrap_f1_class_pairs_large} resulted in non-significant differences under the Bonferroni-corrected threshold ($\alpha^* = 0.0071$) indicating that observed performance differences are not statistically significant.
 
 \section{Statistical Tool Results}
 
@@ -235,9 +234,9 @@ Large               & Yes       & 0.9254            & 0.8910             & 0.860
 
 \subsection{Confusion Matrices}
 
-Figures \ref{fig:cm_base}, \ref{fig:cm_small} and  \ref{fig:cm_large} present a pair of confusion matrices corresponding to the three model configuration sizes evaluated with and without modifications to the head classification module. The matrices are displayed side by side to facilitate direct visual comparison under identical evaluation conditions, also a total of 250 epochs were used for displaying the curves. 
+Figures \ref{fig:cm_base}, \ref{fig:cm_small} and  \ref{fig:cm_large} present a pair of confusion matrices corresponding to the three model configuration sizes evaluated with and without modifications to the head classification module. The matrices are displayed side by side to facilitate direct visual comparison under identical evaluation conditions. 
 
-In all confusion matrices, the vertical axis (y-axis) represents the ground-truth or target class labels, while the horizontal axis (x-axis) corresponds to the predicted class labels. Each cell indicates the number of samples belonging to a given true class that are assigned to a particular predicted class.Correct classifications are represented along the main diagonal of the matrix, where the predicted label matches the true label. Off-diagonal cells correspond to misclassifications, indicating confusion between emotion categories. Emotions mapping abbreviation can be found in this table \ref{tab:emotion_classes}.
+In all confusion matrices, the vertical axis (y-axis) represents the ground-truth or target class labels, while the horizontal axis (x-axis) corresponds to the predicted class labels. Each cell indicates the number of samples belonging to a given true class that are assigned to a particular predicted class. Correct classifications are represented along the main diagonal of the matrix, where the predicted label matches the true label. Off-diagonal cells correspond to misclassifications, indicating confusion between emotion categories. Emotions mapping abbreviation can be found in this table \ref{tab:emotion_classes}.
 
 
 % Base confusion matrices
