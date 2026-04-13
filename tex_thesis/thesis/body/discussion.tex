@@ -37,12 +37,20 @@ In contrast, classes with abundant, distinctive samples (e.g., Happy) tend to ma
 
 The observed improvements for minority emotions such as Fear are consistent with the design choices of the enhanced head. The additional non‑linearity and regularization enable the classifier to refine decision boundaries in low-data regimes, where a purely linear mapping may overfit dominant patterns from majority classes. Batch normalization stabilizes feature scales across batches, while dropout reduces reliance on a few highly frequent patterns, allowing the model to give more weight to subtle cues that characterize rare or unbalanced expressions. Consequently, the enhanced head behaves as a capacity‑controlled refinement stage that is particularly beneficial for classes with limited and noisy samples.
 
+\section{Statistical Significance for Performance Tests }
 
-%Therefore, macro averaged metrics are better aligned with the objective of lifting underperforming categories, and they should be emphasized in the main results table. 
+Although descriptive metrics indicate small variations in accuracy and class-wise performance between the baseline and enhanced classification heads, inferential non parametric statistical test analysis suggests that these differences are not statistically significant. McNemar’s tests conducted on paired accuracy outcomes across all model sizes yield p‑values greater than $0.05$, indicating no statistically significant difference in overall error patterns between the two heads. A similar scenario is presented when applying the class-level Mcnemar's test analysis, where p-values are greated than the Bonferroni corrected threshold $\alpha^* = 0.0071$.
 
-\section{Efficiency--Accuracy Trade-off}
+These results implies that the enhanced head does not consistently outperform the baseline in terms of global classification accuracy, but also does not introduce additional systematic errors. Consequently, the modification does not jeopardize the model’s generalization ability or overall classification power.
 
-As shown in  Table~\ref{tab:testing_model_global_metrics}, the Small and Base POSTER models achieve almost the same accuracy and macro-F1 as the Large model (all accuracies lie within $0.923$--$0.925$). Because performance remains essentially unchanged across sizes, the main practical difference comes from training efficiency. 
+Complementarily, bootstrap resampling applied to macro‑averaged F1 scores produces confidence intervals that include zero and non‑significant p‑values across all scales configurations. This indicates that the observed differences in macro‑F1 are small and may reasonably be attributed to sampling variability rather than to an improvement induced by the head modification. While some class‑level metrics show localized or configuration‑dependent changes, these effects do not translate into statistically reliable improvements under the applied tests.
+
+
+Taken together, all these results suggest that the proposed head modification preserves the predictive behavior of the original \gls{POSTER} architecture. Rather than yielding a statistically significant performance improvement, the enhanced head represents a stable architectural alternative that maintains accuracy and balanced classification performance without degrading generalization.
+
+\section{Efficiency-Accuracy Trade-off}
+
+As shown in Table~\ref{tab:testing_model_global_metrics}, the Small and Base POSTER models achieve almost the same accuracy and macro-F1 as the Large model (all accuracies lie within $0.923-0.925$). Because performance remains essentially unchanged across sizes, the main practical difference comes from training efficiency. 
 
 In addition to the class-wise behavior, the results shown on Table~\ref{tab:training_time_experiments} also highlight substantial differences in training time efficiency across model sizes. Using the Large with the head changes POSTER model (2.75 min per epoch) as the reference point, the Base with the head changes POSTER configuration (2.46 min per epoch) achieves a reduction in training time of:
 
